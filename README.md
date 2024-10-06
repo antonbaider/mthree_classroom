@@ -1,6 +1,6 @@
 # mthree Practice Classes
 
-![mthree logo](https://abk.uwb.edu.pl/RekrutacjaPracodawca/PracodawcaPubliczny/FirmaIkona?ikonaId=85)  <!-- Optional: add an mthree logo or related image -->
+![mthree logo]([https://abk.uwb.edu.pl/RekrutacjaPracodawca/PracodawcaPubliczny/FirmaIkona?ikonaId=85](https://media.licdn.com/dms/image/v2/D560BAQGwCsz_B7PeWw/company-logo_200_200/company-logo_200_200/0/1719256553345/mthree_logo?e=2147483647&v=beta&t=8FF7gknogA-s98EP7Mij4k29FoSgfGGi1aW_F5-xovE))  <!-- Optional: add an mthree logo or related image -->
 
 ## Overview
 
