@@ -1,5 +1,10 @@
 package com.mthree;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * This program must be in a new console application named Factorizer.
  * This program must ask the user for the number the program will factor.
@@ -9,11 +14,6 @@ package com.mthree;
  * The program must print out whether or not the number is perfect.
  * The program must print out whether or not the number is prime.
  */
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Factorizer {
 
