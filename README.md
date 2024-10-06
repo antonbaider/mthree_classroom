@@ -1,6 +1,6 @@
 # mthree Practice Classes
 
-[mthree logo](https://mthree.cascadecloud.co.uk/custom/MTHREE/selfservice/mainlogo/9f1b06d0-f665-41fc-9427-6e12d710552d.Png)  <!-- Optional: add an mthree logo or related image -->
+[mthree logo]([https://mthree.cascadecloud.co.uk/custom/MTHREE/selfservice/mainlogo/9f1b06d0-f665-41fc-9427-6e12d710552d.Png](https://mthree.com/site/templates/assets/images/logo.svg?t=1717166775))  <!-- Optional: add an mthree logo or related image -->
 
 ## Overview
 
