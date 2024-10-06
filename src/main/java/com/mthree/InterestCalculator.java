@@ -4,6 +4,20 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
 
+/**
+ * Make the program general; that is, it should prompt for the following inputs and use those inputs in the calculations.
+ *
+ * The annual interest rate
+ * The initial amount of principal
+ * The number of years the money is to stay in the fund
+ * The output should include the following for each year:
+ *
+ * The year number
+ * The principal at the beginning of the year
+ * The total amount of interest earned for the year
+ * The principal at the end of the year
+ */
+
 public class InterestCalculator {
 
     // Method to get input as BigDecimal from the user
@@ -60,8 +74,7 @@ public class InterestCalculator {
         }
 
         System.out.println("--------------------------------------------------------------------------------------------");
-        System.out.printf("Summary: Began with $%.2f, Earned a total of $%.2f, Ended with $%.2f%n",
-                initialInvestSum, totalAmount.subtract(initialInvestSum), totalAmount);
+        System.out.printf("Summary: Began with $%.2f, Earned a total of $%.2f, Ended with $%.2f%n", initialInvestSum, totalAmount.subtract(initialInvestSum), totalAmount);
     }
 
     public static void main(String[] args) {
