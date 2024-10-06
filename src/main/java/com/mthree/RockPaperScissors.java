@@ -21,7 +21,7 @@ package com.mthree;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class RockPaperScissors {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean playAgain = true;
