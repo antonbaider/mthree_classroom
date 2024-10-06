@@ -1,6 +1,6 @@
 # mthree Practice Classes
 
-[mthree logo](https://media.licdn.com/dms/image/v2/D560BAQGwCsz_B7PeWw/company-logo_200_200/company-logo_200_200/0/1719256553345/mthree_logo?e=2147483647&v=beta&t=8FF7gknogA-s98EP7Mij4k29FoSgfGGi1aW_F5-xovE](https://mthree.cascadecloud.co.uk/custom/MTHREE/selfservice/mainlogo/9f1b06d0-f665-41fc-9427-6e12d710552d.Png)  <!-- Optional: add an mthree logo or related image -->
+[mthree logo](https://mthree.cascadecloud.co.uk/custom/MTHREE/selfservice/mainlogo/9f1b06d0-f665-41fc-9427-6e12d710552d.Png)  <!-- Optional: add an mthree logo or related image -->
 
 ## Overview
 
