@@ -4,8 +4,6 @@ import com.sg.classroster.dao.ClassRosterDao;
 import com.sg.classroster.dao.ClassRosterDaoException;
 import com.sg.classroster.dto.Student;
 import com.sg.classroster.ui.ClassRosterView;
-import com.sg.classroster.ui.UserIO;
-import com.sg.classroster.ui.UserIOConsoleImpl;
 
 import java.util.List;
 
