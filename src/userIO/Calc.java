@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Calc {
     public static void main(String[] args) {
-        List<Runnable> tasks = getRunnables();
+        List<Runnable> tasks = getRunnable();
         threadsRun(tasks);
     }
 
     private static void threadsRun(List<Runnable> tasks) {
         List<Thread> threads = new ArrayList<>();
+
         for (int i = 0; i < tasks.size(); i++) {
             final int index = i;
             Thread thread = new Thread(() -> {
@@ -22,7 +23,6 @@ public class Calc {
             thread.start();
         }
 
-
         for (Thread thread : threads) {
             try {
                 thread.join();
@@ -32,9 +32,8 @@ public class Calc {
         }
     }
 
-    private static List<Runnable> getRunnables() {
+    private static List<Runnable> getRunnable() {
         UserIOImpl userIO = new UserIOImpl();
-
         List<Runnable> tasks = new ArrayList<>();
 
         tasks.add(() -> userIO.readString("Please enter a string: "));
@@ -46,6 +45,7 @@ public class Calc {
         tasks.add(() -> userIO.readFloat("Please enter a float between 200 and 300: ", 200f, 300f));
         tasks.add(() -> userIO.readLong("Please enter a long: "));
         tasks.add(() -> userIO.readLong("Please enter a long between 300 and 400: ", 300L, 400L));
+
         return tasks;
     }
 }
