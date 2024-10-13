@@ -2,7 +2,6 @@ package com.sg.classroster.controller;
 
 import com.sg.classroster.dao.ClassRosterDao;
 import com.sg.classroster.dao.ClassRosterDaoException;
-import com.sg.classroster.dao.ClassRosterDaoFileImpl;
 import com.sg.classroster.dto.Student;
 import com.sg.classroster.ui.ClassRosterView;
 import com.sg.classroster.ui.UserIO;
@@ -12,9 +11,8 @@ import java.util.List;
 
 public class ClassRosterController {
 
-    private ClassRosterView view;
-    private ClassRosterDao dao;
-    private UserIO io = new UserIOConsoleImpl();
+    private final ClassRosterView view;
+    private final ClassRosterDao dao;
 
     public ClassRosterController(ClassRosterDao dao, ClassRosterView view) {
         this.dao = dao;

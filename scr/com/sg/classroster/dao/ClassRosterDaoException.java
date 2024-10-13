@@ -1,6 +1,6 @@
 package com.sg.classroster.dao;
 
-public class ClassRosterDaoException extends Exception{
+public class ClassRosterDaoException extends Exception {
 
     public ClassRosterDaoException(String message) {
         super(message);

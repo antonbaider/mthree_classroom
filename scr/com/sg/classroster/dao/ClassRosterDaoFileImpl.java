@@ -9,7 +9,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
     public static final String ROSTER_FILE = "roster.txt";
     public static final String DELIMITER = "::";
 
-    private Map<String, Student> students = new HashMap<>();
+    private final Map<String, Student> students = new HashMap<>();
 
     @Override
     public Student addStudent(String studentId, Student student) throws ClassRosterDaoException {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ClassRosterView {
 
-    private UserIO io;
+    private final UserIO io;
 
     public ClassRosterView(UserIO io) {
         this.io = io;
@@ -49,16 +49,13 @@ public class ClassRosterView {
 
     public void displayStudentList(List<Student> studentList) {
         for (Student currentStudent : studentList) {
-            String studentInfo = String.format("#%s : %s %s",
-                    currentStudent.getStudentId(),
-                    currentStudent.getFirstName(),
-                    currentStudent.getLastName());
+            String studentInfo = String.format("#%s : %s %s", currentStudent.getStudentId(), currentStudent.getFirstName(), currentStudent.getLastName());
             io.print(studentInfo);
         }
         io.readString("Please hit enter to continue.");
     }
 
-    public void displayDisplayStudentBanner () {
+    public void displayDisplayStudentBanner() {
         io.print("=== Display Student ===");
     }
 
@@ -78,14 +75,14 @@ public class ClassRosterView {
         io.readString("Please hit enter to continue.");
     }
 
-    public void displayRemoveStudentBanner () {
+    public void displayRemoveStudentBanner() {
         io.print("=== Remove Student ===");
     }
 
     public void displayRemoveResult(Student studentRecord) {
-        if(studentRecord != null){
+        if (studentRecord != null) {
             io.print("Student successfully removed.");
-        }else{
+        } else {
             io.print("No such student.");
         }
         io.readString("Please hit enter to continue.");

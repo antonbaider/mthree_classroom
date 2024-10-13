@@ -3,7 +3,7 @@ package com.sg.classroster.dto;
 public class Student {
     private String firstName;
     private String lastName;
-    private String studentId;
+    private final String studentId;
     // Programming Language + cohort month/year
     private String cohort;
 
