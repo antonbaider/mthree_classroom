@@ -23,7 +23,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
     @Override
     public List<Student> getAllStudents() throws ClassRosterDaoException {
         loadRoster();
-        return new ArrayList(students.values());
+        return new ArrayList<>(students.values());
     }
 
     @Override

@@ -19,7 +19,7 @@ public class ClassRosterController {
 
     public void run() {
         boolean keepGoing = true;
-        int menuSelection = 0;
+        int menuSelection;
         try {
             while (keepGoing) {
 

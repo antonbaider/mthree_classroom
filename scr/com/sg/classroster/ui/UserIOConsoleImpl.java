@@ -8,7 +8,7 @@ public class UserIOConsoleImpl implements UserIO {
     Scanner scanner = new Scanner(System.in);
 
     private <T extends Number> T readNumber(String prompt, T min, T max, Class<T> type) {
-        Number input = null;
+        Number input;
 
         while (true) {
             try {
