@@ -1,0 +1,414 @@
+Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:47:10 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:47:10 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:53:57 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 9:54:28 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:54:28 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:54:28 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:54:29 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:54:29 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:34 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl addStudent
+SEVERE: Error adding student: Anton
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
+	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
+	at org.example.DAO.StudentDaoImpl.addStudent(StudentDaoImpl.java:22)
+	at org.example.app.App.main(App.java:18)
+
+Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl getStudent
+SEVERE: Error retrieving student with id: 78
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
+	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
+	at org.example.DAO.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
+	at org.example.app.App.main(App.java:23)
+
+Oct 15, 2024 10:01:31 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl updateStudent
+SEVERE: Error updating student with id: 78
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
+	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
+	at org.example.DAO.StudentDaoImpl.updateStudent(StudentDaoImpl.java:59)
+	at org.example.app.App.main(App.java:31)
+
+Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl getStudent
+SEVERE: Error retrieving student with id: 78
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
+	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
+	at org.example.DAO.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
+	at org.example.app.App.main(App.java:32)
+
+Oct 15, 2024 10:01:31 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl deleteStudent
+SEVERE: Error deleting student with id: 78
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
+	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
+	at org.example.DAO.StudentDaoImpl.deleteStudent(StudentDaoImpl.java:80)
+	at org.example.app.App.main(App.java:39)
+
+Oct 15, 2024 10:04:12 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:06:33 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 78
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 78
+Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 78
+Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:09:22 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 79
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: New Name, 45 years old with id: 79
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl getStudent
+INFO: Student found: New Name 45 years old with id: 79
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+INFO: Interacting with database...
+Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 79
+Oct 15, 2024 10:09:57 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:09:57 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:09:57 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:09:57 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 79
+Oct 15, 2024 10:09:57 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 79
+Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 79
+Oct 15, 2024 10:09:58 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 79
+Oct 15, 2024 10:09:58 PM org.example.controller.StudentController updateView
+WARNING: No student found
+Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 80
+Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: New Name, 45 years old with id: 80
+Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl getStudent
+INFO: Student found: New Name 45 years old with id: 80
+Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 80
