@@ -1,9 +1,9 @@
 package com.mthree.IO;
 
 import com.mthree.controller.StudentController;
+import com.mthree.messages.Message;
 import com.mthree.model.Student;
 import com.mthree.view.StudentView;
-import com.mthree.messages.Message;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -180,13 +180,19 @@ public class UserIOImpl implements UserIO {
         view.displayMessage(Message.LINE_SEPARATOR);
 
         int studentId = getValidInt(Message.ENTER_STUDENT_ID);
-        String newName = getValidName(Message.ENTER_NEW_NAME);
-        int newAge = getValidAge(Message.ENTER_NEW_AGE);
 
-        studentController.updateStudent(studentId, newName, newAge);
-        view.displaySuccessMessage(Message.STUDENT_UPDATED_SUCCESS);
+        Student student = studentController.getStudentById(studentId);
+
+        if (student != null) {
+            String newName = getValidName(Message.ENTER_NEW_NAME);
+            int newAge = getValidAge(Message.ENTER_NEW_AGE);
+
+            studentController.updateStudent(studentId, newName, newAge);
+            view.displaySuccessMessage(Message.STUDENT_UPDATED_SUCCESS);
+        } else {
+            view.displayErrorMessage(Message.STUDENT_NOT_FOUND_NOT_DELETED + studentId);
+        }
     }
-
 
     public void updateStudent(int id) {
         view.displayMessage(Message.UPDATE_STUDENT_INFO);

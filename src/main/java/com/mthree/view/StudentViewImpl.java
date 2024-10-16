@@ -41,7 +41,7 @@ public class StudentViewImpl implements StudentView {
 
     @Override
     public void displayErrorMessage(String message) {
-        System.err.println("[ERROR] " + message);
+        System.err.println("\n[ERROR] " + message);
     }
 
     @Override

@@ -2382,3 +2382,27 @@ Oct 17, 2024 12:30:56 AM com.mthree.configs.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
 Oct 17, 2024 12:30:56 AM com.mthree.DAO.StudentDaoImpl getStudent
 WARNING: No student found with id: 234
+Oct 17, 2024 12:32:00 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 17, 2024 12:32:00 AM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 123
+Oct 17, 2024 12:32:12 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 17, 2024 12:32:12 AM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 333
+Oct 17, 2024 12:33:11 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 17, 2024 12:33:11 AM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {102=Student id: 102, name: Anton age: 34 y.o.;, 103=Student id: 103, name: qwerty age: 21 y.o.;, 104=Student id: 104, name: dsfw age: 31 y.o.;, 105=Student id: 105, name: fafaf age: 23 y.o.;}
+Oct 17, 2024 12:34:01 AM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 321
+Oct 17, 2024 12:34:12 AM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 23
+Oct 17, 2024 12:36:52 AM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 456
+Oct 17, 2024 12:37:25 AM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 456
+Oct 17, 2024 12:37:59 AM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 4645
+Oct 17, 2024 12:37:59 AM com.mthree.controller.StudentControllerImpl deleteStudent
+SEVERE: Student with id 4,645 not deleted

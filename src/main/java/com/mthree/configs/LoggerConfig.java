@@ -20,7 +20,7 @@ public class LoggerConfig {
             fileHandler.setFormatter(new SimpleFormatter());
 
             logger.addHandler(fileHandler);
-            logger.setLevel(Level.ALL);
+            logger.setLevel(Level.SEVERE);
             logger.setUseParentHandlers(true);
 
         } catch (IOException e) {
