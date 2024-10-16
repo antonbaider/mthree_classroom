@@ -58,7 +58,7 @@ public class UserIOImpl implements UserIO {
                 if (!exit) {
                     view.displayPrompt(Message.CONTINUE_PROMPT);
                     String answer = scanner.nextLine();
-                    if (!answer.equalsIgnoreCase("y")) {
+                    if (answer.equalsIgnoreCase("y")) {
                         exit = true;
                     }
                 }
