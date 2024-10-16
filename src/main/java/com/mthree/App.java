@@ -20,7 +20,7 @@ import static com.mthree.app.Initialize.start;
  * <p>Usage Example:</p>
  * <pre>{@code
  * public static void main(String[] args) {
- *     starting();
+ *     start();
  * }
  * }</pre>
  *
