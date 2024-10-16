@@ -1,13 +1,21 @@
 package com.mthree.controller;
 
+import com.mthree.model.Student;
+
+import java.util.Map;
+
 public interface StudentController {
     void showAllStudents();
 
+    Map<Integer, Student> getAllStudents();
+
+    Student getStudentById(int id);
+
     void showStudentById(int id);
 
-    void addStudent(String studentName, int studentAge);
+    boolean addStudent(String studentName, int studentAge);
 
     void updateStudent(int id, String studentName, int studentAge);
 
-    void deleteStudent(int id);
+    boolean deleteStudent(int id);
 }

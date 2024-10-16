@@ -1446,3 +1446,537 @@ Oct 16, 2024 7:18:45 PM com.mthree.configs.DBConfig startConnection
 INFO: Executing SQL: SELECT * FROM student
 Oct 16, 2024 7:18:45 PM com.mthree.DAO.StudentDaoImpl getAllStudents
 INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21}
+Oct 16, 2024 7:26:46 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:28:42 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:28:49 PM com.mthree.DAO.StudentDaoImpl addStudent
+SEVERE: Error adding student: asdf
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at com.mthree.configs.DBConfig.getConnection(DBConfig.java:30)
+	at com.mthree.configs.DBConfig.startConnection(DBConfig.java:34)
+	at com.mthree.DAO.StudentDaoImpl.addStudent(StudentDaoImpl.java:24)
+	at com.mthree.controller.StudentControllerImpl.addStudent(StudentControllerImpl.java:25)
+	at com.mthree.IO.UserIOImpl.createStudent(UserIOImpl.java:67)
+	at com.mthree.IO.UserIOImpl.applicationStart(UserIOImpl.java:180)
+	at com.mthree.App.main(App.java:17)
+
+Oct 16, 2024 7:31:12 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:31:15 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:32:20 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:32:25 PM com.mthree.DAO.StudentDaoImpl addStudent
+SEVERE: Error adding student: 123
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at com.mthree.configs.DBConfig.getConnection(DBConfig.java:30)
+	at com.mthree.configs.DBConfig.startConnection(DBConfig.java:34)
+	at com.mthree.DAO.StudentDaoImpl.addStudent(StudentDaoImpl.java:24)
+	at com.mthree.controller.StudentControllerImpl.addStudent(StudentControllerImpl.java:25)
+	at com.mthree.IO.UserIOImpl.createStudent(UserIOImpl.java:67)
+	at com.mthree.IO.UserIOImpl.applicationStart(UserIOImpl.java:180)
+	at com.mthree.App.main(App.java:17)
+
+Oct 16, 2024 7:32:53 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:32:58 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:33:15 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:33:54 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:34:02 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:35:36 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:36:10 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+SEVERE: Error retrieving students: java.sql.SQLException: The url cannot be null
+Oct 16, 2024 7:41:26 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 7:41:26 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21}
+Oct 16, 2024 7:41:34 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 7:41:34 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: 123 21 years old
+Oct 16, 2024 7:41:34 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name 123 added successfully
+Oct 16, 2024 7:41:48 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 7:41:48 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 51
+Oct 16, 2024 7:41:48 PM com.mthree.controller.StudentControllerImpl deleteStudent
+SEVERE: Student with id 51 not deleted
+Oct 16, 2024 7:41:59 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 7:41:59 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 123123
+Oct 16, 2024 7:41:59 PM com.mthree.controller.StudentControllerImpl deleteStudent
+SEVERE: Student with id 123,123 not deleted
+Oct 16, 2024 7:57:00 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 7:57:00 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21}
+Oct 16, 2024 7:57:05 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 7:57:05 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: 123 21 years old
+Oct 16, 2024 7:57:05 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name 123 added successfully
+Oct 16, 2024 7:57:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 7:57:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 58=Student name: 123 age: 21}
+Oct 16, 2024 7:57:19 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 7:57:19 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 58
+Oct 16, 2024 7:57:19 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 58 deleted successfully
+Oct 16, 2024 7:57:26 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 7:57:26 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 123
+Oct 16, 2024 7:57:26 PM com.mthree.controller.StudentControllerImpl deleteStudent
+SEVERE: Student with id 123 not deleted
+Oct 16, 2024 7:57:36 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 7:57:36 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 123
+Oct 16, 2024 7:57:36 PM com.mthree.controller.StudentControllerImpl deleteStudent
+SEVERE: Student with id 123 not deleted
+Oct 16, 2024 8:14:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:14:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:14:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:14:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:14:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19}
+Oct 16, 2024 8:14:50 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:14:50 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:14:50 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:14:50 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:14:50 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19}
+Oct 16, 2024 8:16:05 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:16:05 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:16:05 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:16:05 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:16:05 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19}
+Oct 16, 2024 8:16:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:16:25 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:16:25 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:16:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:16:25 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19}
+Oct 16, 2024 8:17:02 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:17:02 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:17:02 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:17:02 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:17:02 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19}
+Oct 16, 2024 8:17:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:17:25 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:17:25 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:17:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:17:25 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19}
+Oct 16, 2024 8:33:38 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:33:38 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:33:38 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:33:38 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:33:38 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:33:38 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:33:38 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 65
+Oct 16, 2024 8:33:50 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:33:50 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:33:50 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:33:50 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:33:50 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:33:50 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:33:50 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 66
+Oct 16, 2024 8:34:01 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:34:01 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:34:01 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:34:01 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:34:01 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19}
+Oct 16, 2024 8:34:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:34:21 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:34:21 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:34:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:34:21 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19}
+Oct 16, 2024 8:34:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:34:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:34:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:34:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:34:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:34:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:34:30 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 69
+Oct 16, 2024 8:36:24 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:36:24 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:36:24 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:36:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:36:25 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:36:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:36:25 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 70
+Oct 16, 2024 8:44:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:08 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: NameForUpdate 18 years old
+Oct 16, 2024 8:44:08 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name NameForUpdate added successfully
+Oct 16, 2024 8:44:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:08 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: NameForUpdate age: 18}
+Oct 16, 2024 8:44:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 8:44:08 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Updated Name, 30 years old with id: 71
+Oct 16, 2024 8:44:08 PM com.mthree.controller.StudentControllerImpl updateStudent
+INFO: Student with id 71 updated successfully
+Oct 16, 2024 8:44:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:44:08 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Updated Name 30 years old with id: 71
+Oct 16, 2024 8:44:16 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:16 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: NameForUpdate 18 years old
+Oct 16, 2024 8:44:16 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name NameForUpdate added successfully
+Oct 16, 2024 8:44:16 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:16 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: NameForUpdate age: 18}
+Oct 16, 2024 8:44:16 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 8:44:16 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Updated Name, 30 years old with id: 72
+Oct 16, 2024 8:44:16 PM com.mthree.controller.StudentControllerImpl updateStudent
+INFO: Student with id 72 updated successfully
+Oct 16, 2024 8:44:16 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:44:16 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Updated Name 30 years old with id: 72
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:44:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19}
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: NameForUpdate 18 years old
+Oct 16, 2024 8:44:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name NameForUpdate added successfully
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: NameForUpdate age: 18}
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Updated Name, 30 years old with id: 74
+Oct 16, 2024 8:44:30 PM com.mthree.controller.StudentControllerImpl updateStudent
+INFO: Student with id 74 updated successfully
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Updated Name 30 years old with id: 74
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:44:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 75
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:44:30 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:44:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:44:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19}
+Oct 16, 2024 8:46:10 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:46:10 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:46:10 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:46:10 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:46:10 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19}
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: NameForUpdate 18 years old
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name NameForUpdate added successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: NameForUpdate age: 18}
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Updated Name, 30 years old with id: 78
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl updateStudent
+INFO: Student with id 78 updated successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Updated Name 30 years old with id: 78
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 79
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19}
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student to Delete 21 years old
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student to Delete added successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 81=Student name: Student to Delete age: 21}
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 81
+Oct 16, 2024 8:46:11 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 81 deleted successfully
+Oct 16, 2024 8:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:46:11 PM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 81
+Oct 16, 2024 8:51:20 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:51:20 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:51:20 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:51:20 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:20 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19}
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: NameForUpdate 18 years old
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name NameForUpdate added successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: NameForUpdate age: 18}
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Updated Name, 30 years old with id: 83
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl updateStudent
+INFO: Student with id 83 updated successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Updated Name 30 years old with id: 83
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 2 29 years old
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name 2 added successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29}
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 2 29 years old with id: 84
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student Name added successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19}
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student to Delete 21 years old
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name Student to Delete added successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19, 86=Student name: Student to Delete age: 21}
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 86
+Oct 16, 2024 8:51:21 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 86 deleted successfully
+Oct 16, 2024 8:51:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:51:21 PM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 86
+Oct 16, 2024 8:51:38 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:51:38 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19}
+Oct 16, 2024 8:54:59 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:54:59 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19}
+Oct 16, 2024 8:55:04 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 8:55:04 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: 123 21 years old
+Oct 16, 2024 8:55:04 PM com.mthree.controller.StudentControllerImpl addStudent
+INFO: Student with name 123 added successfully
+Oct 16, 2024 8:55:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:55:08 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19, 87=Student name: 123 age: 21}
+Oct 16, 2024 8:55:17 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:55:17 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: 123 21 years old with id: 87
+Oct 16, 2024 8:55:33 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 8:55:33 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 87
+Oct 16, 2024 8:55:33 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 87 deleted successfully
+Oct 16, 2024 8:56:54 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:56:54 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 82=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29, 85=Student name: Student Name age: 19}
+Oct 16, 2024 8:57:08 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 8:57:08 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 85
+Oct 16, 2024 8:57:08 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 85 deleted successfully
+Oct 16, 2024 8:57:21 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 8:57:21 PM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Student Name 19 years old with id: 82
+Oct 16, 2024 8:57:26 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 8:57:26 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 82
+Oct 16, 2024 8:57:26 PM com.mthree.controller.StudentControllerImpl deleteStudent
+INFO: Student with id 82 deleted successfully
+Oct 16, 2024 8:57:36 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 8:57:36 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29, 23=Student name: Last Student age: 19, 24=Student name: Last Student age: 19, 25=Student name: Last Student age: 19, 26=Student name: NameForUpdate age: 18, 27=Student name: NameForUpdate age: 18, 28=Student name: NameForUpdate age: 18, 29=Student name: NameForUpdate age: 18, 30=Student name: Just Updated Name age: 58, 37=Student name: Student Name age: 19, 38=Student name: Just Updated Name age: 58, 39=Student name: Last Student age: 19, 40=Student name: Student Name age: 19, 42=Student name: Student Name age: 19, 43=Student name: Just Updated Name age: 58, 44=Student name: Last Student age: 19, 45=Student name: Student Name age: 19, 47=Student name: Mond age: 22, 48=Student name: Nick age: 19, 49=Student name: Antonio age: 23, 50=Student name: Student1 123 age: 21, 52=Student name: 123 age: 21, 53=Student name: Test age: 21, 57=Student name: 123 age: 21, 59=Student name: Student Name age: 19, 60=Student name: Student Name age: 19, 61=Student name: Student Name age: 19, 62=Student name: Student Name age: 19, 63=Student name: Student Name age: 19, 64=Student name: Student Name age: 19, 65=Student name: Student Name 2 age: 29, 66=Student name: Student Name 2 age: 29, 67=Student name: Student Name age: 19, 68=Student name: Student Name age: 19, 69=Student name: Student Name 2 age: 29, 70=Student name: Student Name 2 age: 29, 71=Student name: Updated Name age: 30, 72=Student name: Updated Name age: 30, 73=Student name: Student Name age: 19, 74=Student name: Updated Name age: 30, 75=Student name: Student Name 2 age: 29, 76=Student name: Student Name age: 19, 77=Student name: Student Name age: 19, 78=Student name: Updated Name age: 30, 79=Student name: Student Name 2 age: 29, 80=Student name: Student Name age: 19, 83=Student name: Updated Name age: 30, 84=Student name: Student Name 2 age: 29}

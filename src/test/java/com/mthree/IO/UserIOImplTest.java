@@ -1,101 +1,110 @@
-//package com.mthree.IO;
-//
-//import com.mthree.DAO.StudentDaoImpl;
-//import com.mthree.model.Student;
-//import org.junit.jupiter.api.Assertions;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.DisplayName;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//
-//public class UserIOImplTest {
-//    UserIOImpl ioClass;
-//    StudentDaoImpl studentDao;
-//
-//    @BeforeEach
-//    public void setUp() {
-//        ioClass = new UserIOImpl();
-//        studentDao = new StudentDaoImpl();
-//    }
-//
-//    @Test
-//    @DisplayName("Create student")
-//    public void testCreateStudent() {
-//        boolean result = studentDao.addStudent("Student Name", 19);
-//
-//        Assertions.assertTrue(result);
-//    }
-//
-//    @Test
-//    @DisplayName("Read one by ID")
-//    public void testReadById() {
-//        studentDao.addStudent("Last Student", 19);
-//        Map<Integer, Student> listOfStudents = studentDao.getAllStudents();
-//        List<Integer> keys = new ArrayList<>(listOfStudents.keySet());
-//        int lastKey = keys.get(keys.size() - 1);
-//        Student lastStudent = listOfStudents.get(lastKey);
-//        Student dbStudent = studentDao.getStudent(lastKey);
-//        System.out.println(lastStudent + " equals " + dbStudent + "?");
-//
-//        Assertions.assertEquals(lastStudent, studentDao.getStudent(lastKey));
-//    }
-//
-//    @Test
-//    @DisplayName("Read All")
-//    public void testReadAll() {
-//        studentDao.addStudent("Student Name", 19);
-//        Map<Integer, Student> listOfStudents = studentDao.getAllStudents();
-//
-//        Assertions.assertNotNull(listOfStudents);
-//    }
-//
-//    @Test
-//    @DisplayName("Update by ID")
-//    public void testUpdateStudent() {
-//        studentDao.addStudent("NameForUpdate", 18);
-//        Map<Integer, Student> listOfStudents = studentDao.getAllStudents();
-//
-//        Integer lastKey = null;
-//        Student lastStudent = null;
-//        for (Map.Entry<Integer, Student> entry : listOfStudents.entrySet()) {
-//            lastKey = entry.getKey();
-//            lastStudent = entry.getValue();
-//        }
-//
-//        assert lastStudent != null;
-//        System.out.println("Student " + lastStudent.getName() + " " + lastStudent.getAge() + " y.o. is our last student");
-//
-//        Student dbLastStudent = studentDao.getStudent(lastKey);
-//
-//        Assertions.assertEquals(dbLastStudent, lastStudent);
-//
-//        studentDao.updateStudent(lastKey, 58, "Just Updated Name");
-//
-//        Assertions.assertNotEquals(dbLastStudent, studentDao.getStudent(lastKey));
-//    }
-//
-//    @Test
-//    @DisplayName("Delete by ID")
-//    public void testDeleteById() {
-//        studentDao.addStudent("Student for Delete", 38);
-//        Map<Integer, Student> listOfStudents = studentDao.getAllStudents();
-//
-//        Integer lastKey = null;
-//        Student lastStudent = null;
-//        for (Map.Entry<Integer, Student> entry : listOfStudents.entrySet()) {
-//            lastKey = entry.getKey();
-//            lastStudent = entry.getValue();
-//        }
-//        boolean deleted = studentDao.deleteStudent(lastKey);
-//
-//        Assertions.assertTrue(deleted);
-//
-//        studentDao.getStudent(lastKey);
-//
-//        Assertions.assertNull(studentDao.getStudent(lastKey));
-//
-//    }
-//}
+package com.mthree.IO;
+
+import com.mthree.DAO.StudentDaoImpl;
+import com.mthree.controller.StudentControllerImpl;
+import com.mthree.model.Student;
+import com.mthree.view.StudentViewImpl;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
+public class UserIOImplTest {
+    UserIOImpl ioClass;
+    StudentControllerImpl studentController;
+    StudentViewImpl studentView;
+    StudentDaoImpl studentDao;
+
+    @BeforeEach
+    public void setUp() {
+        studentView = new StudentViewImpl();
+        studentDao = new StudentDaoImpl();
+        studentController = new StudentControllerImpl(studentDao, studentView);
+        ioClass = new UserIOImpl(studentController, studentView);
+    }
+
+    @Test
+    @DisplayName("Create student")
+    public void testCreateStudent() {
+        boolean result = studentController.addStudent("Student Name", 19);
+        Assertions.assertTrue(result);
+
+        Map<Integer, Student> studentMap = studentController.getAllStudents();
+
+        Assertions.assertFalse(studentMap.isEmpty());
+
+        Integer lastKey = studentMap.keySet().stream().max(Integer::compareTo).orElseThrow();
+
+        Student student = studentMap.get(lastKey);
+
+        Assertions.assertEquals("Student Name", student.getName());
+        Assertions.assertEquals(19, student.getAge());
+    }
+
+    @Test
+    @DisplayName("Read one by ID")
+    public void testReadById() {
+        studentController.addStudent("Student Name 2", 29);
+
+        Map<Integer, Student> studentMap = studentController.getAllStudents();
+        Integer lastKey = studentMap.keySet().stream().max(Integer::compareTo).orElseThrow();
+
+        Student student = studentMap.get(lastKey);
+        Assertions.assertEquals("Student Name 2", student.getName());
+        Assertions.assertEquals(29, student.getAge());
+
+        Student lastDBStudent = studentController.getStudentById(lastKey);
+
+        Assertions.assertEquals("Student Name 2", lastDBStudent.getName());
+        Assertions.assertEquals(29, lastDBStudent.getAge());
+    }
+
+    @Test
+    @DisplayName("Read All")
+    public void testReadAll() {
+        studentController.addStudent("Student Name", 19);
+        Map<Integer, Student> listOfStudents = studentController.getAllStudents();
+
+        Assertions.assertNotNull(listOfStudents);
+    }
+
+    @Test
+    @DisplayName("Update by ID")
+    public void testUpdateStudent() {
+        studentController.addStudent("NameForUpdate", 18);
+        Map<Integer, Student> listOfStudents = studentController.getAllStudents();
+
+        Integer lastKey = listOfStudents.keySet().stream().max(Integer::compareTo).orElseThrow();
+        Student lastStudent = listOfStudents.get(lastKey);
+
+        studentController.updateStudent(lastKey, "Updated Name", 30);
+
+        System.out.println("Student " + lastStudent.getName() + " " + lastStudent.getAge() + " y.o. is our last student");
+
+        Student dbLastStudent = studentController.getStudentById(lastKey);
+
+        Assertions.assertNotEquals(lastStudent, dbLastStudent, "Student should be updated.");
+        Assertions.assertEquals("Updated Name", dbLastStudent.getName(), "Name should be updated.");
+        Assertions.assertEquals(30, dbLastStudent.getAge(), "Age should be updated.");
+    }
+
+    @Test
+    @DisplayName("Delete by ID")
+    public void testDeleteById() {
+        studentController.addStudent("Student to Delete", 21);
+
+        Map<Integer, Student> students = studentController.getAllStudents();
+        Integer lastKey = students.keySet().stream().max(Integer::compare).orElseThrow();
+
+        boolean deleted = studentController.deleteStudent(lastKey);
+
+        Assertions.assertTrue(deleted, "Student should be deleted.");
+
+        Student deletedStudent = studentController.getStudentById(lastKey);
+
+        Assertions.assertNull(deletedStudent, "Deleted student should not be found.");
+    }
+
+}

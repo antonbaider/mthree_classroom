@@ -4,6 +4,8 @@ import com.mthree.DAO.StudentDaoImpl;
 import com.mthree.model.Student;
 import com.mthree.view.StudentView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,20 +23,29 @@ public class StudentControllerImpl implements StudentController {
     }
 
     @Override
-    public void addStudent(String studentName, int studentAge) {
+    public boolean addStudent(String studentName, int studentAge) {
         studentDAO.addStudent(studentName, studentAge);
         logger.log(Level.INFO, "Student with name {0} added successfully", studentName);
+        return true;
     }
 
     @Override
     public void showAllStudents() {
-        Map<Integer, Student> students = studentDAO.getAllStudents();
-        view.showAllStudents(students);
+        view.showAllStudents(getAllStudents());
+    }
+
+    public Map<Integer, Student> getAllStudents() {
+        return studentDAO.getAllStudents();
+    }
+
+    @Override
+    public Student getStudentById(int id) {
+        return studentDAO.getStudent(id);
     }
 
     @Override
     public void showStudentById(int id) {
-        Student student = studentDAO.getStudent(id);
+        Student student = getStudentById(id);
         if (student != null) {
             view.showStudent(id, student.getName(), student.getAge());
         } else {
@@ -53,12 +64,14 @@ public class StudentControllerImpl implements StudentController {
     }
 
     @Override
-    public void deleteStudent(int id) {
+    public boolean deleteStudent(int id) {
         boolean result = studentDAO.deleteStudent(id);
         if (result) {
             logger.log(Level.INFO, "Student with id {0} deleted successfully", id);
+            return true;
         } else {
             logger.log(Level.SEVERE, "Student with id {0} not deleted", id);
+            return false;
         }
     }
 }

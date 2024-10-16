@@ -80,7 +80,7 @@ public class UserIOImpl implements UserIO {
             view.displayMessage(Message.UPDATE_STUDENT_OPTIONS);
             view.displayMessage(Message.DELETE_STUDENT_OPTIONS);
             view.displayMessage(Message.BACK_TO_MAIN_OPTIONS);
-            view.displayPrompt(Message.ENTER_STUDENT_ID);
+            view.displayPrompt(Message.MENU_OPTION);
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -134,17 +134,22 @@ public class UserIOImpl implements UserIO {
 
     public void deleteStudent() {
         view.displayMessage(Message.DELETE_STUDENT);
-        view.displayMessage(Message.LINE_SEPARATOR);  // Use line constant
+        view.displayMessage(Message.LINE_SEPARATOR);
 
         int studentId = getValidInt(Message.ENTER_STUDENT_ID);
 
-        studentController.deleteStudent(studentId);
-        view.displaySuccessMessage(Message.STUDENT_DELETED_SUCCESS);
+        boolean isDeleted = studentController.deleteStudent(studentId);
+
+        if (isDeleted) {
+            view.displaySuccessMessage(Message.STUDENT_DELETED_SUCCESS);
+        } else {
+            view.displayErrorMessage("No student found with ID: " + studentId);
+        }
     }
 
     public void deleteStudent(int id) {
         view.displayMessage(Message.DELETE_STUDENT);
-        view.displayMessage(Message.LINE_SEPARATOR);  // Use line constant
+        view.displayMessage(Message.LINE_SEPARATOR);
 
         studentController.deleteStudent(id);
         view.displaySuccessMessage(Message.STUDENT_DELETED_SUCCESS);
@@ -169,7 +174,7 @@ public class UserIOImpl implements UserIO {
     public void applicationStart() {
         boolean exit = false;
         view.displayMessage(Message.WELCOME_MESSAGE);
-        view.displayMessage(Message.LINE_SEPARATOR);  // Use line constant
+        view.displayMessage(Message.LINE_SEPARATOR);
 
         try (Scanner scanner = new Scanner(System.in)) {
             do {
