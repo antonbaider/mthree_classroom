@@ -85,11 +85,17 @@ public class UserIOImpl implements UserIO {
 
     public String getValidName(String message) {
         view.displayPrompt(message);
-        String input = scanner.nextLine();
-        if (input.isEmpty()) {
-            view.displayErrorMessage(Message.INVALID_INPUT);
+        while (true) {
+            String input = scanner.nextLine();
+            String namePattern = "^[a-zA-Z\\s'-]+$";
+
+            if (!input.matches(namePattern) || input.isEmpty()) {
+                view.displayErrorMessage(Message.INVALID_INPUT);
+            } else {
+                return input;
+            }
+            view.displayPrompt(message);
         }
-        return input;
     }
 
     public int getValidInt(String message) {
