@@ -7,10 +7,6 @@ import java.util.Map;
 public interface StudentController {
     void showAllStudents();
 
-    Map<Integer, Student> getAllStudents();
-
-    Student getStudentById(int id);
-
     void showStudentById(int id);
 
     boolean addStudent(String studentName, int studentAge);
@@ -18,4 +14,8 @@ public interface StudentController {
     void updateStudent(int id, String studentName, int studentAge);
 
     boolean deleteStudent(int id);
+
+    Map<Integer, Student> getAllStudents();
+
+    Student getStudentById(int id);
 }

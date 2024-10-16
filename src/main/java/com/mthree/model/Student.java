@@ -2,6 +2,9 @@ package com.mthree.model;
 
 import java.util.Objects;
 
+/**
+ * Model class
+ */
 public class Student {
     private int id;
     private int age;

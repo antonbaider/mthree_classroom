@@ -1,5 +1,8 @@
 package com.mthree.messages;
 
+/**
+ * Localisation part
+ */
 public interface Message {
     // General messages
     String WELCOME_MESSAGE = "WELCOME TO STUDENT-DATA APPLICATION";

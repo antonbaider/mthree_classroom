@@ -1,5 +1,8 @@
 package com.mthree.exceptions;
 
+/**
+ * Application implementation of exceptions
+ */
 public class Exceptions {
 
     public static class DaoException extends RuntimeException {

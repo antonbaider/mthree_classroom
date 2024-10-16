@@ -8,7 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Logger;
-
+/**
+ *
+ * Set up connection configuration with DB
+ *
+ */
 import static com.mthree.configs.LoggerConfig.getLogger;
 
 public class DBConfig {

@@ -7,6 +7,9 @@ import com.mthree.messages.Message;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * All IO logic implementation
+ */
 public class UserIOImpl implements UserIO {
     private final StudentController studentController;
     private final StudentView view;

@@ -4,6 +4,9 @@ import com.mthree.model.Student;
 
 import java.util.Map;
 
+/**
+ * Representation of models
+ */
 public class StudentViewImpl implements StudentView {
     @Override
     public void showStudent(int id, String name, int age) {

@@ -4,14 +4,15 @@ import com.mthree.DAO.StudentDaoImpl;
 import com.mthree.model.Student;
 import com.mthree.view.StudentView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.mthree.configs.LoggerConfig.getLogger;
 
+/**
+ * Injecting dao with view to controller
+ */
 public class StudentControllerImpl implements StudentController {
     private final Logger logger = getLogger();
     private final StudentDaoImpl studentDAO;

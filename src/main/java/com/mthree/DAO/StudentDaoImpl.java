@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 
 import static com.mthree.configs.LoggerConfig.getLogger;
 
+/**
+ * Operating with DB transactions
+ */
 public class StudentDaoImpl extends DBConfig implements StudentDao {
     private final Logger logger = getLogger();
 
