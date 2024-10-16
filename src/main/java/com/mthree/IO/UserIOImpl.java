@@ -1,6 +1,7 @@
 package com.mthree.IO;
 
 import com.mthree.controller.StudentController;
+import com.mthree.model.Student;
 import com.mthree.view.StudentView;
 import com.mthree.messages.Message;
 
@@ -130,33 +131,39 @@ public class UserIOImpl implements UserIO {
         view.displayMessage(Message.LINE_SEPARATOR);
 
         int studentId = getValidInt(Message.ENTER_STUDENT_ID);
-        studentController.showStudentById(studentId);
+        Student student = studentController.getStudentById(studentId);
 
-        boolean backToMain = false;
-        while (!backToMain) {
-            view.displayMessage(Message.UPDATE_STUDENT_OPTIONS);
-            view.displayMessage(Message.DELETE_STUDENT_OPTIONS);
-            view.displayMessage(Message.BACK_TO_MAIN_OPTIONS);
-            view.displayPrompt(Message.MENU_OPTION);
+        if (student != null) {
+            view.showStudent(studentId, student.getName(), student.getAge());
 
-            int option = scanner.nextInt();
-            scanner.nextLine();
-            switch (option) {
-                case 1:
-                    updateStudent(studentId);
-                    backToMain = true;
-                    break;
-                case 2:
-                    deleteStudent(studentId);
-                    backToMain = true;
-                    break;
-                case 3:
-                    backToMain = true;
-                    break;
-                default:
-                    view.displayErrorMessage(Message.INVALID_OPTION);
-                    break;
+            boolean backToMain = false;
+            while (!backToMain) {
+                view.displayMessage(Message.UPDATE_STUDENT_OPTIONS);
+                view.displayMessage(Message.DELETE_STUDENT_OPTIONS);
+                view.displayMessage(Message.BACK_TO_MAIN_OPTIONS);
+                view.displayPrompt(Message.MENU_OPTION);
+
+                int option = scanner.nextInt();
+                scanner.nextLine();
+                switch (option) {
+                    case 1:
+                        updateStudent(studentId);
+                        backToMain = true;
+                        break;
+                    case 2:
+                        deleteStudent(studentId);
+                        backToMain = true;
+                        break;
+                    case 3:
+                        backToMain = true;
+                        break;
+                    default:
+                        view.displayErrorMessage(Message.INVALID_OPTION);
+                        break;
+                }
             }
+        } else {
+            view.displayErrorMessage(Message.STUDENT_NOT_FOUND_NOT_DELETED + studentId);
         }
     }
 
