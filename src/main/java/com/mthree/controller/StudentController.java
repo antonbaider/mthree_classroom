@@ -1,44 +1,13 @@
 package com.mthree.controller;
 
-import com.mthree.model.Student;
-import com.mthree.view.StudentView;
+public interface StudentController {
+    void showAllStudents();
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+    void showStudentById(int id);
 
-import static com.mthree.configs.LoggerConfig.getLogger;
+    void addStudent(String studentName, int studentAge);
 
-public class StudentController {
-    private final Logger logger = getLogger();
-    private Student model;
-    private StudentView view;
+    void updateStudent(int id, String studentName, int studentAge);
 
-    public StudentController(Student model, StudentView view) {
-        this.model = model;
-        this.view = view;
-    }
-
-    public Student getModel() {
-        return model;
-    }
-
-    public void setModel(Student model) {
-        this.model = model;
-    }
-
-    public StudentView getView() {
-        return view;
-    }
-
-    public void setView(StudentView view) {
-        this.view = view;
-    }
-
-    public void updateView() {
-        try {
-            view.displayStudentDetails(model.getName(), model.getAge());
-        } catch (NullPointerException e) {
-            logger.log(Level.WARNING, "No student found");
-        }
-    }
+    void deleteStudent(int id);
 }

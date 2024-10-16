@@ -29,7 +29,7 @@ public class StudentDaoImpl extends DBConfig implements StudentDao {
             return true;
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error adding student: " + name, e);
-            return false;
+            throw new DaoException("Failed to add student", e);
         }
     }
 
@@ -50,6 +50,7 @@ public class StudentDaoImpl extends DBConfig implements StudentDao {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error retrieving student with id: " + id, e);
+            throw new DaoException("Failed to retrieve student", e);
         }
         return student;
     }
@@ -72,7 +73,7 @@ public class StudentDaoImpl extends DBConfig implements StudentDao {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error updating student with id: " + id, e);
-            return false;
+            throw new DaoException("Failed to update student", e);
         }
     }
 
