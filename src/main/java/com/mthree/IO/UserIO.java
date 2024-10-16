@@ -1,6 +1,7 @@
 package com.mthree.IO;
 
 public interface UserIO {
+
     void applicationStart();
 
     void createStudent();

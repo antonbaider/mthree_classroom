@@ -5,6 +5,7 @@ import com.mthree.model.Student;
 import java.util.Map;
 
 public interface StudentView {
+
     void showStudent(int id, String name, int age);
 
     void showAllStudents(Map<Integer, Student> students);

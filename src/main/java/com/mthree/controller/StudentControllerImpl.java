@@ -35,6 +35,7 @@ public class StudentControllerImpl implements StudentController {
         view.showAllStudents(getAllStudents());
     }
 
+    @Override
     public Map<Integer, Student> getAllStudents() {
         return studentDAO.getAllStudents();
     }

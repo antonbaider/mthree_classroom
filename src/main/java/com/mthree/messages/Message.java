@@ -29,6 +29,7 @@ public interface Message {
     String STUDENT_UPDATED_SUCCESS = "Student updated successfully.";
     // Delete student
     String DELETE_STUDENT = "Delete a student";
+    String STUDENT_NOT_FOUND_NOT_DELETED = "No student found with ID: ";
     String STUDENT_DELETED_SUCCESS = "Student deleted successfully.";
     // Error messages
     String INVALID_INPUT = "Invalid input. Please try again.";

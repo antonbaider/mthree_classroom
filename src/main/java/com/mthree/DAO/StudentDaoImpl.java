@@ -100,6 +100,7 @@ public class StudentDaoImpl extends DBConfig implements StudentDao {
         }
     }
 
+    @Override
     public Map<Integer, Student> getAllStudents() {
         String sql = "SELECT * FROM student";
         Map<Integer, Student> students = new LinkedHashMap<>();
