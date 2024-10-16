@@ -30,7 +30,7 @@ public class Initialize {
         for (int i = 0; i < loadingMessages.length; i++) {
             System.out.println(ANSI_GREEN + percentages[i] + "% - " + loadingMessages[i] + ANSI_RESET);
             try {
-                Thread.sleep(200);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
