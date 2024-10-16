@@ -1,4 +1,4 @@
-package org.example.configs;
+package com.mthree.configs;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;

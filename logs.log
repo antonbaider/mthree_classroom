@@ -1,414 +1,1086 @@
-Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:45:17 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:45:17 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:45:17 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:45:17 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:45:17 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:45:17 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:47:10 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:47:10 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:47:10 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:10 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:11 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:47:11 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:11 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:11 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:11 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:47:11 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:47:11 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:11 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:47:42 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:42 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:42 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:47:42 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:42 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:42 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:42 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:47:42 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:47:42 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:42 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:47:50 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:50 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:50 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:47:50 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:47:50 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:50 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:47:50 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:47:50 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:47:50 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:47:50 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:53:57 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:53:57 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:53:58 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:53:58 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:53:58 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:53:58 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:53:58 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:53:58 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:53:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:53:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 9:53:58 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:53:58 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:53:58 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:53:58 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:28 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:28 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 9:54:28 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:54:28 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:28 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:28 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:54:28 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:54:28 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:54:28 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:28 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:28 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:28 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:29 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:54:29 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:29 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:29 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:54:29 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:54:29 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:29 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:29 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:29 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:29 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 9:54:29 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:54:29 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:54:29 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:29 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:34 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:34 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 9:54:35 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:54:35 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:35 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 9:54:35 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 9:54:35 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:35 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 9:54:35 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 9:54:35 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 9:54:35 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 9:54:35 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 9:54:35 PM org.example.controller.StudentController updateView
+Oct 15, 2024 9:54:35 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:01:31 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:01:31 PM DAO.com.mthree.StudentDaoImpl addStudent
 SEVERE: Error adding student: Anton
 java.sql.SQLException: The url cannot be null
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
-	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
-	at org.example.DAO.StudentDaoImpl.addStudent(StudentDaoImpl.java:22)
-	at org.example.app.App.main(App.java:18)
+	at configs.com.mthree.DBConfig.getConnection(DBConfig.java:21)
+	at configs.com.mthree.DBConfig.startConnection(DBConfig.java:25)
+	at DAO.com.mthree.StudentDaoImpl.addStudent(StudentDaoImpl.java:22)
+	at app.com.mthree.App.main(App.java:18)
 
-Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:01:31 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:01:31 PM DAO.com.mthree.StudentDaoImpl getStudent
 SEVERE: Error retrieving student with id: 78
 java.sql.SQLException: The url cannot be null
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
-	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
-	at org.example.DAO.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
-	at org.example.app.App.main(App.java:23)
+	at configs.com.mthree.DBConfig.getConnection(DBConfig.java:21)
+	at configs.com.mthree.DBConfig.startConnection(DBConfig.java:25)
+	at DAO.com.mthree.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
+	at app.com.mthree.App.main(App.java:23)
 
-Oct 15, 2024 10:01:31 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:01:31 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:01:31 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:01:31 PM DAO.com.mthree.StudentDaoImpl updateStudent
 SEVERE: Error updating student with id: 78
 java.sql.SQLException: The url cannot be null
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
-	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
-	at org.example.DAO.StudentDaoImpl.updateStudent(StudentDaoImpl.java:59)
-	at org.example.app.App.main(App.java:31)
+	at configs.com.mthree.DBConfig.getConnection(DBConfig.java:21)
+	at configs.com.mthree.DBConfig.startConnection(DBConfig.java:25)
+	at DAO.com.mthree.StudentDaoImpl.updateStudent(StudentDaoImpl.java:59)
+	at app.com.mthree.App.main(App.java:31)
 
-Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:01:31 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:01:31 PM DAO.com.mthree.StudentDaoImpl getStudent
 SEVERE: Error retrieving student with id: 78
 java.sql.SQLException: The url cannot be null
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
-	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
-	at org.example.DAO.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
-	at org.example.app.App.main(App.java:32)
+	at configs.com.mthree.DBConfig.getConnection(DBConfig.java:21)
+	at configs.com.mthree.DBConfig.startConnection(DBConfig.java:25)
+	at DAO.com.mthree.StudentDaoImpl.getStudent(StudentDaoImpl.java:38)
+	at app.com.mthree.App.main(App.java:32)
 
-Oct 15, 2024 10:01:31 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:01:31 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:01:31 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:01:31 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:01:31 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:01:31 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 SEVERE: Error deleting student with id: 78
 java.sql.SQLException: The url cannot be null
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at org.example.configs.DBConfig.getConnection(DBConfig.java:21)
-	at org.example.configs.DBConfig.startConnection(DBConfig.java:25)
-	at org.example.DAO.StudentDaoImpl.deleteStudent(StudentDaoImpl.java:80)
-	at org.example.app.App.main(App.java:39)
+	at configs.com.mthree.DBConfig.getConnection(DBConfig.java:21)
+	at configs.com.mthree.DBConfig.startConnection(DBConfig.java:25)
+	at DAO.com.mthree.StudentDaoImpl.deleteStudent(StudentDaoImpl.java:80)
+	at app.com.mthree.App.main(App.java:39)
 
-Oct 15, 2024 10:04:12 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:04:12 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:04:13 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:04:13 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:04:13 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:04:13 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:04:13 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:04:13 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:04:13 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:04:13 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:04:13 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:04:13 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 10:04:13 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:04:13 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:33 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:33 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:06:33 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:06:33 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:06:33 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:33 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:06:34 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:34 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:06:34 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:06:34 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:34 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:34 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:34 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:06:34 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:06:34 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 10:06:34 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:34 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:06:40 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:06:40 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:40 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:06:40 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 78
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:06:40 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 78
-Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:40 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:06:40 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:06:40 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:06:40 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:06:40 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 78
-Oct 15, 2024 10:06:40 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:06:40 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:09:22 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:09:22 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:09:23 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:09:23 PM DAO.com.mthree.StudentDaoImpl getStudent
 INFO: Student found: Anton 23 years old with id: 79
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:09:23 PM DAO.com.mthree.StudentDaoImpl updateStudent
 INFO: Student updated: New Name, 45 years old with id: 79
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:09:23 PM DAO.com.mthree.StudentDaoImpl getStudent
 INFO: Student found: New Name 45 years old with id: 79
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig getConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig getConnection
 INFO: Interacting with database...
-Oct 15, 2024 10:09:23 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:23 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:09:23 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:09:23 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 INFO: Student deleted with id: 79
-Oct 15, 2024 10:09:57 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:57 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:09:57 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:09:57 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:09:57 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:57 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:09:57 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:09:57 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 79
-Oct 15, 2024 10:09:57 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:09:57 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:09:58 PM DAO.com.mthree.StudentDaoImpl updateStudent
 WARNING: No student found to update with id: 79
-Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:09:58 PM DAO.com.mthree.StudentDaoImpl getStudent
 WARNING: No student found with id: 79
-Oct 15, 2024 10:09:58 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:09:58 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:09:58 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:09:58 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:09:58 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:09:58 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 WARNING: No student found to delete with id: 79
-Oct 15, 2024 10:09:58 PM org.example.controller.StudentController updateView
+Oct 15, 2024 10:09:58 PM controller.com.mthree.StudentController updateView
 WARNING: No student found
-Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:10:16 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
-Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl addStudent
+Oct 15, 2024 10:10:16 PM DAO.com.mthree.StudentDaoImpl addStudent
 INFO: Student added successfully: Anton 23 years old
-Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:10:16 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:10:16 PM DAO.com.mthree.StudentDaoImpl getStudent
 INFO: Student found: Anton 23 years old with id: 80
-Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:10:16 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
-Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl updateStudent
+Oct 15, 2024 10:10:16 PM DAO.com.mthree.StudentDaoImpl updateStudent
 INFO: Student updated: New Name, 45 years old with id: 80
-Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:10:16 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
-Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl getStudent
+Oct 15, 2024 10:10:16 PM DAO.com.mthree.StudentDaoImpl getStudent
 INFO: Student found: New Name 45 years old with id: 80
-Oct 15, 2024 10:10:16 PM org.example.configs.DBConfig startConnection
+Oct 15, 2024 10:10:16 PM configs.com.mthree.DBConfig startConnection
 INFO: Executing SQL: DELETE FROM students WHERE id = ?
-Oct 15, 2024 10:10:16 PM org.example.DAO.StudentDaoImpl deleteStudent
+Oct 15, 2024 10:10:16 PM DAO.com.mthree.StudentDaoImpl deleteStudent
 INFO: Student deleted with id: 80
+Oct 16, 2024 12:11:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO students (name, age) VALUES (?, ?)
+Oct 16, 2024 12:11:45 PM DAO.com.mthree.StudentDaoImpl addStudent
+SEVERE: Error adding student: Anton
+org.postgresql.util.PSQLException: ERROR: column "name" of relation "students" does not exist
+  Position: 23
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
+	at DAO.com.mthree.StudentDaoImpl.addStudent(StudentDaoImpl.java:25)
+	at app.com.mthree.App.main(App.java:17)
+
+Oct 16, 2024 12:11:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 16, 2024 12:11:45 PM DAO.com.mthree.StudentDaoImpl getStudent
+SEVERE: Error retrieving student with id: 80
+org.postgresql.util.PSQLException: ERROR: column "name" does not exist
+  Hint: Perhaps you meant to reference the column "students.age".
+  Position: 8
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at DAO.com.mthree.StudentDaoImpl.getStudent(StudentDaoImpl.java:40)
+	at app.com.mthree.App.main(App.java:22)
+
+Oct 16, 2024 12:11:45 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:11:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE students SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:11:45 PM DAO.com.mthree.StudentDaoImpl updateStudent
+SEVERE: Error updating student with id: 80
+org.postgresql.util.PSQLException: ERROR: column "name" of relation "students" does not exist
+  Position: 21
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
+	at DAO.com.mthree.StudentDaoImpl.updateStudent(StudentDaoImpl.java:63)
+	at app.com.mthree.App.main(App.java:30)
+
+Oct 16, 2024 12:11:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM students WHERE id = ?
+Oct 16, 2024 12:11:45 PM DAO.com.mthree.StudentDaoImpl getStudent
+SEVERE: Error retrieving student with id: 80
+org.postgresql.util.PSQLException: ERROR: column "name" does not exist
+  Hint: Perhaps you meant to reference the column "students.age".
+  Position: 8
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137)
+	at DAO.com.mthree.StudentDaoImpl.getStudent(StudentDaoImpl.java:40)
+	at app.com.mthree.App.main(App.java:31)
+
+Oct 16, 2024 12:11:45 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:11:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM students WHERE id = ?
+Oct 16, 2024 12:11:45 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 80
+Oct 16, 2024 12:11:45 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:21:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:21:54 PM DAO.com.mthree.StudentDaoImpl addStudent
+SEVERE: Error adding student: Anton
+org.postgresql.util.PSQLException: ERROR: null value in column "id" of relation "student" violates not-null constraint
+  Detail: Failing row contains (23, Anton, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
+	at DAO.com.mthree.StudentDaoImpl.addStudent(StudentDaoImpl.java:25)
+	at app.com.mthree.App.main(App.java:17)
+
+Oct 16, 2024 12:21:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:21:54 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 80
+Oct 16, 2024 12:21:54 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:21:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:21:54 PM DAO.com.mthree.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 80
+Oct 16, 2024 12:21:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:21:54 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 80
+Oct 16, 2024 12:21:54 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:21:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:21:54 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 80
+Oct 16, 2024 12:21:54 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:22:39 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:22:40 PM DAO.com.mthree.StudentDaoImpl addStudent
+SEVERE: Error adding student: Anton
+org.postgresql.util.PSQLException: ERROR: null value in column "id" of relation "student" violates not-null constraint
+  Detail: Failing row contains (23, Anton, null).
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.executeUpdate(PgPreparedStatement.java:155)
+	at DAO.com.mthree.StudentDaoImpl.addStudent(StudentDaoImpl.java:25)
+	at app.com.mthree.App.main(App.java:17)
+
+Oct 16, 2024 12:24:14 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:24:14 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:24:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:24:35 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:24:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:24:35 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 80
+Oct 16, 2024 12:24:35 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:24:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:24:35 PM DAO.com.mthree.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 80
+Oct 16, 2024 12:24:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:24:35 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 80
+Oct 16, 2024 12:24:35 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:24:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:24:35 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 80
+Oct 16, 2024 12:24:35 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:24:48 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:24:49 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:24:49 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:24:49 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 23
+Oct 16, 2024 12:24:49 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:24:49 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:24:49 PM DAO.com.mthree.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 23
+Oct 16, 2024 12:24:49 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:24:49 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 23
+Oct 16, 2024 12:24:49 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:24:49 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:24:49 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 23
+Oct 16, 2024 12:24:49 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:25:08 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:25:09 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:25:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:25:09 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 34
+Oct 16, 2024 12:25:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:25:09 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: New Name, 45 years old with id: 34
+Oct 16, 2024 12:25:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:25:09 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: New Name 45 years old with id: 34
+Oct 16, 2024 12:25:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:25:09 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 34
+Oct 16, 2024 12:29:27 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:29:27 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:29:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:29:28 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 34
+Oct 16, 2024 12:29:28 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:29:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:29:28 PM DAO.com.mthree.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 34
+Oct 16, 2024 12:29:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:29:28 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 34
+Oct 16, 2024 12:29:28 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:29:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:29:28 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+WARNING: No student found to delete with id: 34
+Oct 16, 2024 12:29:28 PM controller.com.mthree.StudentController updateView
+WARNING: No student found
+Oct 16, 2024 12:29:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 12:29:36 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 23 years old
+Oct 16, 2024 12:29:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:29:36 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 1
+Oct 16, 2024 12:29:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 12:29:36 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: New Name, 45 years old with id: 1
+Oct 16, 2024 12:29:37 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 12:29:37 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: New Name 45 years old with id: 1
+Oct 16, 2024 12:29:37 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 12:29:37 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 1
+Oct 16, 2024 1:07:04 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:07:04 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 25 years old
+Oct 16, 2024 1:12:11 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:12:11 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Anton 22 years old
+Oct 16, 2024 1:12:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:12:35 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Ant 123 years old
+Oct 16, 2024 1:12:43 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:13:50 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:14:44 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:15:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:17:05 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:18:23 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:19:56 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:20:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:22:26 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:22:26 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Ant age: 123]
+Oct 16, 2024 1:22:49 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:22:49 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Ant age: 123]
+Oct 16, 2024 1:27:06 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:27:06 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Ant age: 123]
+Oct 16, 2024 1:27:26 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:27:26 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 2
+Oct 16, 2024 1:28:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:28:45 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 1
+Oct 16, 2024 1:28:55 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:28:55 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 2
+Oct 16, 2024 1:30:18 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:30:18 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Anton 23 years old with id: 2
+Oct 16, 2024 1:30:26 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:30:26 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 12
+Oct 16, 2024 1:30:41 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 1:30:41 PM DAO.com.mthree.StudentDaoImpl updateStudent
+WARNING: No student found to update with id: 12
+Oct 16, 2024 1:30:54 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:30:54 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 12
+Oct 16, 2024 1:31:41 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 1:31:41 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: Tommy, 23 years old with id: 5
+Oct 16, 2024 1:31:51 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:31:51 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 23
+Oct 16, 2024 1:33:21 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:33:21 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Test 23 years old
+Oct 16, 2024 1:33:27 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:33:27 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23]
+Oct 16, 2024 1:33:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 1:33:45 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: New name, 45 years old with id: 2
+Oct 16, 2024 1:33:53 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:33:53 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: New name 45 years old with id: 2
+Oct 16, 2024 1:33:57 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:33:57 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 231
+Oct 16, 2024 1:35:31 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:35:31 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 123
+Oct 16, 2024 1:35:40 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:35:40 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23, Student name: New name age: 45]
+Oct 16, 2024 1:38:30 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:38:30 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23, Student name: New name age: 45]
+Oct 16, 2024 1:40:00 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:40:00 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23, Student name: New name age: 45]
+Oct 16, 2024 1:40:11 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:40:11 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Jimmy 45 years old
+Oct 16, 2024 1:40:17 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:40:17 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: [Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23, Student name: New name age: 45, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 23, Student name: Anton age: 25, Student name: Anton age: 22, Student name: Tommy age: 23, Student name: Test age: 23, Student name: New name age: 45, Student name: Jimmy age: 45]
+Oct 16, 2024 1:44:17 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:44:17 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45}
+Oct 16, 2024 1:44:33 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:44:33 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Terry 23 years old
+Oct 16, 2024 1:44:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:44:36 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23}
+Oct 16, 2024 1:44:50 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:44:50 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Test 23 years old with id: 6
+Oct 16, 2024 1:45:01 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:45:01 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Jimmy 45 years old with id: 7
+Oct 16, 2024 1:45:11 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:45:11 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 134123
+Oct 16, 2024 1:48:10 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:48:10 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23}
+Oct 16, 2024 1:48:15 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:48:15 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: New name 45 years old with id: 2
+Oct 16, 2024 1:48:23 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:48:23 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 123
+Oct 16, 2024 1:48:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:48:36 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: YellowBoy 45 years old
+Oct 16, 2024 1:48:40 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:48:40 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 9=Student name: YellowBoy age: 45}
+Oct 16, 2024 1:48:48 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:48:48 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: YellowBoy 45 years old with id: 9
+Oct 16, 2024 1:48:53 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:48:53 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 123
+Oct 16, 2024 1:49:14 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 1:49:14 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: RedBoy, 12 years old with id: 9
+Oct 16, 2024 1:49:20 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:49:20 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: RedBoy 12 years old with id: 9
+Oct 16, 2024 1:49:23 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:49:23 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 9=Student name: RedBoy age: 12}
+Oct 16, 2024 1:49:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 1:49:28 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 9
+Oct 16, 2024 1:49:34 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:49:34 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 9=Student name: RedBoy age: 12}
+Oct 16, 2024 1:49:39 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 1:49:39 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 9
+Oct 16, 2024 1:49:48 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:49:48 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 9=Student name: RedBoy age: 12}
+Oct 16, 2024 1:52:26 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:52:26 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23}
+Oct 16, 2024 1:52:40 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:52:40 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: For delete 65 years old
+Oct 16, 2024 1:52:43 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:52:43 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 10=Student name: For delete age: 65}
+Oct 16, 2024 1:53:00 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 1:53:00 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: for Young, 216 years old with id: 10
+Oct 16, 2024 1:53:07 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:53:07 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23, 10=Student name: for Young age: 216}
+Oct 16, 2024 1:53:15 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 1:53:15 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 10
+Oct 16, 2024 1:53:17 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:53:17 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 8=Student name: Terry age: 23}
+Oct 16, 2024 1:53:27 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 1:53:27 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 8
+Oct 16, 2024 1:53:29 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:53:29 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45}
+Oct 16, 2024 1:54:59 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 1:54:59 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Testing name 18 years old
+Oct 16, 2024 1:55:16 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 1:55:16 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18}
+Oct 16, 2024 2:05:42 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:05:42 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18}
+Oct 16, 2024 2:18:33 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:18:33 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18}
+Oct 16, 2024 2:25:36 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:25:36 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18}
+Oct 16, 2024 2:25:48 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 2:25:48 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: 324sf 23 years old
+Oct 16, 2024 2:26:15 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 2:26:15 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: sdfsdf 221 years old
+Oct 16, 2024 2:30:32 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:30:32 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 12=Student name: 324sf age: 23, 13=Student name: sdfsdf age: 221}
+Oct 16, 2024 2:30:45 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 2:30:45 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: wer 23 years old
+Oct 16, 2024 2:30:59 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 2:30:59 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: 324sf 23 years old with id: 12
+Oct 16, 2024 2:31:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 2:31:09 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 12
+Oct 16, 2024 2:31:12 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:31:12 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 37=Student name: Anton age: 23, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:31:22 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 2:31:22 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 37
+Oct 16, 2024 2:31:29 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 2:31:29 PM DAO.com.mthree.StudentDaoImpl getStudent
+WARNING: No student found with id: 37
+Oct 16, 2024 2:31:35 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:31:35 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:31:58 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 2:31:58 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: Testing name for you and all of us 23 years old
+Oct 16, 2024 2:32:03 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:32:03 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 15=Student name: Testing name for you and all of us age: 23}
+Oct 16, 2024 2:32:13 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 2:32:13 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 15
+Oct 16, 2024 2:32:17 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:32:17 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:50:00 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:50:00 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:51:18 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 2:51:18 PM DAO.com.mthree.StudentDaoImpl addStudent
+INFO: Student added successfully: wef34 59 years old
+Oct 16, 2024 2:51:43 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:51:43 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {16=Student name: wef34 age: 59, 2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 7=Student name: Jimmy age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:51:55 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 2:51:55 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Jimmy 45 years old with id: 7
+Oct 16, 2024 2:52:17 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 2:52:17 PM DAO.com.mthree.StudentDaoImpl updateStudent
+INFO: Student updated: Jose, 56 years old with id: 7
+Oct 16, 2024 2:52:28 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 16, 2024 2:52:28 PM DAO.com.mthree.StudentDaoImpl getStudent
+INFO: Student found: Jose 56 years old with id: 7
+Oct 16, 2024 2:52:38 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 2:52:38 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 7
+Oct 16, 2024 2:52:53 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:52:53 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {16=Student name: wef34 age: 59, 2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 2:53:06 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 2:53:06 PM DAO.com.mthree.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 16
+Oct 16, 2024 2:53:09 PM configs.com.mthree.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 2:53:09 PM DAO.com.mthree.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 3:11:01 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:11:01 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 3:12:44 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:12:45 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {17=Student name: Student Name age: 19, 2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 3:22:57 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:22:58 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 3:22:58 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:22:58 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {17=Student name: Student Name age: 19, 2=Student name: New name age: 45, 18=Student name: Student Name age: 19, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23}
+Oct 16, 2024 3:23:24 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:23:24 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 3:23:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:23:25 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19}
+Oct 16, 2024 3:30:04 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:30:04 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Student Name 19 years old
+Oct 16, 2024 3:41:31 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:41:31 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {2=Student name: New name age: 45, 35=Student name: Anton age: 23, 3=Student name: Anton age: 25, 36=Student name: Anton age: 23, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19}
+Oct 16, 2024 3:45:49 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:45:49 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {35=Student name: Anton age: 23, 36=Student name: Anton age: 23, 3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19}
+Oct 16, 2024 3:46:07 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:46:07 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: HelloOne 26 years old
+Oct 16, 2024 3:46:11 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:46:11 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {35=Student name: Anton age: 23, 36=Student name: Anton age: 23, 3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: HelloOne age: 26}
+Oct 16, 2024 3:46:25 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 3:46:26 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 35
+Oct 16, 2024 3:46:30 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:46:30 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {36=Student name: Anton age: 23, 3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: HelloOne age: 26}
+Oct 16, 2024 3:46:39 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: DELETE FROM student WHERE id = ?
+Oct 16, 2024 3:46:39 PM com.mthree.DAO.StudentDaoImpl deleteStudent
+INFO: Student deleted with id: 36
+Oct 16, 2024 3:47:07 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: UPDATE student SET name = ?, age = ? WHERE id = ?
+Oct 16, 2024 3:47:07 PM com.mthree.DAO.StudentDaoImpl updateStudent
+INFO: Student updated: Monica, 18 years old with id: 21
+Oct 16, 2024 3:47:19 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: INSERT INTO student (name, age) VALUES (?, ?)
+Oct 16, 2024 3:47:19 PM com.mthree.DAO.StudentDaoImpl addStudent
+INFO: Student added successfully: Ricky 29 years old
+Oct 16, 2024 3:47:23 PM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 16, 2024 3:47:23 PM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {3=Student name: Anton age: 25, 4=Student name: Anton age: 22, 5=Student name: Tommy age: 23, 6=Student name: Test age: 23, 2=Student name: New name age: 45, 11=Student name: Testing name age: 18, 13=Student name: sdfsdf age: 221, 14=Student name: wer age: 23, 17=Student name: Student Name age: 19, 18=Student name: Student Name age: 19, 19=Student name: Student Name age: 19, 20=Student name: Student Name age: 19, 21=Student name: Monica age: 18, 22=Student name: Ricky age: 29}

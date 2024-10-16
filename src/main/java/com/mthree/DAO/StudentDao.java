@@ -1,6 +1,6 @@
-package org.example.DAO;
+package com.mthree.DAO;
 
-import org.example.model.Student;
+import com.mthree.model.Student;
 
 public interface StudentDao {
 

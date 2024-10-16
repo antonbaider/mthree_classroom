@@ -1,4 +1,4 @@
-package org.example.exceptions;
+package com.mthree.exceptions;
 
 public class Exceptions {
     public static class StudentNotFoundException extends RuntimeException {

@@ -1,4 +1,4 @@
-package org.example.configs;
+package com.mthree.configs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-import static org.example.configs.LoggerConfig.getLogger;
+import static com.mthree.configs.LoggerConfig.getLogger;
 
 public class DBConfig {
     private static final Logger logger = getLogger();

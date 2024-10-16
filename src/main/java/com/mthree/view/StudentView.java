@@ -1,4 +1,4 @@
-package org.example.view;
+package com.mthree.view;
 
 public class StudentView {
     public void displayStudentDetails(String name, int age) {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="c915480d-35ed-46dd-826a-09f5bcbe052f" name="postgres@localhost Mapping">
+      <data-sources db="7237667c-5096-4e74-a681-c68dab25fb9d" ddl="63c95e81-d466-4bff-866e-630a008bc8bf" />
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="63c95e81-d466-4bff-866e-630a008bc8bf" />
+          <option name="name" value="postgres@localhost (DDL)" />
+          <option name="dbmsName" value="POSTGRES" />
+          <option name="parent" value="7237667c-5096-4e74-a681-c68dab25fb9d" />
+          <option name="urls">
+            <array />
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

@@ -1,12 +1,12 @@
-package org.example.controller;
+package com.mthree.controller;
 
-import org.example.model.Student;
-import org.example.view.StudentView;
+import com.mthree.model.Student;
+import com.mthree.view.StudentView;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.example.configs.LoggerConfig.getLogger;
+import static com.mthree.configs.LoggerConfig.getLogger;
 
 public class StudentController {
     private final Logger logger = getLogger();
