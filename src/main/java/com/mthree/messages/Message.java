@@ -36,12 +36,12 @@ public interface Message {
     String WRONG_AGE_INPUT = "Wrong input. Try again. Range of age is: from 18 till 59.";
     // Menu options
     String MENU_OPTION = "Please choose an option:";
-    String MENU_OPTION_CREATE = "1. Create student";
-    String MENU_OPTION_SHOW = "2. Show all students";
-    String MENU_OPTION_FIND = "3. Find student";
-    String MENU_OPTION_UPDATE = "4. Update student";
-    String MENU_OPTION_DELETE = "5. Delete student";
-    String MENU_OPTION_EXIT = "6. Exit";
+    String MENU_OPTION_CREATE = "Create student";
+    String MENU_OPTION_SHOW = "Show all students";
+    String MENU_OPTION_FIND = "Find student";
+    String MENU_OPTION_UPDATE = "Update student";
+    String MENU_OPTION_DELETE = "Delete student";
+    String MENU_OPTION_EXIT = "Exit";
     // Line separator
     String LINE_SEPARATOR = "===================================";
 }
