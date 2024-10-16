@@ -81,8 +81,6 @@ public class UserIOImplTest {
 
         studentController.updateStudent(lastKey, "Updated Name", 30);
 
-        System.out.println("Student " + lastStudent.getName() + " " + lastStudent.getAge() + " y.o. is our last student");
-
         Student dbLastStudent = studentController.getStudentById(lastKey);
 
         Assertions.assertNotEquals(lastStudent, dbLastStudent, "Student should be updated.");
