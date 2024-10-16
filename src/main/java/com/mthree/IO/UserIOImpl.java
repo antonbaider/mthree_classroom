@@ -134,7 +134,7 @@ public class UserIOImpl implements UserIO {
         Student student = studentController.getStudentById(studentId);
 
         if (student != null) {
-            view.showStudent(studentId, student.getName(), student.getAge());
+            studentController.showStudentById(studentId);
 
             boolean backToMain = false;
             while (!backToMain) {

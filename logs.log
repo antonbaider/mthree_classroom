@@ -2370,3 +2370,15 @@ Oct 17, 2024 12:26:51 AM com.mthree.configs.DBConfig startConnection
 INFO: Executing SQL: SELECT * FROM student
 Oct 17, 2024 12:26:51 AM com.mthree.DAO.StudentDaoImpl getAllStudents
 INFO: Students found: {102=Student id: 102, name: Anton age: 34 y.o.;, 103=Student id: 103, name: qwerty age: 21 y.o.;, 104=Student id: 104, name: dsfw age: 31 y.o.;, 105=Student id: 105, name: fafaf age: 23 y.o.;}
+Oct 17, 2024 12:29:25 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT * FROM student
+Oct 17, 2024 12:29:25 AM com.mthree.DAO.StudentDaoImpl getAllStudents
+INFO: Students found: {102=Student id: 102, name: Anton age: 34 y.o.;, 103=Student id: 103, name: qwerty age: 21 y.o.;, 104=Student id: 104, name: dsfw age: 31 y.o.;, 105=Student id: 105, name: fafaf age: 23 y.o.;}
+Oct 17, 2024 12:29:34 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 17, 2024 12:29:34 AM com.mthree.DAO.StudentDaoImpl getStudent
+INFO: Student found: Anton 34 years old with id: 102
+Oct 17, 2024 12:30:56 AM com.mthree.configs.DBConfig startConnection
+INFO: Executing SQL: SELECT name, age FROM student WHERE id = ?
+Oct 17, 2024 12:30:56 AM com.mthree.DAO.StudentDaoImpl getStudent
+WARNING: No student found with id: 234
