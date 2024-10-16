@@ -4,7 +4,6 @@ import static com.mthree.app.Initialize.start;
 
 /**
  * Main entry point for the Student Management Application.
- *
  * MVC Console-based Student Management Application with CRUD operations.
  *
  * <p>This application allows users to create, read, update, and delete student
