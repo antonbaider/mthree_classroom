@@ -59,7 +59,7 @@ public class UserIOImpl implements UserIO {
                 if (!exit) {
                     view.displayPrompt(Message.CONTINUE_PROMPT);
                     String answer = scanner.nextLine();
-                    if (answer.equalsIgnoreCase("y")) {
+                    if (answer.equalsIgnoreCase("n")) {
                         exit = true;
                     }
                 }
@@ -71,15 +71,15 @@ public class UserIOImpl implements UserIO {
         while (true) {
             try {
                 view.displayPrompt(message);
-                int input = scanner.nextInt();
-                if (input >= 18 && input <= 59) {
-                    return input;
+                String input = scanner.nextLine().trim();
+                int age = Integer.parseInt(input);
+                if (age >= 18 && age <= 59) {
+                    return age;
                 } else {
                     view.displayErrorMessage(Message.WRONG_AGE_INPUT);
                 }
             } catch (InputMismatchException e) {
                 view.displayErrorMessage(Message.INVALID_INPUT);
-                scanner.nextLine();
             }
         }
     }
@@ -87,10 +87,10 @@ public class UserIOImpl implements UserIO {
     public String getValidName(String message) {
         view.displayPrompt(message);
         while (true) {
-            String input = scanner.nextLine();
-            String namePattern = "^[a-zA-Z\\s'-]+$";
+            String input = scanner.nextLine().trim();
+            String namePattern = "^[a-zA-Z]+[a-zA-Z\\s'-]*[a-zA-Z]+$";
 
-            if (!input.matches(namePattern) || input.isEmpty()) {
+            if (!input.matches(namePattern) || input.length() < 3) {
                 view.displayErrorMessage(Message.INVALID_INPUT);
             } else {
                 return input;
