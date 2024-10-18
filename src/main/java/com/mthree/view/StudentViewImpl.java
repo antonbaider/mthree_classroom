@@ -1,12 +1,14 @@
 package com.mthree.view;
 
 import com.mthree.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 /**
  * Representation of models
  */
+@Service
 public class StudentViewImpl implements StudentView {
     @Override
     public void showStudent(int id, String name, int age) {

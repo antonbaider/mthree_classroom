@@ -4,18 +4,21 @@ import com.mthree.controller.StudentController;
 import com.mthree.messages.Message;
 import com.mthree.model.Student;
 import com.mthree.view.StudentView;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * All IO logic implementation
  */
+@Service
 public class UserIOImpl implements UserIO {
     private final StudentController studentController;
     private final StudentView view;
     private final Scanner scanner = new Scanner(System.in);
 
+    @Autowired
     public UserIOImpl(StudentController studentController, StudentView view) {
         this.studentController = studentController;
         this.view = view;
@@ -78,7 +81,7 @@ public class UserIOImpl implements UserIO {
                 } else {
                     view.displayErrorMessage(Message.WRONG_AGE_INPUT);
                 }
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException | NumberFormatException e) {
                 view.displayErrorMessage(Message.INVALID_INPUT);
             }
         }

@@ -3,6 +3,7 @@ package com.mthree.DAO;
 import com.mthree.configs.DBConfig;
 import com.mthree.exceptions.Exceptions.DaoException;
 import com.mthree.model.Student;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,9 +18,9 @@ import static com.mthree.configs.LoggerConfig.getLogger;
 /**
  * Operating with DB transactions
  */
+@Repository
 public class StudentDaoImpl extends DBConfig implements StudentDao {
     private final Logger logger = getLogger();
-
 
     @Override
     public boolean addStudent(String name, int age) {

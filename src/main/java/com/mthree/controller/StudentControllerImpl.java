@@ -3,6 +3,12 @@ package com.mthree.controller;
 import com.mthree.DAO.StudentDaoImpl;
 import com.mthree.model.Student;
 import com.mthree.view.StudentView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.logging.Level;
@@ -13,11 +19,13 @@ import static com.mthree.configs.LoggerConfig.getLogger;
 /**
  * Injecting dao with view to controller
  */
+@Service
 public class StudentControllerImpl implements StudentController {
     private final Logger logger = getLogger();
     private final StudentDaoImpl studentDAO;
     private final StudentView view;
 
+    @Autowired
     public StudentControllerImpl(StudentDaoImpl studentDao, StudentView view) {
         this.studentDAO = studentDao;
         this.view = view;

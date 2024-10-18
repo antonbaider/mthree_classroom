@@ -4,6 +4,11 @@ import com.mthree.DAO.StudentDaoImpl;
 import com.mthree.IO.UserIOImpl;
 import com.mthree.controller.StudentControllerImpl;
 import com.mthree.view.StudentViewImpl;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 /**
  * This class starts our app by dependency injection with
@@ -56,13 +61,26 @@ public class Initialize {
     }
 
     public static void start() {
-        StudentDaoImpl studentDAO = new StudentDaoImpl();
-        StudentViewImpl view = new StudentViewImpl();
-        StudentControllerImpl controller = new StudentControllerImpl(studentDAO, view);
-        UserIOImpl userIO = new UserIOImpl(controller, view);
+//        pom -> appcontext -> annotations
+//        1 line solution -> start Spring-context->core->bean->oap etc, start beanFactory - context - IOC container, start ComponentScan, start DI, start lifecycle of Beans, start create Bean, start interact Beans, start business logic, start handle smth, start return results, destroy()
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.mthree");
+
+//        @BEFORE we are passing parameters -> dependencies:
+//
+//        StudentControllerImpl controller = new StudentControllerImpl(studentDAO, view);
+//
+//        @AFTER: we are passing nothing
+        StudentControllerImpl controller = context.getBean(StudentControllerImpl.class);
+//        StudentDaoImpl studentDAO = new StudentDaoImpl();
+        StudentDaoImpl studentDAO = context.getBean(StudentDaoImpl.class);
+//        StudentViewImpl view = new StudentViewImpl();
+        StudentViewImpl studentView = context.getBean(StudentViewImpl.class);
+//        UserIOImpl userIO = new UserIOImpl(controller, view);
+        UserIOImpl userIO = context.getBean(UserIOImpl.class);
+
+
         displayLogo();
         displayLoadingMessagesWithPercentage();
         userIO.applicationStart();
     }
-
 }

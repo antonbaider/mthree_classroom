@@ -1,5 +1,7 @@
 package com.mthree.configs;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
