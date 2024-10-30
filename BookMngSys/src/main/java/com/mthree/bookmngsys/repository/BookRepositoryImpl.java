@@ -85,7 +85,6 @@ public class BookRepositoryImpl implements BookRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
