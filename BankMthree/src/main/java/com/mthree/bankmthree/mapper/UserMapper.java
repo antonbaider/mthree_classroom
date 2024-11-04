@@ -5,6 +5,7 @@ import com.mthree.bankmthree.dto.AccountDTO;
 import com.mthree.bankmthree.dto.RegisterRequest;
 import com.mthree.bankmthree.dto.UserDTO;
 import com.mthree.bankmthree.entity.Account;
+import com.mthree.bankmthree.entity.Role;
 import com.mthree.bankmthree.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,6 +13,8 @@ import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
+
+    @Mapping(target = "role", source = "role", qualifiedByName = "mapRoleToString")
     @Mapping(target = "password", source = "password", ignore = true)
     UserDTO toUserDTO(User user);
 
@@ -32,5 +35,10 @@ public interface UserMapper {
         }
         String lastFour = cardNumber.substring(cardNumber.length() - 4);
         return "**** **** **** " + lastFour;
+    }
+
+    @Named("mapRoleToString")
+    default String mapRoleToString(Role role) {
+        return role != null ? role.name() : null;
     }
 }

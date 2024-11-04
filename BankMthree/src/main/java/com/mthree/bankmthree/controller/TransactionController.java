@@ -2,7 +2,7 @@ package com.mthree.bankmthree.controller;
 
 import com.mthree.bankmthree.dto.TransactionResponse;
 import com.mthree.bankmthree.dto.TransferRequestByUserId;
-import com.mthree.bankmthree.dto.TransferRequestDTO;
+import com.mthree.bankmthree.dto.TransferRequest;
 import com.mthree.bankmthree.entity.Transaction;
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.service.TransactionService;
@@ -39,18 +39,10 @@ public class TransactionController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Transfer money between users by user_id")
-    @PostMapping("/adminTransfer")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> adminTransferMoney(@Valid @RequestBody TransferRequestByUserId transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
-        transactionService.transferMoney(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
-        return ResponseEntity.ok("Successfully sent");
-    }
-
     @Operation(summary = "Transfer money between accounts using account numbers")
     @PostMapping("/transferByCard")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<TransactionResponse> transferMoneyByCard(@Valid @RequestBody TransferRequestDTO transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<TransactionResponse> transferMoneyByCard(@Valid @RequestBody TransferRequest transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
         TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
         return ResponseEntity.ok(response);
@@ -72,7 +64,7 @@ public class TransactionController {
         return response;
     }
 
-    private TransactionResponse getTransactionResponse(TransferRequestDTO transferRequest, UserDetails userDetails) {
+    private TransactionResponse getTransactionResponse(TransferRequest transferRequest, UserDetails userDetails) {
         Transaction transaction = transactionService.transferMoneyByCardNumber(transferRequest, userDetails.getUsername());
 
         TransactionResponse response = TransactionMapper.INSTANCE.toResponse(transaction);

@@ -51,4 +51,6 @@ public class UserDTO {
     @Pattern(regexp = "^(?!000|666|9\\d\\d)(\\d{3})(?!00)(\\d{2})(?!0000)(\\d{4})$", message = "Invalid SSN format")
     @Schema(description = "Social Security Number", example = "123456789", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String ssn;
+
+    private String role;
 }

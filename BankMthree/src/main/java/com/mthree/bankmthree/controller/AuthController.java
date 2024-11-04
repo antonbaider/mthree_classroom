@@ -6,6 +6,7 @@ import com.mthree.bankmthree.dto.RegisterRequest;
 import com.mthree.bankmthree.dto.UserDTO;
 import com.mthree.bankmthree.security.JwtUtils;
 import com.mthree.bankmthree.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 @Tag(name = "Authentication Controller", description = "Endpoints for user authentication and registration")
 public class AuthController {
-    private AuthenticationManager authenticationManager;
-    private JwtUtils jwtUtils;
-    private UserService userService;
+    private final AuthenticationManager authenticationManager;
+    private final JwtUtils jwtUtils;
+    private final UserService userService;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, JwtUtils jwtUtils, UserService userService) {
@@ -35,7 +36,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-    //    @Operation(summary = "Create new user")
+    @Operation(summary = "Create new user")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         try {
@@ -46,7 +47,7 @@ public class AuthController {
         }
     }
 
-    //    @Operation(summary = "Try to login")
+    @Operation(summary = "Login in")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         try {

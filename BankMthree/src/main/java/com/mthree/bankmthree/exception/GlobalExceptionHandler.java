@@ -65,6 +65,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(AccountBalanceNotZeroException.class)
+    public ResponseEntity<CustomErrorResponse> handleAccountBalanceNotZeroException(AccountBalanceNotZeroException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(400));
+    }
+
 
     @ExceptionHandler(SsnAlreadyExistsException.class)
     public ResponseEntity<CustomErrorResponse> handleSsnAlreadyExistsException(SsnAlreadyExistsException ex) {
@@ -74,6 +79,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(IllegalArgumentsException.class)
     public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentsException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(400));
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(404));
     }
 
     private ResponseEntity<CustomErrorResponse> buildErrorResponse(String message, HttpStatusCode status) {

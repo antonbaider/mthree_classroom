@@ -7,7 +7,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class TransferRequestDTO {
+public class TransferRequest {
 
     @NotBlank(message = "Sender account number is required")
     private String senderCardNumber;

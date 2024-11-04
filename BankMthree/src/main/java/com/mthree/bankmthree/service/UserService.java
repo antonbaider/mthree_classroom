@@ -1,16 +1,17 @@
 package com.mthree.bankmthree.service;
 
-import com.mthree.bankmthree.dto.AccountDTO;
 import com.mthree.bankmthree.dto.RegisterRequest;
-import com.mthree.bankmthree.dto.TransferRequestDTO;
 import com.mthree.bankmthree.dto.UserDTO;
+import com.mthree.bankmthree.dto.UpdateUserRequest;
 import com.mthree.bankmthree.entity.*;
-import com.mthree.bankmthree.exception.*;
+import com.mthree.bankmthree.exception.PhoneAlreadyExistsException;
+import com.mthree.bankmthree.exception.SsnAlreadyExistsException;
+import com.mthree.bankmthree.exception.UserAlreadyExistsException;
+import com.mthree.bankmthree.exception.UserNotFoundException;
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
 import com.mthree.bankmthree.repository.UserRepository;
-import com.mthree.bankmthree.util.CardNumberGenerator;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,10 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.IllegalArgumentException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,17 +31,16 @@ public class UserService {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final PasswordEncoder passwordEncoder;
-    private final CardNumberGenerator cardNumberGenerator;
-
+    private final AccountService accountService;
 
     @Autowired
-    public UserService(UserMapper userMapper, UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder, CardNumberGenerator cardNumberGenerator) {
+    public UserService(UserMapper userMapper, UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder, AccountService accountService) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
         this.passwordEncoder = passwordEncoder;
-        this.cardNumberGenerator = cardNumberGenerator;
+        this.accountService = accountService;
     }
 
     public UserDTO getUserDto(User user) {
@@ -57,6 +53,56 @@ public class UserService {
 
     @Transactional
     public UserDTO createUser(@Valid RegisterRequest registerRequest) {
+        validateUserFields(registerRequest);
+
+        User user = userMapper.toUser(registerRequest);
+        user.setRole(Role.ROLE_USER);
+        user.setStatus(Status.ACTIVE);
+        user.setType(UserType.STANDARD);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Account usdAccount = accountService.createAndInitializeAccount(CurrencyType.USD, user);
+        Account eurAccount = accountService.createAndInitializeAccount(CurrencyType.EUR, user);
+
+        user.setAccounts(new HashSet<>(Arrays.asList(usdAccount, eurAccount)));
+
+        try {
+            User savedUser = userRepository.save(user);
+            return userMapper.toUserDTO(savedUser);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to save user: " + e.getMessage(), e);
+        }
+    }
+
+    @Transactional
+    public UserDTO updateUser(String username, UpdateUserRequest updateUserRequest) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        validateUser(updateUserRequest, user);
+
+        User updatedUser = userRepository.save(user);
+        return getUserDto(updatedUser);
+    }
+
+    private void validateUser(UpdateUserRequest updateUserRequest, User user) {
+        if (updateUserRequest.getFirstName() != null) {
+            user.setFirstName(updateUserRequest.getFirstName());
+        }
+        if (updateUserRequest.getLastName() != null) {
+            user.setLastName(updateUserRequest.getLastName());
+        }
+        if (updateUserRequest.getEmail() != null) {
+            user.setEmail(updateUserRequest.getEmail());
+        }
+        if (updateUserRequest.getPhone() != null) {
+            user.setPhone(updateUserRequest.getPhone());
+        }
+        if (updateUserRequest.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
+        }
+    }
+
+    private void validateUserFields(@Valid RegisterRequest registerRequest) {
         if (userRepository.existsByUsername(registerRequest.getUsername())) {
             throw new UserAlreadyExistsException("Username already exists");
         }
@@ -69,68 +115,7 @@ public class UserService {
         if (userRepository.existsByPhone(registerRequest.getPhone())) {
             throw new PhoneAlreadyExistsException("Phone number already exists");
         }
-
-        User user = userMapper.toUser(registerRequest);
-        user.setRole(Role.ROLE_USER);
-        user.setStatus(Status.ACTIVE);
-        user.setType(UserType.STANDARD);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Account usdAccount = createAndInitializeAccount(CurrencyType.USD, user);
-        Account eurAccount = createAndInitializeAccount(CurrencyType.EUR, user);
-
-        user.setAccounts(new HashSet<>(Arrays.asList(usdAccount, eurAccount)));
-
-        try {
-            User savedUser = userRepository.save(user);
-
-            return userMapper.toUserDTO(savedUser);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to save user: " + e.getMessage(), e);
-        }
     }
-
-    private Account createAndInitializeAccount(CurrencyType currency, User user) {
-        String cardNumber;
-        int maxAttempts = 5;
-        boolean isUnique = false;
-        LocalDate creationDate = LocalDate.now();
-        LocalDate expirationDate = creationDate.plusYears(5);
-        for (int attempt = 0; attempt < maxAttempts; attempt++) {
-            cardNumber = cardNumberGenerator.generateCardNumber();
-            if (!accountRepository.existsByCardNumber(cardNumber)) {
-                isUnique = true;
-                break;
-            }
-        }
-
-        if (!isUnique) {
-            throw new RuntimeException("Unable to generate a unique card number after " + maxAttempts + " attempts");
-        }
-        Account account = new Account();
-        account.setCurrency(currency);
-        account.setBalance(BigDecimal.ZERO);
-        account.setUser(user);
-        account.setCardNumber(cardNumberGenerator.generateCardNumber());
-        account.setExpirationDate(expirationDate);
-
-        return account;
-    }
-
-    @Transactional
-    public Account createAccount(User user, CurrencyType currency) {
-        if (user.getAccounts().stream().anyMatch(account -> account.getCurrency() == currency)) {
-            throw new IllegalArgumentException("Account with currency " + currency + " already exists.");
-        }
-        Account account = createAndInitializeAccount(currency, user);
-        return accountRepository.save(account);
-    }
-
-    @Transactional(readOnly = true)
-    public Set<AccountDTO> getUserAccounts(User user) {
-        return user.getAccounts().stream().map(account -> userMapper.toAccountDTO(account)).collect(Collectors.toSet());
-    }
-
-
 
     public void addFamilyMember(Long userId, Long familyMemberId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -151,5 +136,4 @@ public class UserService {
     public Set<UserDTO> convertUsersToDTOs(Set<User> users) {
         return users.stream().map(userMapper::toUserDTO).collect(Collectors.toSet());
     }
-
 }
