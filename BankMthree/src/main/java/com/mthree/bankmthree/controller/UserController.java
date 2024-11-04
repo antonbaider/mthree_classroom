@@ -42,5 +42,4 @@ public class UserController {
         UserDTO updatedUser = userService.updateUser(userDetails.getUsername(), updateUserRequest);
         return ResponseEntity.ok(updatedUser);
     }
-
 }

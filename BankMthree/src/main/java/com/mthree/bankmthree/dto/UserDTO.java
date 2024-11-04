@@ -40,7 +40,7 @@ public class UserDTO {
 
     @Email(message = "Invalid email format")
     @NotBlank(message = "Email is required")
-    @Schema(description = "Email address of the user", example = "john.doe@example.com")
+    @Schema(description = "Email address of the user", example = "john.doe@login.jsp.com")
     private String email;
 
     @Pattern(regexp = "^[0-9]{10,15}$", message = "Phone number must be between 10 and 15 digits")

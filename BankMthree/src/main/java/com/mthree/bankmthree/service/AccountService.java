@@ -76,8 +76,7 @@ public class AccountService {
 
     @Transactional
     public void closeAccount(String cardNumber, String username) {
-        Account account = (Account) accountRepository.findByCardNumberAndUserUsername(cardNumber, username)
-                .orElseThrow(() -> new AccountsNotFoundException("Account not found"));
+        Account account = (Account) accountRepository.findByCardNumberAndUserUsername(cardNumber, username).orElseThrow(() -> new AccountsNotFoundException("Account not found"));
 
         if (account.getBalance().compareTo(BigDecimal.ZERO) != 0) {
             throw new AccountBalanceNotZeroException("Account balance must be zero to close the account");

@@ -1,8 +1,8 @@
 package com.mthree.bankmthree.service;
 
 import com.mthree.bankmthree.dto.RegisterRequest;
-import com.mthree.bankmthree.dto.UserDTO;
 import com.mthree.bankmthree.dto.UpdateUserRequest;
+import com.mthree.bankmthree.dto.UserDTO;
 import com.mthree.bankmthree.entity.*;
 import com.mthree.bankmthree.exception.PhoneAlreadyExistsException;
 import com.mthree.bankmthree.exception.SsnAlreadyExistsException;

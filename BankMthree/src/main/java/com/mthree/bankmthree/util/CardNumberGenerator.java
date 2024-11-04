@@ -17,6 +17,7 @@ public class CardNumberGenerator {
         }
         return cardNumber.toString();
     }
+
     public String generateUniqueCardNumber() {
         int maxAttempts = 5;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {

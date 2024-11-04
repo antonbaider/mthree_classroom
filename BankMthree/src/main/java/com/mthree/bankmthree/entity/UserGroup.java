@@ -19,11 +19,7 @@ public class UserGroup {
     private Set<User> users;
 
     @ManyToMany
-    @JoinTable(
-            name = "group_accounts",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "account_id")
-    )
+    @JoinTable(name = "group_accounts", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "account_id"))
     @ToString.Exclude
     private Set<Account> accounts;
 }
