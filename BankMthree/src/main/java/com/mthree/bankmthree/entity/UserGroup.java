@@ -2,6 +2,7 @@ package com.mthree.bankmthree.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Set;
 
@@ -11,9 +12,10 @@ import java.util.Set;
 public class UserGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @ManyToMany(mappedBy = "userGroups")
+    @ToString.Exclude
     private Set<User> users;
 
     @ManyToMany
@@ -22,5 +24,6 @@ public class UserGroup {
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "account_id")
     )
+    @ToString.Exclude
     private Set<Account> accounts;
 }

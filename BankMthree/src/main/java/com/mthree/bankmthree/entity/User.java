@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -26,6 +27,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    @Column(nullable = false)
+    private String firstName;
+
+    @NotBlank
+    @Column(nullable = false)
+    private String lastName;
 
     @NotBlank
     @Column(unique = true, nullable = false)
@@ -46,10 +55,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role = Role.ROLE_USER;
-
-
-    private String token;
+    private Role role;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -60,21 +66,13 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Status status = Status.ACTIVE;
+    private Status status;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private UserType type = UserType.STANDARD;
-
-    @NotNull
-    @Column(nullable = false)
-    private BigDecimal balance = BigDecimal.ZERO;
+    private UserType type;
 
     @NotBlank(message = "SSN is required")
-//    @Pattern(
-//            regexp = "^(?!000|666|9\\d\\d)(\\d{3})[- ]?(?!00)(\\d{2})[- ]?(?!0000)(\\d{4})$",
-//            message = "Invalid SSN format"
-//    )
     @Column(name = "ssn", nullable = false, unique = true)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -106,4 +104,9 @@ public class User {
     @OneToMany(mappedBy = "receiver")
     @ToString.Exclude
     private Set<Transaction> receivedTransactions;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Account> accounts;
 }

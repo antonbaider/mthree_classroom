@@ -1,19 +1,13 @@
 package com.mthree.bankmthree.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import jakarta.validation.constraints.*;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class UserDTO {
+public class RegisterRequest {
+
 
     @NotBlank(message = "First name is required")
     @Schema(description = "First name of the user", example = "John")
@@ -41,7 +35,10 @@ public class UserDTO {
     private String phone;
 
     @NotBlank(message = "SSN is required")
-    @Pattern(regexp = "^(?!000|666|9\\d\\d)(\\d{3})(?!00)(\\d{2})(?!0000)(\\d{4})$", message = "Invalid SSN format")
+    @Pattern(
+            regexp = "^(?!000|666|9\\d\\d)(\\d{3})(?!00)(\\d{2})(?!0000)(\\d{4})$",
+            message = "Invalid SSN format"
+    )
     @Schema(description = "Social Security Number", example = "123456789", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String ssn;
 }

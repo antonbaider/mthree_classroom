@@ -1,18 +1,22 @@
 package com.mthree.bankmthree.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "services")
 @Data
 public class Service {
     @Id
-    @GeneratedValue
-    Long id;
-    String name;
-    String description;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String serviceName;
+
+    @ManyToMany(mappedBy = "services")
+    @ToString.Exclude
+    private Set<Account> accounts;
 }

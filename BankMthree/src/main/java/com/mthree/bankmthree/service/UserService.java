@@ -1,115 +1,206 @@
 package com.mthree.bankmthree.service;
 
+import com.mthree.bankmthree.dto.AccountDTO;
+import com.mthree.bankmthree.dto.RegisterRequest;
+import com.mthree.bankmthree.dto.TransferRequestDTO;
 import com.mthree.bankmthree.dto.UserDTO;
-import com.mthree.bankmthree.entity.Transaction;
-import com.mthree.bankmthree.entity.User;
-import com.mthree.bankmthree.exception.UserAlreadyExistsException;
+import com.mthree.bankmthree.entity.*;
+import com.mthree.bankmthree.exception.*;
 import com.mthree.bankmthree.mapper.UserMapper;
+import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
 import com.mthree.bankmthree.repository.UserRepository;
+import com.mthree.bankmthree.util.CardNumberGenerator;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+import java.lang.IllegalArgumentException;
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CardNumberGenerator cardNumberGenerator;
+
 
     @Autowired
-    public UserService(UserMapper userMapper, UserRepository userRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserMapper userMapper, UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder, CardNumberGenerator cardNumberGenerator) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
         this.passwordEncoder = passwordEncoder;
+        this.cardNumberGenerator = cardNumberGenerator;
     }
 
     public UserDTO getUserDto(User user) {
         return userMapper.toUserDTO(user);
     }
 
-    public User getUser(UserDTO userDTO) {
+    public User getUser(RegisterRequest userDTO) {
         return userMapper.toUser(userDTO);
     }
 
-    public User createUser(UserDTO userDTO) {
-        if (userRepository.existsByUsername(userDTO.getUsername())) {
+    @Transactional
+    public UserDTO createUser(@Valid RegisterRequest registerRequest) {
+        if (userRepository.existsByUsername(registerRequest.getUsername())) {
             throw new UserAlreadyExistsException("Username already exists");
         }
-        if (userRepository.existsByEmail(userDTO.getEmail())) {
+        if (userRepository.existsByEmail(registerRequest.getEmail())) {
             throw new UserAlreadyExistsException("Email already exists");
         }
+        if (userRepository.existsBySsn(registerRequest.getSsn())) {
+            throw new SsnAlreadyExistsException("SSN already exists");
+        }
+        if (userRepository.existsByPhone(registerRequest.getPhone())) {
+            throw new PhoneAlreadyExistsException("Phone number already exists");
+        }
 
-        User user = userMapper.toUser(userDTO);
+        User user = userMapper.toUser(registerRequest);
+        user.setRole(Role.ROLE_USER);
+        user.setStatus(Status.ACTIVE);
+        user.setType(UserType.STANDARD);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+        Account usdAccount = createAndInitializeAccount(CurrencyType.USD, user);
+        Account eurAccount = createAndInitializeAccount(CurrencyType.EUR, user);
+
+        user.setAccounts(new HashSet<>(Arrays.asList(usdAccount, eurAccount)));
+
+        try {
+            User savedUser = userRepository.save(user);
+
+            return userMapper.toUserDTO(savedUser);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to save user: " + e.getMessage(), e);
+        }
     }
 
+    private Account createAndInitializeAccount(CurrencyType currency, User user) {
+        String cardNumber;
+        int maxAttempts = 5;
+        boolean isUnique = false;
+        LocalDate creationDate = LocalDate.now();
+        LocalDate expirationDate = creationDate.plusYears(5);
+        for (int attempt = 0; attempt < maxAttempts; attempt++) {
+            cardNumber = cardNumberGenerator.generateCardNumber();
+            if (!accountRepository.existsByCardNumber(cardNumber)) {
+                isUnique = true;
+                break;
+            }
+        }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        if (!isUnique) {
+            throw new RuntimeException("Unable to generate a unique card number after " + maxAttempts + " attempts");
+        }
+        Account account = new Account();
+        account.setCurrency(currency);
+        account.setBalance(BigDecimal.ZERO);
+        account.setUser(user);
+        account.setCardNumber(cardNumberGenerator.generateCardNumber());
+        account.setExpirationDate(expirationDate);
 
-        List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole().name()));
-
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPassword(),
-                authorities
-        );
+        return account;
     }
 
     @Transactional
-    public void transferMoney(Long senderId, Long receiverId, BigDecimal amount) {
-        User sender = userRepository.findById(senderId)
-                .orElseThrow(() -> new UsernameNotFoundException("Sender not found"));
-        User receiver = userRepository.findById(receiverId)
-                .orElseThrow(() -> new UsernameNotFoundException("Receiver not found"));
-
-        if (sender.getBalance().compareTo(amount) < 0) {
-            throw new IllegalArgumentException("Insufficient balance");
+    public Account createAccount(User user, CurrencyType currency) {
+        if (user.getAccounts().stream().anyMatch(account -> account.getCurrency() == currency)) {
+            throw new IllegalArgumentException("Account with currency " + currency + " already exists.");
         }
-        sender.setBalance(sender.getBalance().subtract(amount));
-        receiver.setBalance(receiver.getBalance().add(amount));
+        Account account = createAndInitializeAccount(currency, user);
+        return accountRepository.save(account);
+    }
 
-        userRepository.save(sender);
-        userRepository.save(receiver);
+    @Transactional(readOnly = true)
+    public Set<AccountDTO> getUserAccounts(User user) {
+        return user.getAccounts().stream()
+                .map(account -> userMapper.toAccountDTO(account))
+                .collect(Collectors.toSet());
+    }
+
+    @Transactional
+    public void transferMoney(Long senderAccountId, Long receiverAccountId, BigDecimal amount) {
+        Account senderAccount = accountRepository.findById(senderAccountId).orElseThrow(() -> new IllegalArgumentException("Sender not found"));
+        Account receiverAccount = accountRepository.findById(receiverAccountId).orElseThrow(() -> new IllegalArgumentException("Receiver not found"));
+
+        if (!senderAccount.getCurrency().equals(receiverAccount.getCurrency())) {
+            throw new IllegalArgumentException("Currency mismatch between accounts");
+        }
+
+        if (senderAccount.getBalance().compareTo(amount) < 0) {
+            throw new IllegalArgumentException("Insufficient balance in sender's account");
+        }
+
+        senderAccount.setBalance(senderAccount.getBalance().subtract(amount));
+        receiverAccount.setBalance(receiverAccount.getBalance().add(amount));
+
+        accountRepository.save(senderAccount);
+        accountRepository.save(receiverAccount);
 
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-        transaction.setSender(sender);
-        transaction.setReceiver(receiver);
+        transaction.setSenderAccount(senderAccount);
+        transaction.setReceiverAccount(receiverAccount);
+        transaction.setTimestamp(LocalDateTime.now());
         transactionRepository.save(transaction);
-
-
     }
 
     public void addFamilyMember(Long userId, Long familyMemberId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-        User familyMember = userRepository.findById(familyMemberId)
-                .orElseThrow(() -> new UsernameNotFoundException("Family member not found"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        User familyMember = userRepository.findById(familyMemberId).orElseThrow(() -> new UsernameNotFoundException("Family member not found"));
         user.getFamily().add(familyMember);
         userRepository.save(user);
     }
 
     public Set<User> getFamilyMembers(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return user.getFamily();
+    }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    }
+
+    public Set<UserDTO> convertUsersToDTOs(Set<User> users) {
+        return users.stream().map(userMapper::toUserDTO).collect(Collectors.toSet());
+    }
+    @Transactional
+    public void transferMoneyByCardNumber(@Valid TransferRequestDTO transferRequest, String username) {
+        Account sender = accountRepository.findByCardNumber(transferRequest.getSenderCardNumber())
+                .orElseThrow(() -> new AccountNotFoundException("Sender account not found"));
+
+        Account receiver = accountRepository.findByCardNumber(transferRequest.getReceiverCardNumber())
+                .orElseThrow(() -> new AccountNotFoundException("Receiver account not found"));
+
+        if (!sender.getUser().getUsername().equals(username)) {
+            throw new UnauthorizedTransferException("You do not own the sender account");
+        }
+
+        if (sender.getBalance().compareTo(transferRequest.getAmount()) < 0) {
+            throw new InsufficientFundsException("Insufficient funds in sender account");
+        }
+
+        if (sender.getCardNumber().equals(receiver.getCardNumber())) {
+            throw new IllegalArgumentException("Cannot transfer to the same account");
+        }
+
+        sender.setBalance(sender.getBalance().subtract(transferRequest.getAmount()));
+        receiver.setBalance(receiver.getBalance().add(transferRequest.getAmount()));
+
+        accountRepository.save(sender);
+        accountRepository.save(receiver);
     }
 }
