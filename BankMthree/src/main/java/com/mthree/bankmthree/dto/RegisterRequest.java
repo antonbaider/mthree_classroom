@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 public class RegisterRequest {
 
-
     @NotBlank(message = "First name is required")
     @Schema(description = "First name of the user", example = "John")
     private String firstName;

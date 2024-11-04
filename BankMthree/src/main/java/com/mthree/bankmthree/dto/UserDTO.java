@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,18 +17,24 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
 
     @NotBlank(message = "First name is required")
+    @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "First name must contain only letters")
     @Schema(description = "First name of the user", example = "John")
     private String firstName;
 
     @NotBlank(message = "Last name is required")
+    @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "Last name must contain only letters")
     @Schema(description = "Last name of the user", example = "Doe")
     private String lastName;
 
     @NotBlank(message = "Username is required")
+    @Size(min = 5, max = 50, message = "Username must be between 5 and 50 characters")
     @Schema(description = "Username for login", example = "johndoe")
     private String username;
 
     @NotBlank(message = "Password is required")
+    @Size(min = 5, max = 50, message = "Password must be between 5 and 50 characters")
     @Schema(description = "Password for login", example = "P@ssw0rd", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String password;
 

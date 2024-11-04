@@ -18,12 +18,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.lang.IllegalArgumentException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -126,37 +127,10 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public Set<AccountDTO> getUserAccounts(User user) {
-        return user.getAccounts().stream()
-                .map(account -> userMapper.toAccountDTO(account))
-                .collect(Collectors.toSet());
+        return user.getAccounts().stream().map(account -> userMapper.toAccountDTO(account)).collect(Collectors.toSet());
     }
 
-    @Transactional
-    public void transferMoney(Long senderAccountId, Long receiverAccountId, BigDecimal amount) {
-        Account senderAccount = accountRepository.findById(senderAccountId).orElseThrow(() -> new IllegalArgumentException("Sender not found"));
-        Account receiverAccount = accountRepository.findById(receiverAccountId).orElseThrow(() -> new IllegalArgumentException("Receiver not found"));
 
-        if (!senderAccount.getCurrency().equals(receiverAccount.getCurrency())) {
-            throw new IllegalArgumentException("Currency mismatch between accounts");
-        }
-
-        if (senderAccount.getBalance().compareTo(amount) < 0) {
-            throw new IllegalArgumentException("Insufficient balance in sender's account");
-        }
-
-        senderAccount.setBalance(senderAccount.getBalance().subtract(amount));
-        receiverAccount.setBalance(receiverAccount.getBalance().add(amount));
-
-        accountRepository.save(senderAccount);
-        accountRepository.save(receiverAccount);
-
-        Transaction transaction = new Transaction();
-        transaction.setAmount(amount);
-        transaction.setSenderAccount(senderAccount);
-        transaction.setReceiverAccount(receiverAccount);
-        transaction.setTimestamp(LocalDateTime.now());
-        transactionRepository.save(transaction);
-    }
 
     public void addFamilyMember(Long userId, Long familyMemberId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found"));
@@ -177,30 +151,5 @@ public class UserService {
     public Set<UserDTO> convertUsersToDTOs(Set<User> users) {
         return users.stream().map(userMapper::toUserDTO).collect(Collectors.toSet());
     }
-    @Transactional
-    public void transferMoneyByCardNumber(@Valid TransferRequestDTO transferRequest, String username) {
-        Account sender = accountRepository.findByCardNumber(transferRequest.getSenderCardNumber())
-                .orElseThrow(() -> new AccountNotFoundException("Sender account not found"));
 
-        Account receiver = accountRepository.findByCardNumber(transferRequest.getReceiverCardNumber())
-                .orElseThrow(() -> new AccountNotFoundException("Receiver account not found"));
-
-        if (!sender.getUser().getUsername().equals(username)) {
-            throw new UnauthorizedTransferException("You do not own the sender account");
-        }
-
-        if (sender.getBalance().compareTo(transferRequest.getAmount()) < 0) {
-            throw new InsufficientFundsException("Insufficient funds in sender account");
-        }
-
-        if (sender.getCardNumber().equals(receiver.getCardNumber())) {
-            throw new IllegalArgumentException("Cannot transfer to the same account");
-        }
-
-        sender.setBalance(sender.getBalance().subtract(transferRequest.getAmount()));
-        receiver.setBalance(receiver.getBalance().add(transferRequest.getAmount()));
-
-        accountRepository.save(sender);
-        accountRepository.save(receiver);
-    }
 }
