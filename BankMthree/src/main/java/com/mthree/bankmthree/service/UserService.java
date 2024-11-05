@@ -4,14 +4,18 @@ import com.mthree.bankmthree.dto.RegisterRequest;
 import com.mthree.bankmthree.dto.UpdateUserRequest;
 import com.mthree.bankmthree.dto.UserDTO;
 import com.mthree.bankmthree.entity.*;
-import com.mthree.bankmthree.exception.PhoneAlreadyExistsException;
-import com.mthree.bankmthree.exception.SsnAlreadyExistsException;
-import com.mthree.bankmthree.exception.UserAlreadyExistsException;
-import com.mthree.bankmthree.exception.UserNotFoundException;
+import com.mthree.bankmthree.exception.user.UserPhoneAlreadyExistsException;
+import com.mthree.bankmthree.exception.user.UserSsnAlreadyExistsException;
+import com.mthree.bankmthree.exception.user.UserAlreadyExistsException;
+import com.mthree.bankmthree.exception.user.UserNotFoundException;
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.UserRepository;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
@@ -38,7 +43,9 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    @CacheEvict(value = "users", key = "#user.username")
     public UserDTO getUserDto(User user) {
+        log.info("Fetching UserDTO for user: {}", user.getUsername());
         return userMapper.toUserDTO(user);
     }
 
@@ -47,7 +54,9 @@ public class UserService {
     }
 
     @Transactional
+    @CacheEvict(value = "users", key = "#registerRequest.username")
     public UserDTO createUser(@Valid RegisterRequest registerRequest) {
+        log.info("Creating user with username: {}", registerRequest.getUsername());
         validateUserFields(registerRequest);
 
         User user = userMapper.toUser(registerRequest);
@@ -69,31 +78,34 @@ public class UserService {
     }
 
     @Transactional
+    @CacheEvict(value = "users", key = "#username")
     public UserDTO updateUser(String username, UpdateUserRequest updateUserRequest) {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
 
-        validateUser(updateUserRequest, user);
+        validateAndUpdateUserFields(updateUserRequest, user);
 
-        User updatedUser = userRepository.save(user);
-        return getUserDto(updatedUser);
+        try {
+            User updatedUser = userRepository.save(user);
+            log.info("User {} updated successfully", username);
+            return getUserDto(updatedUser);
+        } catch (DataIntegrityViolationException e) {
+            log.error("Failed to update user: {}", e.getMessage());
+            throw new UserAlreadyExistsException("A user with this email or phone number already exists.");
+        }
     }
 
-    private void validateUser(UpdateUserRequest updateUserRequest, User user) {
-        if (updateUserRequest.getFirstName() != null) {
-            user.setFirstName(updateUserRequest.getFirstName());
-        }
-        if (updateUserRequest.getLastName() != null) {
-            user.setLastName(updateUserRequest.getLastName());
-        }
-        if (updateUserRequest.getEmail() != null) {
+    private void validateAndUpdateUserFields(UpdateUserRequest updateUserRequest, User user) {
+        if (updateUserRequest.getFirstName() != null) user.setFirstName(updateUserRequest.getFirstName());
+        if (updateUserRequest.getLastName() != null) user.setLastName(updateUserRequest.getLastName());
+        if (updateUserRequest.getEmail() != null && !user.getEmail().equals(updateUserRequest.getEmail())) {
+            if (userRepository.existsByEmail(updateUserRequest.getEmail())) throw new UserAlreadyExistsException("Email already exists");
             user.setEmail(updateUserRequest.getEmail());
         }
-        if (updateUserRequest.getPhone() != null) {
+        if (updateUserRequest.getPhone() != null && !user.getPhone().equals(updateUserRequest.getPhone())) {
+            if (userRepository.existsByPhone(updateUserRequest.getPhone())) throw new UserPhoneAlreadyExistsException("Phone number already exists");
             user.setPhone(updateUserRequest.getPhone());
         }
-        if (updateUserRequest.getPassword() != null) {
-            user.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
-        }
+        if (updateUserRequest.getPassword() != null) user.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
     }
 
     private void validateUserFields(@Valid RegisterRequest registerRequest) {
@@ -104,10 +116,10 @@ public class UserService {
             throw new UserAlreadyExistsException("Email already exists");
         }
         if (userRepository.existsBySsn(registerRequest.getSsn())) {
-            throw new SsnAlreadyExistsException("SSN already exists");
+            throw new UserSsnAlreadyExistsException("SSN already exists");
         }
         if (userRepository.existsByPhone(registerRequest.getPhone())) {
-            throw new PhoneAlreadyExistsException("Phone number already exists");
+            throw new UserPhoneAlreadyExistsException("Phone number already exists");
         }
     }
 
@@ -123,6 +135,8 @@ public class UserService {
         return user.getFamily();
     }
 
+    @Transactional(readOnly = true)
+    @Cacheable(value = "users", key = "#username")
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }

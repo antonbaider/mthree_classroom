@@ -4,11 +4,11 @@ import com.mthree.bankmthree.dto.AccountDTO;
 import com.mthree.bankmthree.entity.Account;
 import com.mthree.bankmthree.entity.CurrencyType;
 import com.mthree.bankmthree.entity.User;
-import com.mthree.bankmthree.exception.AccountBalanceNotZeroException;
-import com.mthree.bankmthree.exception.AccountsNotFoundException;
-import com.mthree.bankmthree.exception.IllegalArgumentsException;
+import com.mthree.bankmthree.exception.account.AccountBalanceNotZeroException;
+import com.mthree.bankmthree.exception.account.AccountsNotFoundException;
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
+import com.mthree.bankmthree.repository.UserRepository;
 import com.mthree.bankmthree.util.CardNumberGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +28,14 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final CardNumberGenerator cardNumberGenerator;
     private final UserMapper userMapper;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository, CardNumberGenerator cardNumberGenerator, UserMapper userMapper) {
+    public AccountService(AccountRepository accountRepository, CardNumberGenerator cardNumberGenerator, UserMapper userMapper, UserRepository userRepository) {
         this.accountRepository = accountRepository;
         this.cardNumberGenerator = cardNumberGenerator;
         this.userMapper = userMapper;
+        this.userRepository = userRepository;
     }
 
     @Transactional
@@ -69,10 +71,8 @@ public class AccountService {
     @Transactional
     @CachePut(value = "accounts", key = "#user.username + '-' + #currency")
     public Account createAccount(User user, CurrencyType currency) {
-        log.info("Creating an account with currency {} for user {}", currency, user.getUsername());
         if (user.getAccounts().stream().anyMatch(account -> account.getCurrency() == currency)) {
-            log.warn("User {} already has an account with currency {}", user.getUsername(), currency);
-            throw new IllegalArgumentsException("Account with currency " + currency + " already exists.");
+            throw new IllegalArgumentException("Account with currency " + currency + " already exists.");
         }
         Account account = createAndInitializeAccount(currency, user);
         return accountRepository.save(account);

@@ -6,9 +6,8 @@ import com.mthree.bankmthree.entity.Account;
 import com.mthree.bankmthree.entity.Role;
 import com.mthree.bankmthree.entity.Transaction;
 import com.mthree.bankmthree.entity.User;
-import com.mthree.bankmthree.exception.AccountsNotFoundException;
-import com.mthree.bankmthree.exception.IllegalArgumentsException;
-import com.mthree.bankmthree.exception.UnauthorizedTransferException;
+import com.mthree.bankmthree.exception.account.AccountsNotFoundException;
+import com.mthree.bankmthree.exception.transaction.UnauthorizedTransferException;
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
@@ -109,12 +108,12 @@ public class TransactionService {
 
         if (!sender.getCurrency().equals(receiver.getCurrency())) {
             log.warn("Currency mismatch between sender and receiver accounts");
-            throw new IllegalArgumentsException("Currency mismatch between accounts");
+            throw new IllegalArgumentException("Currency mismatch between accounts");
         }
 
         if (!isAdmin && sender.getBalance().compareTo(amount) < 0) {
             log.warn("Insufficient funds for user {} on account {}", username, sender.getCardNumber());
-            throw new IllegalArgumentsException("Insufficient balance in sender's account");
+            throw new IllegalArgumentException("Insufficient balance in sender's account");
         }
     }
 }
