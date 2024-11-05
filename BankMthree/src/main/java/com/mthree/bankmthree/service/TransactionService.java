@@ -198,7 +198,7 @@ public class TransactionService {
 
         // Check for authorization
         if (!isAdmin && !sender.getUser().getUsername().equals(username)) {
-            log.warn(MessageConstants.Logs.UNAUTHORIZED_TRANSFER, username);
+            log.warn(MessageConstants.ErrorCodes.UNAUTHORIZED_TRANSFER, username);
             throw new UnauthorizedTransferException(MessageConstants.Exceptions.UNAUTHORIZED_TRANSFER);
         }
 

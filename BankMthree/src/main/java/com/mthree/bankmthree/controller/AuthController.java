@@ -9,6 +9,7 @@ import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -41,13 +39,13 @@ public class AuthController {
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest registerRequest) {
         try {
             UserDTO createdUser = userService.createUser(registerRequest);
-            return ResponseEntity.ok("User registered successfully!");
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("User registered successfully!", createdUser));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Error: " + e.getMessage()));
         }
     }
 
-    @Operation(summary = "Login in")
+    @Operation(summary = "Log in")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         try {
@@ -55,9 +53,25 @@ public class AuthController {
 
             String jwt = jwtUtils.generateJwtToken(loginRequest.getUsername());
 
-            return ResponseEntity.ok(new LoginResponse(jwt));
+            return ResponseEntity.ok(new ApiResponse("Login successful", new LoginResponse(jwt)));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error: Invalid username or password!");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiResponse("Error: Invalid username or password!"));
+        }
+    }
+
+    // Inner class for API responses to maintain a consistent response format
+    @Getter
+    public static class ApiResponse {
+        private final String message;
+        private Object data;
+
+        public ApiResponse(String message) {
+            this.message = message;
+        }
+
+        public ApiResponse(String message, Object data) {
+            this.message = message;
+            this.data = data;
         }
     }
 }

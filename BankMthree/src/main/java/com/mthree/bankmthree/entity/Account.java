@@ -1,24 +1,31 @@
 package com.mthree.bankmthree.entity;
 
 import com.mthree.bankmthree.entity.enums.CurrencyType;
+import com.mthree.bankmthree.listener.AccountEntityListener;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "accounts")
+@Table(name = "accounts", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "cardNumber")
+})
+@EntityListeners(AccountEntityListener.class) // Registering the entity listener
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(nullable = false)
+    private LocalDate creationDate;
     @Column(name = "expiration_date", nullable = false)
-    LocalDate expirationDate;
+    private LocalDate expirationDate;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CurrencyType currency;

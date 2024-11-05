@@ -10,18 +10,17 @@ import com.mthree.bankmthree.entity.enums.CurrencyType;
 import com.mthree.bankmthree.entity.enums.Role;
 import com.mthree.bankmthree.entity.enums.Status;
 import com.mthree.bankmthree.entity.enums.UserType;
-import com.mthree.bankmthree.exception.user.UserAlreadyExistsException;
-import com.mthree.bankmthree.exception.user.UserNotFoundException;
-import com.mthree.bankmthree.exception.user.UserPhoneAlreadyExistsException;
-import com.mthree.bankmthree.exception.user.UserSsnAlreadyExistsException;
+import com.mthree.bankmthree.exception.user.*;
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.UserRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +42,8 @@ public class UserService {
     private final AccountService accountService;
 
     @Autowired
-    public UserService(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder, AccountService accountService) {
+    public UserService(UserMapper userMapper, UserRepository userRepository,
+                       PasswordEncoder passwordEncoder, AccountService accountService) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -66,11 +66,11 @@ public class UserService {
     /**
      * Converts a RegisterRequest DTO to a User entity.
      *
-     * @param userDTO the RegisterRequest DTO
+     * @param registerRequest the RegisterRequest DTO
      * @return the User entity
      */
-    public User getUser(RegisterRequest userDTO) {
-        return userMapper.toUser(userDTO);
+    public User getUser(RegisterRequest registerRequest) {
+        return userMapper.toUser(registerRequest);
     }
 
     /**
@@ -85,36 +85,45 @@ public class UserService {
         log.info(MessageConstants.Logs.CREATING_USER, registerRequest.getUsername());
         validateUserFields(registerRequest);
 
+        validatePassword(registerRequest.getPassword());
+
         User user = userMapper.toUser(registerRequest);
         user.setRole(Role.ROLE_USER);
         user.setStatus(Status.ACTIVE);
         user.setType(UserType.STANDARD);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Account usdAccount = accountService.createAndInitializeAccount(CurrencyType.USD, user);
-        Account eurAccount = accountService.createAndInitializeAccount(CurrencyType.EUR, user);
-
-        user.setAccounts(new HashSet<>(Arrays.asList(usdAccount, eurAccount)));
+//        Account usdAccount = accountService.createAndInitializeAccount(CurrencyType.USD, user);
+//        Account eurAccount = accountService.createAndInitializeAccount(CurrencyType.EUR, user);
+//
+//        user.setAccounts(new HashSet<>(Arrays.asList(usdAccount, eurAccount)));
 
         try {
             User savedUser = userRepository.save(user);
+            log.info(MessageConstants.Logs.USER_CREATED_SUCCESSFULLY, savedUser.getUsername());
             return userMapper.toUserDTO(savedUser);
         } catch (DataIntegrityViolationException e) {
-            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e.getMessage());
-            // Determine which field caused the violation for a more precise exception
-            if (e.getMessage().contains("username")) {
-                throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_ALREADY_EXISTS);
-            } else if (e.getMessage().contains("email")) {
-                throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
-            } else if (e.getMessage().contains("ssn")) {
-                throw new UserSsnAlreadyExistsException(MessageConstants.Exceptions.USER_SSN_EXISTS);
-            } else if (e.getMessage().contains("phone")) {
-                throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
-            } else {
-                throw new UserAlreadyExistsException("A user with the provided details already exists.");
+            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e);
+            // Inspect the root cause to determine which constraint was violated
+            Throwable rootCause = e.getRootCause();
+            if (rootCause instanceof ConstraintViolationException) {
+                ConstraintViolationException constraintViolationException = (ConstraintViolationException) rootCause;
+                String constraintName = constraintViolationException.getConstraintName();
+
+                if ("unique_username".equalsIgnoreCase(constraintName)) {
+                    throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_ALREADY_EXISTS);
+                } else if ("unique_email".equalsIgnoreCase(constraintName)) {
+                    throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
+                } else if ("unique_ssn".equalsIgnoreCase(constraintName)) {
+                    throw new UserSsnAlreadyExistsException(MessageConstants.Exceptions.USER_SSN_EXISTS);
+                } else if ("unique_phone".equalsIgnoreCase(constraintName)) {
+                    throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
+                }
             }
+            // Fallback for unknown constraints
+            throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_PROVIDED_DETAILS_EXIST);
         } catch (Exception e) {
-            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e.getMessage());
-            throw new RuntimeException("Failed to save user: " + e.getMessage(), e);
+            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e);
+            throw new RuntimeException(MessageConstants.Exceptions.GENERAL_ERROR, e);
         }
     }
 
@@ -127,8 +136,10 @@ public class UserService {
      */
     @Transactional
     @CacheEvict(value = "users", key = "#username")
+    @PreAuthorize("hasRole('ADMIN') or #username == authentication.name")
     public UserDTO updateUser(String username, UpdateUserRequest updateUserRequest) {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
 
         validateAndUpdateUserFields(updateUserRequest, user);
 
@@ -137,15 +148,24 @@ public class UserService {
             log.info(MessageConstants.Logs.USER_UPDATED_SUCCESSFULLY, username);
             return getUserDto(updatedUser);
         } catch (DataIntegrityViolationException e) {
-            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e.getMessage());
-            // Determine which field caused the violation for a more precise exception
-            if (e.getMessage().contains("email")) {
-                throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
-            } else if (e.getMessage().contains("phone")) {
-                throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
-            } else {
-                throw new UserAlreadyExistsException("A user with this email or phone number already exists.");
+            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e);
+            // Inspect the root cause to determine which constraint was violated
+            Throwable rootCause = e.getRootCause();
+            if (rootCause instanceof ConstraintViolationException) {
+                ConstraintViolationException constraintViolationException = (ConstraintViolationException) rootCause;
+                String constraintName = constraintViolationException.getConstraintName();
+
+                if ("unique_email".equalsIgnoreCase(constraintName)) {
+                    throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
+                } else if ("unique_phone".equalsIgnoreCase(constraintName)) {
+                    throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
+                }
             }
+            // Fallback for unknown constraints
+            throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_PROVIDED_DETAILS_EXIST);
+        } catch (Exception e) {
+            log.error(MessageConstants.Logs.FAILED_TO_SAVE_USER, e);
+            throw new RuntimeException(MessageConstants.Exceptions.GENERAL_ERROR, e);
         }
     }
 
@@ -178,6 +198,7 @@ public class UserService {
         }
 
         if (updateUserRequest.getPassword() != null) {
+            validatePassword(updateUserRequest.getPassword());
             user.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
         }
     }
@@ -203,14 +224,32 @@ public class UserService {
     }
 
     /**
+     * Validates the password against defined complexity rules.
+     *
+     * @param password the password to validate
+     */
+    private void validatePassword(String password) {
+        // Example password complexity: at least 8 characters, includes letters, numbers, and special characters
+        if (password.length() < 8 ||
+                !password.matches(".*[A-Za-z].*") ||
+                !password.matches(".*\\d.*") ||
+                !password.matches(".*[!@#$%^&*()].*")) {
+            throw new InvalidPasswordException(MessageConstants.Exceptions.USER_PASSWORD_RESTRICTION);
+        }
+    }
+
+    /**
      * Adds a family member to a user's family set.
      *
-     * @param userId         the ID of the user
+     * @param userId          the ID of the user
      * @param familyMemberId the ID of the family member to add
      */
+    @PreAuthorize("hasRole('ADMIN') or #userId == authentication.principal.id")
     public void addFamilyMember(Long userId, Long familyMemberId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
-        User familyMember = userRepository.findById(familyMemberId).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.FAMILY_MEMBER_NOT_FOUND));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        User familyMember = userRepository.findById(familyMemberId)
+                .orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.FAMILY_MEMBER_NOT_FOUND));
 
         user.getFamily().add(familyMember);
         userRepository.save(user);
@@ -223,8 +262,10 @@ public class UserService {
      * @param userId the ID of the user
      * @return a set of family members
      */
+    @PreAuthorize("hasRole('ADMIN') or #userId == authentication.principal.id")
     public Set<User> getFamilyMembers(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
         log.info(MessageConstants.Logs.FETCHING_FAMILY_MEMBERS, userId);
         return user.getFamily();
     }
@@ -237,9 +278,11 @@ public class UserService {
      */
     @Transactional(readOnly = true)
     @Cacheable(value = "users", key = "#username")
+    @PreAuthorize("hasRole('ADMIN') or #username == authentication.name")
     public User findByUsername(String username) {
         log.info(MessageConstants.Logs.FINDING_USER_BY_USERNAME, username);
-        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
     }
 
     /**
