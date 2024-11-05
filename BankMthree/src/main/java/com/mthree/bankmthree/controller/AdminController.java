@@ -30,7 +30,7 @@ public class AdminController {
     @PostMapping("/adminTransfer")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> adminTransferMoney(@Valid @RequestBody TransferRequestByUserId transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
-        transactionService.transferMoney(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
+        transactionService.transferMoneyBetweenUsers(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
         return ResponseEntity.ok("Successfully sent");
     }
 }

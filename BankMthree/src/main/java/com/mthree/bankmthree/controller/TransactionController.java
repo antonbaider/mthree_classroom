@@ -60,16 +60,14 @@ public class TransactionController {
     }
 
     private TransactionResponse getTransactionResponse(TransferRequestByUserId transferRequest, UserDetails userDetails) {
-        Transaction transaction = transactionService.transferMoney(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
+        Transaction transaction = transactionService.transferMoneyBetweenUsers(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
 
-        TransactionResponse response = TransactionMapper.INSTANCE.toResponse(transaction);
-        return response;
+        return TransactionMapper.INSTANCE.toResponse(transaction);
     }
 
     private TransactionResponse getTransactionResponse(TransferRequest transferRequest, UserDetails userDetails) {
-        Transaction transaction = transactionService.transferMoneyByCardNumber(transferRequest, userDetails.getUsername());
+        Transaction transaction = transactionService.transferMoneyUsingCardNumbers(transferRequest, userDetails.getUsername());
 
-        TransactionResponse response = TransactionMapper.INSTANCE.toResponse(transaction);
-        return response;
+        return TransactionMapper.INSTANCE.toResponse(transaction);
     }
 }

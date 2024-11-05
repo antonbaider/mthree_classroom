@@ -1,0 +1,76 @@
+package com.mthree.bankmthree.constants;
+
+/**
+ * Centralized class for all string messages used in the application.
+ * Organized into nested static classes for better categorization.
+ */
+public final class MessageConstants {
+
+    private MessageConstants() {
+        // Private constructor to prevent instantiation
+    }
+
+    /**
+     * Contains all exception-related messages.
+     */
+    public static final class Exceptions {
+        // Existing exception messages...
+        public static final String UNABLE_TO_GENERATE_CARD_NUMBER = "Unable to generate a unique card number after %d attempts";
+        public static final String ACCOUNT_ALREADY_EXISTS = "Account with currency %s already exists.";
+        public static final String ACCOUNT_NOT_FOUND = "Account not found";
+        public static final String ACCOUNT_BALANCE_NOT_ZERO = "Account balance must be zero to close the account";
+        public static final String SENDER_ACCOUNT_NOT_FOUND = "Sender account not found";
+        public static final String RECEIVER_ACCOUNT_NOT_FOUND = "Receiver account not found";
+        public static final String UNAUTHORIZED_TRANSFER = "You do not own the sender account";
+        public static final String CURRENCY_MISMATCH = "Currency mismatch between accounts";
+        public static final String INVALID_TRANSFER_AMOUNT = "Transfer amount must be positive";
+        public static final String INVALID_CARD_NUMBER_FORMAT = "Invalid card number format";
+        public static final String INSUFFICIENT_BALANCE = "Insufficient balance in sender's account";
+        public static final String SAME_ACCOUNT_TRANSFER = "Cannot transfer money to the same account.";
+
+        // UserService Specific Exception Messages
+        public static final String USER_ALREADY_EXISTS = "Username already exists.";
+        public static final String USER_EMAIL_EXISTS = "Email already exists.";
+        public static final String USER_SSN_EXISTS = "SSN already exists.";
+        public static final String USER_PHONE_EXISTS = "Phone number already exists.";
+        public static final String USER_NOT_FOUND = "User not found.";
+        public static final String FAMILY_MEMBER_NOT_FOUND = "Family member not found."; // **New Constant**
+    }
+
+    /**
+     * Contains all log-related messages.
+     */
+    public static final class Logs {
+        // Existing log messages...
+        public static final String CREATING_NEW_ACCOUNT = "Creating a new account for user {} with currency {}";
+        public static final String UNABLE_TO_GENERATE_CARD_NUMBER = "Unable to generate a unique card number after {} attempts";
+        public static final String ACCOUNT_CREATED_SUCCESSFULLY = "Account created successfully for user {}";
+        public static final String CLOSING_ACCOUNT = "Closing account {} for user {}";
+        public static final String ATTEMPTED_TO_CLOSE_NON_ZERO_BALANCE = "Attempted to close account {} with non-zero balance";
+        public static final String ACCOUNT_CLOSED_SUCCESSFULLY = "Account {} closed successfully";
+        public static final String CLEAR_ALL_CACHES = "All caches for accounts have been cleared.";
+
+        // TransactionService Log Messages
+        public static final String TRANSFER_STARTED = "Starting transfer from {} to {}";
+        public static final String TRANSFER_COMPLETED = "Transfer from {} to {} completed successfully";
+        public static final String TRANSFER_BETWEEN_USERS_COMPLETED = "Transfer of {} from user {} to user {} completed successfully";
+        public static final String VALIDATING_TRANSFER = "Validating transfer for user {}";
+        public static final String UNAUTHORIZED_TRANSFER = "Unauthorized transfer attempt by user {}";
+        public static final String CURRENCY_MISMATCH_LOG = "Currency mismatch between sender and receiver accounts";
+        public static final String INVALID_TRANSFER_AMOUNT = "Invalid transfer amount: {}";
+        public static final String INSUFFICIENT_FUNDS = "Insufficient funds for user {} on account {}";
+        public static final String INVALID_CARD_NUMBER_FORMAT_LOG = "Invalid card number format: {}";
+        public static final String CLEARING_CACHE_FOR_USER = "Clearing cache for user ID {}";
+
+        // UserService Specific Log Messages
+        public static final String FETCHING_USER_DTO = "Fetching UserDTO for user: {}";
+        public static final String CREATING_USER = "Creating user with username: {}";
+        public static final String USER_UPDATED_SUCCESSFULLY = "User {} updated successfully.";
+        public static final String FAILED_TO_SAVE_USER = "Failed to save user: {}";
+        public static final String ADDING_FAMILY_MEMBER = "Adding family member with ID {} to user with ID {}";
+        public static final String FETCHING_FAMILY_MEMBERS = "Fetching family members for user ID {}";
+        public static final String FINDING_USER_BY_USERNAME = "Finding user by username: {}";
+        public static final String CONVERTING_USERS_TO_DTO = "Converting users to DTOs.";
+        public static final String SAME_ACCOUNT_TRANSFER_LOG = "Attempted to transfer money to the same account: {}"; // **New Constant**
+    }
+}

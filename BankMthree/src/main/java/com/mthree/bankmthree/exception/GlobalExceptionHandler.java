@@ -2,6 +2,7 @@ package com.mthree.bankmthree.exception;
 
 import com.mthree.bankmthree.exception.account.AccountBalanceNotZeroException;
 import com.mthree.bankmthree.exception.account.AccountsNotFoundException;
+import com.mthree.bankmthree.exception.account.ReceiverAccountNotFoundException;
 import com.mthree.bankmthree.exception.transaction.UnauthorizedTransferException;
 import com.mthree.bankmthree.exception.user.UserAlreadyExistsException;
 import com.mthree.bankmthree.exception.user.UserNotFoundException;
@@ -84,6 +85,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<CustomErrorResponse> handleUnauthorizedTransferException(UnauthorizedTransferException ex, WebRequest request) {
         Map<String, String> details = Map.of("cause", "The user is not authorized to perform this transfer.");
         return buildErrorResponse(ex.getMessage(), "UNAUTHORIZED_TRANSFER", HttpStatus.FORBIDDEN, request, details);
+    }
+
+    @ExceptionHandler(ReceiverAccountNotFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleReceiverAccountNotFoundException(UnauthorizedTransferException ex, WebRequest request) {
+        Map<String, String> details = Map.of("cause", "Ensure the receiver account ID is valid and associated with the correct user.");
+        return buildErrorResponse(ex.getMessage(), "RECEIVER_ACCOUNT_NOT_FOUND", HttpStatus.FORBIDDEN, request, details);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
