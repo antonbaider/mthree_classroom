@@ -14,6 +14,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller class for handling user-related operations.
+ * This includes retrieving and updating the user profile.
+ */
 @RestController
 @RequestMapping("/api/users")
 @Tag(name = "User API", description = "Operations related to users")
@@ -26,20 +30,36 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Endpoint to get the current user's profile.
+     * Only accessible to authenticated users.
+     *
+     * @param userDetails the details of the authenticated user
+     * @return ResponseEntity containing the UserDTO of the current user
+     */
     @Operation(summary = "Get the current user's profile")
     @GetMapping("/profile")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<UserDTO> getProfile(@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ApiResponse> getProfile(@AuthenticationPrincipal UserDetails userDetails) {
         User user = userService.findByUsername(userDetails.getUsername());
         UserDTO userDTO = userService.getUserDto(user);
-        return ResponseEntity.ok(userDTO);
+        return ResponseEntity.ok(new ApiResponse("Profile retrieved successfully", userDTO));
     }
 
+    /**
+     * Endpoint to update the current user's profile.
+     * Only accessible to authenticated users.
+     *
+     * @param updateUserRequest the request containing updated user details
+     * @param userDetails       the details of the authenticated user
+     * @return ResponseEntity containing the updated UserDTO
+     */
     @Operation(summary = "Update the current user's profile")
     @PutMapping("/update")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UpdateUserRequest updateUserRequest, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ApiResponse> updateUser(@Valid @RequestBody UpdateUserRequest updateUserRequest,
+                                                  @AuthenticationPrincipal UserDetails userDetails) {
         UserDTO updatedUser = userService.updateUser(userDetails.getUsername(), updateUserRequest);
-        return ResponseEntity.ok(updatedUser);
+        return ResponseEntity.ok(new ApiResponse("User profile updated successfully", updatedUser));
     }
 }

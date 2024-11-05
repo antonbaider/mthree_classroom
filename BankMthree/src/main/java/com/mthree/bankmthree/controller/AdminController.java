@@ -15,22 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller class for handling administrative operations.
+ * This includes transferring money between users with admin privileges.
+ */
 @RestController
 @RequestMapping("/api/admin")
 @Tag(name = "Admin Controller", description = "Endpoints for administrator")
 public class AdminController {
-    TransactionService transactionService;
+
+    private final TransactionService transactionService;
 
     @Autowired
     public AdminController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
 
+    /**
+     * Endpoint for transferring money between users by user_id.
+     * Only accessible to users with the 'ADMIN' role.
+     *
+     * @param transferRequest the transfer request containing sender and receiver account IDs and amount
+     * @param userDetails     the details of the authenticated user
+     * @return ResponseEntity containing a success message
+     */
     @Operation(summary = "Transfer money between users by user_id")
     @PostMapping("/adminTransfer")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> adminTransferMoney(@Valid @RequestBody TransferRequestByUserId transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
-        transactionService.transferMoneyBetweenUsers(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
-        return ResponseEntity.ok("Successfully sent");
+    public ResponseEntity<ApiResponse> adminTransferMoney(
+            @Valid @RequestBody TransferRequestByUserId transferRequest,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
+        // Perform the money transfer
+        transactionService.transferMoneyBetweenUsers(
+                transferRequest.getSenderAccountId(),
+                transferRequest.getReceiverAccountId(),
+                transferRequest.getAmount(),
+                userDetails.getUsername());
+
+        // Return a successful response
+        return ResponseEntity.ok(new ApiResponse("Successfully sent", null));
     }
 }

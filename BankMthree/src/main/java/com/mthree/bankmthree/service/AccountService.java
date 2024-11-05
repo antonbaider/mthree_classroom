@@ -15,7 +15,7 @@ import com.mthree.bankmthree.util.CardNumberGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,10 +68,11 @@ public class AccountService {
      *
      * @param currency The currency type for the new account.
      * @param user     The User entity for whom the account is being created.
+     * @return
      * @throws UniqueCardNumberGenerationException if a unique card number cannot be generated.
      */
     @Transactional
-    protected void createAndInitializeAccount(CurrencyType currency, User user) {
+    protected Account createAndInitializeAccount(CurrencyType currency, User user) {
         log.info(MessageConstants.Logs.CREATING_NEW_ACCOUNT, user.getUsername(), currency);
         String cardNumber = generateUniqueCardNumber();
 
@@ -84,6 +85,7 @@ public class AccountService {
                 .build();
 
         accountRepository.save(account);
+        return account;
     }
 
     /**
@@ -109,6 +111,7 @@ public class AccountService {
      * @throws AccountAlreadyExistsException if an account with the specified currency already exists.
      */
     @Transactional
+    @CachePut(value = "accounts", key = "#user.username + '-' + #currency")
     public void createAccount(User user, CurrencyType currency) {
         checkForExistingAccount(user, currency); // Check for existing account
         createAndInitializeAccount(currency, user);
@@ -121,7 +124,7 @@ public class AccountService {
      * @return A set of AccountDTOs representing the user's accounts.
      */
     @Transactional(readOnly = true)
-    @Cacheable(value = "userAccounts", key = "#user.id") // Cache based on user ID for better accuracy
+    @CacheEvict(value = "userAccounts", key = "#user.username")
     public Set<AccountDTO> getUserAccounts(User user) {
         log.info("Retrieving accounts for user: {}", user.getUsername());
 
@@ -162,12 +165,4 @@ public class AccountService {
         accountRepository.delete(account);
         log.info(MessageConstants.Logs.ACCOUNT_CLOSED_SUCCESSFULLY, cardNumber);
     }
-
-    /**
-     * Clears all caches related to user accounts.
-     */
-//    @CacheEvict(value = {"userAccounts"}, allEntries = true)
-//    public void clearAllCaches() {
-//        log.info(MessageConstants.Logs.CLEAR_ALL_CACHES);
-//    }
 }

@@ -19,12 +19,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller class for handling transaction-related operations.
+ * This includes transferring money between users and retrieving transaction history.
+ */
 @RestController
 @RequestMapping("/api/transactions")
 @Tag(name = "Transactions Controller", description = "Endpoints for user transactions")
 public class TransactionController {
-    UserService userService;
-    TransactionService transactionService;
+
+    private final UserService userService;
+    private final TransactionService transactionService;
 
     @Autowired
     public TransactionController(UserService userService, TransactionService transactionService) {
@@ -32,35 +37,75 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
+    /**
+     * Endpoint to transfer money between users identified by their account IDs.
+     * Only accessible to users with 'USER' or 'ADMIN' roles.
+     *
+     * @param transferRequest the transfer request containing sender and receiver account IDs and amount
+     * @param userDetails     the details of the authenticated user
+     * @return ResponseEntity containing a success message and transaction details
+     */
     @Operation(summary = "Transfer money between users by account_id")
     @PostMapping("/transfer")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<TransactionResponse> transferMoney(@Valid @RequestBody TransferRequestByUserId transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ApiResponse> transferMoney(
+            @Valid @RequestBody TransferRequestByUserId transferRequest,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
+        // Perform the transfer operation and obtain the transaction response
         TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
-        return ResponseEntity.ok(response);
+        // Return a success response encapsulated in ApiResponse
+        return ResponseEntity.ok(new ApiResponse("Transfer successful", response));
     }
 
+    /**
+     * Endpoint to transfer money between accounts using account numbers.
+     * Only accessible to users with 'USER' or 'ADMIN' roles.
+     *
+     * @param transferRequest the transfer request containing account numbers and amount
+     * @param userDetails     the details of the authenticated user
+     * @return ResponseEntity containing a success message and transaction details
+     */
     @Operation(summary = "Transfer money between accounts using account numbers")
     @PostMapping("/transferByCard")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<TransactionResponse> transferMoneyByCard(@Valid @RequestBody TransferRequest transferRequest, @AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ApiResponse> transferMoneyByCard(
+            @Valid @RequestBody TransferRequest transferRequest,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
+        // Perform the transfer operation and obtain the transaction response
         TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
-        return ResponseEntity.ok(response);
+        // Return a success response encapsulated in ApiResponse
+        return ResponseEntity.ok(new ApiResponse("Transfer by card successful", response));
     }
 
+    /**
+     * Endpoint to get the transaction history for the authenticated user.
+     * Only accessible to users with 'USER' or 'ADMIN' roles.
+     *
+     * @param userDetails the details of the authenticated user
+     * @return ResponseEntity containing a list of transaction history
+     */
     @Operation(summary = "Get transaction history for the authenticated user")
     @GetMapping("/history")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(@AuthenticationPrincipal UserDetails userDetails) {
+    public ResponseEntity<ApiResponse> getTransactionHistory(@AuthenticationPrincipal UserDetails userDetails) {
         Long userId = userService.findByUsername(userDetails.getUsername()).getId();
         List<TransactionResponse> history = transactionService.getTransactionHistory(userId);
-        return ResponseEntity.ok(history);
+
+        // Return the transaction history in a success response encapsulated in ApiResponse
+        return ResponseEntity.ok(new ApiResponse("Transaction history retrieved successfully", history));
     }
 
+    // Private helper methods for transaction response handling
     private TransactionResponse getTransactionResponse(TransferRequestByUserId transferRequest, UserDetails userDetails) {
-        Transaction transaction = transactionService.transferMoneyBetweenUsers(transferRequest.getSenderAccountId(), transferRequest.getReceiverAccountId(), transferRequest.getAmount(), userDetails.getUsername());
+        Transaction transaction = transactionService.transferMoneyBetweenUsers(
+                transferRequest.getSenderAccountId(),
+                transferRequest.getReceiverAccountId(),
+                transferRequest.getAmount(),
+                userDetails.getUsername());
 
         return TransactionMapper.INSTANCE.toResponse(transaction);
     }
