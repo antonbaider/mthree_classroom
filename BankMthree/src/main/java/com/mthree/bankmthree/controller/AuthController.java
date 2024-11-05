@@ -9,6 +9,7 @@ import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 @Tag(name = "Authentication Controller", description = "Endpoints for user authentication and registration")
+@Slf4j
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -80,8 +83,15 @@ public class AuthController {
             // Return a response indicating successful login and include the JWT token
             return ResponseEntity.ok(new ApiResponse("Login successful", new LoginResponse(jwt)));
         } catch (BadCredentialsException e) {
+            // Log the warning for bad credentials
+            log.warn("Invalid login attempt for user: {}", loginRequest.getUsername());
             // Return an unauthorized response if authentication fails
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiResponse("Error: Invalid username or password!", e.getMessage()));
+        } catch (AuthenticationException e) {
+            // Log for any other authentication exceptions
+            log.warn("Authentication failed: {}", e.getMessage());
+            // Return a response indicating that the username is not found
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiResponse("Error: Username not found!", e.getMessage()));
         }
     }
 }

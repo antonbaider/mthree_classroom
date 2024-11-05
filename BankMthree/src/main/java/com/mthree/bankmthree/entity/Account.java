@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "accounts", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "cardNumber")
+        @UniqueConstraint(columnNames = "card_number")
 })
 @EntityListeners(AccountEntityListener.class) // Registering the entity listener
 @Data
@@ -30,7 +30,7 @@ public class Account {
     @Column(nullable = false)
     private CurrencyType currency;
     @Column(nullable = false)
-    private BigDecimal balance = BigDecimal.ZERO;
+    private BigDecimal balance;
     @ToString.Exclude
     @Column(name = "card_number", nullable = false, unique = true, length = 16)
     private String cardNumber;

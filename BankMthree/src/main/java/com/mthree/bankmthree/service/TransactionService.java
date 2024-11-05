@@ -159,16 +159,6 @@ public class TransactionService {
     }
 
     /**
-     * Clears the transaction history cache for a specific user.
-     *
-     * @param userId the user ID whose cache is to be cleared
-     */
-    @CacheEvict(value = "transactionHistory", key = "#userId")
-    public void clearUserCache(Long userId) {
-        log.info(MessageConstants.Logs.CLEARING_CACHE_FOR_USER, userId);
-    }
-
-    /**
      * Validates the transfer request by checking card number formats and preventing same-account transfers.
      *
      * @param transferRequest the transfer request containing sender and receiver card numbers

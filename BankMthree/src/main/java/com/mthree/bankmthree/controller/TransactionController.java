@@ -52,7 +52,7 @@ public class TransactionController {
             @Valid @RequestBody TransferRequestByUserId transferRequest,
             @AuthenticationPrincipal UserDetails userDetails) {
 
-        // Perform the transfer operation and obtain the transaction response
+        // Perform the transfer operation and get the transaction response
         TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
         // Return a success response encapsulated in ApiResponse
@@ -74,7 +74,7 @@ public class TransactionController {
             @Valid @RequestBody TransferRequest transferRequest,
             @AuthenticationPrincipal UserDetails userDetails) {
 
-        // Perform the transfer operation and obtain the transaction response
+        // Perform the transfer operation and get the transaction response
         TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
         // Return a success response encapsulated in ApiResponse

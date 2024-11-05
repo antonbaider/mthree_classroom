@@ -68,7 +68,6 @@ public class AccountService {
      *
      * @param currency The currency type for the new account.
      * @param user     The User entity for whom the account is being created.
-     * @return
      * @throws UniqueCardNumberGenerationException if a unique card number cannot be generated.
      */
     @Transactional
@@ -113,7 +112,7 @@ public class AccountService {
     @Transactional
     @CachePut(value = "accounts", key = "#user.username + '-' + #currency")
     public void createAccount(User user, CurrencyType currency) {
-        checkForExistingAccount(user, currency); // Check for existing account
+        checkForExistingAccount(user, currency); // Check for an existing account
         createAndInitializeAccount(currency, user);
     }
 

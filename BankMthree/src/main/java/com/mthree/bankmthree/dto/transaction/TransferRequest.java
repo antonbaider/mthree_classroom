@@ -15,6 +15,6 @@ public class TransferRequest {
     @NotBlank(message = "Receiver account number is required")
     private String receiverCardNumber;
 
-    @DecimalMin(value = "0.01", inclusive = true, message = "Transfer amount must be greater than zero")
+    @DecimalMin(value = "0.01", message = "Transfer amount must be greater than zero")
     private BigDecimal amount;
 }

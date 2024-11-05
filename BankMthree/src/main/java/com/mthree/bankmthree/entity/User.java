@@ -143,7 +143,7 @@ public class User {
     /**
      * Set of family members associated with the user.
      * Represents a many-to-many self-referential relationship.
-     * Utilizes a join table named "user_family" to manage associations.
+     * Use a join table named "user_family" to manage associations.
      * Excluded from generated toString() and equals/hashCode() methods to prevent potential recursion issues.
      */
     @ManyToMany(fetch = FetchType.LAZY)
@@ -155,7 +155,7 @@ public class User {
     /**
      * Set of groups that the user belongs to.
      * Represents a many-to-many relationship with the UserGroup entity.
-     * Utilizes a join table named "user_group" to manage associations.
+     * Use a join table named "user_group" to manage associations.
      * Excluded from generated toString() methods to prevent potential recursion issues.
      */
     @ManyToMany

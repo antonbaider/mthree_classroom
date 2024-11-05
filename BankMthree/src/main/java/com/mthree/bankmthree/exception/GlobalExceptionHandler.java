@@ -2,8 +2,10 @@ package com.mthree.bankmthree.exception;
 
 import com.mthree.bankmthree.constants.MessageConstants;
 import com.mthree.bankmthree.exception.account.*;
+import com.mthree.bankmthree.exception.transaction.InsufficientFundsException;
 import com.mthree.bankmthree.exception.transaction.UnauthorizedTransferException;
 import com.mthree.bankmthree.exception.user.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
  * to standardized HTTP responses, ensuring consistent error handling and messaging.
  */
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     /**
@@ -37,16 +40,12 @@ public class GlobalExceptionHandler {
      * @param details   Additional details providing more context about the error.
      * @return A ResponseEntity containing the CustomErrorResponse object and the corresponding HTTP status.
      */
-    private ResponseEntity<CustomErrorResponse> buildErrorResponse(
-            String message,
-            String errorCode,
-            HttpStatus status,
-            WebRequest request,
-            Map<String, String> details
-    ) {
+    private ResponseEntity<CustomErrorResponse> buildErrorResponse(String message, String errorCode, HttpStatus status, WebRequest request, Map<String, String> details) {
+        // Log the error details before building the response
+        log.error("Error occurred: {} (Code: {}, Status: {}) - Details: {}", message, errorCode, status, details);
+
         // Create a new CustomErrorResponse object with all necessary fields
-        CustomErrorResponse errorResponse = new CustomErrorResponse(
-                status.value(), // HTTP status code (e.g., 400)
+        CustomErrorResponse errorResponse = new CustomErrorResponse(status.value(), // HTTP status code (e.g., 400)
                 status.getReasonPhrase(), // HTTP status reason (e.g., "Bad Request")
                 message, // Detailed error message
                 errorCode, // Specific error code
@@ -67,29 +66,17 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse detailing the validation failures.
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<CustomErrorResponse> handleValidationExceptions(
-            MethodArgumentNotValidException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex, WebRequest request) {
         // Extract field errors and map them to a field-specific error message
-        Map<String, String> details = ex.getBindingResult().getFieldErrors()
-                .stream()
-                .collect(Collectors.toMap(
-                        FieldError::getField, // Key: Field name
-                        FieldError::getDefaultMessage, // Value: Error message
-                        (existing, replacement) -> existing // Handle duplicate keys by keeping the first occurrence
-                ));
+        Map<String, String> details = ex.getBindingResult().getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, // Key: Field name
+                FieldError::getDefaultMessage, // Value: Error message
+                (existing, replacement) -> existing // Handle duplicate keys by keeping the first occurrence
+        ));
 
         // Define a generic validation failed message
         String message = MessageConstants.Exceptions.VALIDATION_FAILED;
         // Build and return the error response with HTTP 400 Bad Request
-        return buildErrorResponse(
-                message,
-                "VALIDATION_ERROR",
-                HttpStatus.BAD_REQUEST,
-                request,
-                details
-        );
+        return buildErrorResponse(message, "VALIDATION_ERROR", HttpStatus.BAD_REQUEST, request, details);
     }
 
     /**
@@ -101,20 +88,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the user already exists.
      */
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handleUserAlreadyExists(
-            UserAlreadyExistsException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleUserAlreadyExists(UserAlreadyExistsException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 409 Conflict
-        return buildErrorResponse(
-                ex.getMessage(),
-                "USER_EXISTS",
-                HttpStatus.CONFLICT,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "USER_EXISTS", HttpStatus.CONFLICT, request, details);
     }
 
     /**
@@ -126,20 +104,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the account was not found.
      */
     @ExceptionHandler(AccountNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleAccountNotFound(
-            AccountNotFoundException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleAccountNotFound(AccountNotFoundException ex, WebRequest request) {
         // Define additional error details, such as the resolution or next steps
         Map<String, String> details = Map.of("cause", MessageConstants.Exceptions.ACCOUNT_NOT_FOUND);
         // Build and return the error response with HTTP 404 Not Found
-        return buildErrorResponse(
-                ex.getMessage(),
-                "ACCOUNT_NOT_FOUND",
-                HttpStatus.NOT_FOUND,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "ACCOUNT_NOT_FOUND", HttpStatus.NOT_FOUND, request, details);
     }
 
     /**
@@ -151,20 +120,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the balance must be zero.
      */
     @ExceptionHandler(AccountBalanceNotZeroException.class)
-    public ResponseEntity<CustomErrorResponse> handleAccountBalanceNotZero(
-            AccountBalanceNotZeroException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleAccountBalanceNotZero(AccountBalanceNotZeroException ex, WebRequest request) {
         // Provide a resolution or guidance on how to fix the error
         Map<String, String> details = Map.of("resolution", MessageConstants.Exceptions.ACCOUNT_BALANCE_NON_ZERO);
         // Build and return the error response with HTTP 400 Bad Request
-        return buildErrorResponse(
-                ex.getMessage(),
-                "ACCOUNT_BALANCE_NON_ZERO",
-                HttpStatus.BAD_REQUEST,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "ACCOUNT_BALANCE_NON_ZERO", HttpStatus.BAD_REQUEST, request, details);
     }
 
     /**
@@ -176,20 +136,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the account already exists.
      */
     @ExceptionHandler(AccountAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handleAccountAlreadyExists(
-            AccountAlreadyExistsException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleAccountAlreadyExists(AccountAlreadyExistsException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 409 Conflict
-        return buildErrorResponse(
-                ex.getMessage(),
-                "ACCOUNT_ALREADY_EXISTS",
-                HttpStatus.CONFLICT,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "ACCOUNT_ALREADY_EXISTS", HttpStatus.CONFLICT, request, details);
     }
 
     /**
@@ -201,32 +152,30 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the invalid argument.
      */
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(
-            IllegalArgumentException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
         // Provide a general resolution message to guide the user
         Map<String, String> details = Map.of("resolution", MessageConstants.Exceptions.GENERAL_ERROR);
         // Build and return the error response with HTTP 400 Bad Request
-        return buildErrorResponse(
-                ex.getMessage(),
-                "INVALID_ARGUMENT",
-                HttpStatus.BAD_REQUEST,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "INVALID_ARGUMENT", HttpStatus.BAD_REQUEST, request, details);
     }
 
+    /**
+     * Handles exceptions related to the generation of unique card numbers.
+     * This exception is thrown when the application fails to generate a unique card number
+     * after the specified number of attempts, which may occur due to database constraints or
+     * other issues related to card number uniqueness.
+     *
+     * @param ex      The UniqueCardNumberGenerationException thrown during the process.
+     * @param request The web request during which the exception was thrown, used to provide context.
+     * @return A ResponseEntity with a CustomErrorResponse indicating the error related to card number generation.
+     */
     @ExceptionHandler(UniqueCardNumberGenerationException.class)
     public ResponseEntity<CustomErrorResponse> handleUniqueCardNumberGenerationException(UniqueCardNumberGenerationException ex, WebRequest request) {
+        // Prepare additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
-        return buildErrorResponse(
-                ex.getMessage(),
-                "GENERAL_ERROR",
-                HttpStatus.CONFLICT,
-                request,
-                details
-        );
+
+        // Build and return a standardized error response
+        return buildErrorResponse(ex.getMessage(), "GENERAL_ERROR", HttpStatus.CONFLICT, request, details);
     }
 
     /**
@@ -238,20 +187,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the phone number already exists.
      */
     @ExceptionHandler(UserPhoneAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handlePhoneAlreadyExists(
-            UserPhoneAlreadyExistsException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handlePhoneAlreadyExists(UserPhoneAlreadyExistsException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 409 Conflict
-        return buildErrorResponse(
-                ex.getMessage(),
-                "PHONE_EXISTS",
-                HttpStatus.CONFLICT,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "PHONE_EXISTS", HttpStatus.CONFLICT, request, details);
     }
 
     /**
@@ -263,20 +203,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the SSN already exists.
      */
     @ExceptionHandler(UserSsnAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handleSsnAlreadyExists(
-            UserSsnAlreadyExistsException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleSsnAlreadyExists(UserSsnAlreadyExistsException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 409 Conflict
-        return buildErrorResponse(
-                ex.getMessage(),
-                "SSN_EXISTS",
-                HttpStatus.CONFLICT,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "SSN_EXISTS", HttpStatus.CONFLICT, request, details);
     }
 
     /**
@@ -288,20 +219,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the user was not found.
      */
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleUserNotFoundException(
-            UserNotFoundException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
         // Provide additional details to guide the user on possible resolutions
         Map<String, String> details = Map.of("resolution", "Verify the user ID or username exists in the system.");
         // Build and return the error response with HTTP 404 Not Found
-        return buildErrorResponse(
-                ex.getMessage(),
-                "USER_NOT_FOUND",
-                HttpStatus.NOT_FOUND,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "USER_NOT_FOUND", HttpStatus.NOT_FOUND, request, details);
     }
 
     /**
@@ -313,20 +235,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the accounts were not found.
      */
     @ExceptionHandler(AccountsNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleAccountsNotFoundException(
-            AccountsNotFoundException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleAccountsNotFoundException(AccountsNotFoundException ex, WebRequest request) {
         // Provide additional details to guide the user on possible resolutions
         Map<String, String> details = Map.of("resolution", MessageConstants.Exceptions.ACCOUNT_NOT_FOUND);
         // Build and return the error response with HTTP 404 Not Found
-        return buildErrorResponse(
-                ex.getMessage(),
-                "ACCOUNT_NOT_FOUND",
-                HttpStatus.NOT_FOUND,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "ACCOUNT_NOT_FOUND", HttpStatus.NOT_FOUND, request, details);
     }
 
     /**
@@ -338,20 +251,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the transfer is unauthorized.
      */
     @ExceptionHandler(UnauthorizedTransferException.class)
-    public ResponseEntity<CustomErrorResponse> handleUnauthorizedTransferException(
-            UnauthorizedTransferException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleUnauthorizedTransferException(UnauthorizedTransferException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 403 Forbidden
-        return buildErrorResponse(
-                ex.getMessage(),
-                "UNAUTHORIZED_TRANSFER",
-                HttpStatus.FORBIDDEN,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "UNAUTHORIZED_TRANSFER", HttpStatus.FORBIDDEN, request, details);
     }
 
     /**
@@ -363,19 +267,32 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the receiver account was not found.
      */
     @ExceptionHandler(ReceiverAccountNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleReceiverAccountNotFoundException(
-            ReceiverAccountNotFoundException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleReceiverAccountNotFoundException(ReceiverAccountNotFoundException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 404 Not Found
-        return buildErrorResponse(
-                ex.getMessage(),
-                "RECEIVER_ACCOUNT_NOT_FOUND",
-                HttpStatus.NOT_FOUND,
-                request,
-                details
+        return buildErrorResponse(ex.getMessage(), "RECEIVER_ACCOUNT_NOT_FOUND", HttpStatus.NOT_FOUND, request, details);
+    }
+
+    /**
+     * Handles InsufficientFundsException, which is thrown when a user attempts
+     * to perform a transaction that exceeds their account balance.
+     *
+     * @param ex      the InsufficientFundsException thrown
+     * @param request the current web request, used to provide additional context in the response
+     * @return a ResponseEntity containing the error details and HTTP status
+     */
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ResponseEntity<CustomErrorResponse> handleInsufficientFundsException(InsufficientFundsException ex, WebRequest request) {
+        // Prepare additional error details to be included in the response
+        Map<String, String> details = Map.of("cause", ex.getMessage());
+
+        // Build and return a standardized error response using the existing method
+        return buildErrorResponse(ex.getMessage(),                     // The error message to be displayed
+                "INSUFFICIENT_FUNDS",               // A unique error code to identify the error type
+                HttpStatus.BAD_REQUEST,              // HTTP status code indicating a client-side error
+                request,                             // The current web request for additional context
+                details                              // Additional details about the error
         );
     }
 
@@ -388,20 +305,11 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the invalid password.
      */
     @ExceptionHandler(InvalidPasswordException.class)
-    public ResponseEntity<CustomErrorResponse> handleInvalidPasswordException(
-            InvalidPasswordException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleInvalidPasswordException(InvalidPasswordException ex, WebRequest request) {
         // Define additional error details, such as the cause of the exception
         Map<String, String> details = Map.of("cause", ex.getMessage());
         // Build and return the error response with HTTP 400 Bad Request
-        return buildErrorResponse(
-                ex.getMessage(),
-                "INVALID_PASSWORD",
-                HttpStatus.BAD_REQUEST,
-                request,
-                details
-        );
+        return buildErrorResponse(ex.getMessage(), "INVALID_PASSWORD", HttpStatus.BAD_REQUEST, request, details);
     }
 
     /**
@@ -412,10 +320,7 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating the message was not readable.
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<CustomErrorResponse> handleHttpMessageNotReadableException(
-            HttpMessageNotReadableException ex,
-            WebRequest request
-    ) {
+    public ResponseEntity<CustomErrorResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex, WebRequest request) {
         // Default error message for invalid enum values
         String message = MessageConstants.Exceptions.INVALID_ENUM_VALUE;
         Map<String, String> details = new HashMap<>();
@@ -432,13 +337,42 @@ public class GlobalExceptionHandler {
         }
 
         // Build and return the error response with HTTP 400 Bad Request
-        return buildErrorResponse(
-                message,
-                "INVALID_ENUM_VALUE",
-                HttpStatus.BAD_REQUEST,
-                request,
-                details
-        );
+        return buildErrorResponse(message, "INVALID_ENUM_VALUE", HttpStatus.BAD_REQUEST, request, details);
+    }
+
+    /**
+     * Handles exceptions when the provided username is not found.
+     * This can occur when a user attempts to log in or access a resource with a non-existent username.
+     *
+     * @param ex      The UsernameNotFoundException indicating the missing username.
+     * @param request The web request during which the exception was thrown.
+     * @return A ResponseEntity with a CustomErrorResponse indicating the username was not found.
+     */
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<CustomErrorResponse> handleUsernameNotFoundException(UsernameNotFoundException ex, WebRequest request) {
+        // Prepare additional error details to be included in the response
+        Map<String, String> details = Map.of("cause", ex.getMessage());
+
+        // Build and return a standardized error response using the existing method
+        return buildErrorResponse(ex.getMessage(), "USERNAME_NOT_FOUND", HttpStatus.NOT_FOUND, request, details);
+    }
+
+    /**
+     * Handles exceptions when a user is unauthorized to perform a specific action.
+     * This can occur when a user attempts to access resources or perform actions
+     * that they do not have permission for.
+     *
+     * @param ex      The UserUnauthorizedException indicating the unauthorized action.
+     * @param request The web request during which the exception was thrown.
+     * @return A ResponseEntity with a CustomErrorResponse indicating the user is unauthorized.
+     */
+    @ExceptionHandler(UserUnauthorizedException.class)
+    public ResponseEntity<CustomErrorResponse> handleUserUnauthorizedException(UserUnauthorizedException ex, WebRequest request) {
+        // Prepare additional error details to be included in the response
+        Map<String, String> details = Map.of("cause", ex.getMessage());
+
+        // Build and return a standardized error response using the existing method
+        return buildErrorResponse(ex.getMessage(), "USER_UNAUTHORIZED", HttpStatus.FORBIDDEN, request, details);
     }
 
     /**
@@ -450,23 +384,14 @@ public class GlobalExceptionHandler {
      * @return A ResponseEntity with a CustomErrorResponse indicating an internal server error.
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<CustomErrorResponse> handleAllOtherExceptions(
-            Exception ex,
-            WebRequest request
-    ) {
-        // It's crucial to log the exception for internal debugging purposes
+    public ResponseEntity<CustomErrorResponse> handleAllOtherExceptions(Exception ex, WebRequest request) {
+        // It's crucial to log the exception for internal debugging purposes,
         // However, avoid exposing sensitive information in logs or responses
         // Example: log.error("Unhandled exception occurred: ", ex);
 
         // Provide a generic cause to avoid leaking sensitive details
         Map<String, String> details = Map.of("cause", "An unexpected error occurred.");
         // Build and return the error response with HTTP 500 Internal Server Error
-        return buildErrorResponse(
-                MessageConstants.Exceptions.GENERAL_ERROR,
-                "INTERNAL_ERROR",
-                HttpStatus.INTERNAL_SERVER_ERROR,
-                request,
-                details
-        );
+        return buildErrorResponse(MessageConstants.Exceptions.GENERAL_ERROR, "INTERNAL_ERROR", HttpStatus.INTERNAL_SERVER_ERROR, request, details);
     }
 }

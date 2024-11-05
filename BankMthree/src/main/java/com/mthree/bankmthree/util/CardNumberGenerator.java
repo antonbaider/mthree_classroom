@@ -10,8 +10,8 @@ import java.security.SecureRandom;
 
 /**
  * Utility class responsible for generating unique and valid card numbers for user accounts.
- * Utilizes a cryptographically strong random number generator to ensure the unpredictability
- * and uniqueness of generated card numbers. Additionally, implements the Luhn algorithm
+ * Uses a cryptographically strong random number generator to ensure the unpredictability
+ * and uniqueness of generated card numbers. Additionally, implement the Luhn algorithm
  * to validate the generated card numbers.
  */
 @Component
@@ -32,7 +32,7 @@ public class CardNumberGenerator {
     private final int cardNumberLength;
 
     /**
-     * Prefix for the card number, typically indicating the card type or issuing bank.
+     * Prefix for the card number, typically indicating the card type or issuing a bank.
      * Example: "4000" for Visa cards.
      */
     private final String cardPrefix;
@@ -111,7 +111,7 @@ public class CardNumberGenerator {
 
             // Check if the generated card number already exists
             if (!accountRepository.existsByCardNumber(cardNumber)) {
-                log.info("Unique card number generated on attempt {}: {}", attempt, cardNumber);
+                log.info("Unique card number generated on attempt {}: {}", attempt, "**** **** **** " + cardNumber.substring(cardNumber.length() - 4));
                 return cardNumber;
             } else {
                 log.warn("Card number collision detected on attempt {}: {}", attempt, cardNumber);

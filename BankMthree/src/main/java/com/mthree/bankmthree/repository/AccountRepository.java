@@ -5,7 +5,6 @@ import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.entity.enums.CurrencyType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
