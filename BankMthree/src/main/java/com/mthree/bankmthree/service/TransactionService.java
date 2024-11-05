@@ -10,14 +10,13 @@ import com.mthree.bankmthree.exception.AccountsNotFoundException;
 import com.mthree.bankmthree.exception.IllegalArgumentsException;
 import com.mthree.bankmthree.exception.UnauthorizedTransferException;
 import com.mthree.bankmthree.mapper.TransactionMapper;
-import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
-import com.mthree.bankmthree.repository.UserRepository;
-import com.mthree.bankmthree.util.CardNumberGenerator;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,47 +25,41 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class TransactionService {
-    private final UserMapper userMapper;
-    private final UserRepository userRepository;
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final CardNumberGenerator cardNumberGenerator;
     private final UserService userService;
 
-
     @Autowired
-    public TransactionService(UserMapper userMapper, UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder, CardNumberGenerator cardNumberGenerator, UserService userService) {
-        this.userMapper = userMapper;
-        this.userRepository = userRepository;
+    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository, UserService userService) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.cardNumberGenerator = cardNumberGenerator;
         this.userService = userService;
     }
 
     @Transactional
     public Transaction transferMoneyByCardNumber(@Valid TransferRequest transferRequest, String username) {
+        log.info("Starting transfer from {} to {}", transferRequest.getSenderCardNumber(), transferRequest.getReceiverCardNumber());
         Account sender = accountRepository.findByCardNumber(transferRequest.getSenderCardNumber()).orElseThrow(() -> new AccountsNotFoundException("Sender account not found"));
-
         Account receiver = accountRepository.findByCardNumber(transferRequest.getReceiverCardNumber()).orElseThrow(() -> new AccountsNotFoundException("Receiver account not found"));
 
         validateTransfer(sender, receiver, transferRequest.getAmount(), username);
 
-        Transaction transaction = new Transaction();
         sender.setBalance(sender.getBalance().subtract(transferRequest.getAmount()));
         receiver.setBalance(receiver.getBalance().add(transferRequest.getAmount()));
 
         accountRepository.save(sender);
         accountRepository.save(receiver);
 
+        Transaction transaction = new Transaction();
         transaction.setAmount(transferRequest.getAmount());
         transaction.setSenderAccount(sender);
         transaction.setReceiverAccount(receiver);
         transaction.setTimestamp(LocalDateTime.now());
+
+        log.info("Transfer from {} to {} completed successfully", transferRequest.getSenderCardNumber(), transferRequest.getReceiverCardNumber());
         return transactionRepository.save(transaction);
     }
 
@@ -79,6 +72,7 @@ public class TransactionService {
 
         sender.setBalance(sender.getBalance().subtract(amount));
         receiver.setBalance(receiver.getBalance().add(amount));
+
         accountRepository.save(sender);
         accountRepository.save(receiver);
 
@@ -91,27 +85,35 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+    @Cacheable(value = "transactionHistory", key = "#userId")
     public List<TransactionResponse> getTransactionHistory(Long userId) {
         List<Transaction> transactions = transactionRepository.findBySenderIdOrReceiverIdOrderByTimestampDesc(userId, userId);
 
-        return transactions.stream()
-                .map(TransactionMapper.INSTANCE::toResponse)
-                .collect(Collectors.toList());
+        return transactions.stream().map(TransactionMapper.INSTANCE::toResponse).collect(Collectors.toList());
+    }
+
+    @CacheEvict(value = {"transactions", "transactionHistory"}, allEntries = true)
+    public void clearCache() {
+        log.info("Clearing all cache entries for transactions and transaction history.");
     }
 
     private void validateTransfer(Account sender, Account receiver, BigDecimal amount, String username) {
+        log.info("Validating transfer for user {}", username);
         User user = userService.findByUsername(username);
         boolean isAdmin = user.getRole().equals(Role.ROLE_ADMIN);
 
         if (!isAdmin && !sender.getUser().getUsername().equals(username)) {
+            log.warn("Unauthorized transfer attempt by user {}", username);
             throw new UnauthorizedTransferException("You do not own the sender account");
         }
 
         if (!sender.getCurrency().equals(receiver.getCurrency())) {
+            log.warn("Currency mismatch between sender and receiver accounts");
             throw new IllegalArgumentsException("Currency mismatch between accounts");
         }
 
         if (!isAdmin && sender.getBalance().compareTo(amount) < 0) {
+            log.warn("Insufficient funds for user {} on account {}", username, sender.getCardNumber());
             throw new IllegalArgumentsException("Insufficient balance in sender's account");
         }
     }

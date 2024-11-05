@@ -2,8 +2,8 @@ package com.mthree.bankmthree.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,77 +17,86 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                                  HttpHeaders headers,
+                                                                  HttpStatus status,
+                                                                  WebRequest request) {
+        Map<String, String> fieldErrors = new HashMap<>();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            fieldErrors.put(error.getField(), error.getDefaultMessage());
+        }
 
-        CustomErrorResponse errorResponse = new CustomErrorResponse(status.value(), "Validation Failed", "Invalid input parameters");
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                status.value(),
+                "Validation Failed",
+                "Invalid input parameters",
+                LocalDateTime.now(),
+                request.getDescription(false).replace("uri=", "")
+        );
+        errorResponse.setDetails(fieldErrors);
 
         return new ResponseEntity<>(errorResponse, headers, status);
     }
 
     @ExceptionHandler(UnauthorizedException.class)
-    public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException ex) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access Denied: " + ex.getMessage());
+    public ResponseEntity<CustomErrorResponse> handleUnauthorizedException(UnauthorizedException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.FORBIDDEN, request);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handleUserAlreadyExists(UserAlreadyExistsException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(409));
+    public ResponseEntity<CustomErrorResponse> handleUserAlreadyExists(UserAlreadyExistsException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT, request);
     }
 
     @ExceptionHandler(PhoneAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handlePhoneAlreadyExistsException(PhoneAlreadyExistsException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(409));
+    public ResponseEntity<CustomErrorResponse> handlePhoneAlreadyExistsException(PhoneAlreadyExistsException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT, request);
     }
 
     @ExceptionHandler(InsufficientFundsException.class)
-    public ResponseEntity<CustomErrorResponse> handleInsufficientFundsException(InsufficientFundsException ex) {
-        return buildErrorResponse("Error: " + ex.getMessage(), HttpStatusCode.valueOf(400));
+    public ResponseEntity<CustomErrorResponse> handleInsufficientFundsException(InsufficientFundsException ex, WebRequest request) {
+        return buildErrorResponse("Error: " + ex.getMessage(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(UnauthorizedTransferException.class)
-    public ResponseEntity<CustomErrorResponse> handleUnauthorizedTransferException(UnauthorizedTransferException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(403));
+    public ResponseEntity<CustomErrorResponse> handleUnauthorizedTransferException(UnauthorizedTransferException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.FORBIDDEN, request);
     }
 
     @ExceptionHandler(AccountsNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleAccountsNotFoundException(AccountsNotFoundException ex, WebRequest request) {
-        Map<String, Object> errorDetails = new HashMap<>();
-        errorDetails.put("timestamp", LocalDateTime.now());
-        errorDetails.put("status", HttpStatus.NOT_FOUND.value());
-        errorDetails.put("error", "Account Not Found");
-        errorDetails.put("message", ex.getMessage());
-        errorDetails.put("path", request.getDescription(false).replace("uri=", ""));
-
-        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    public ResponseEntity<CustomErrorResponse> handleAccountsNotFoundException(AccountsNotFoundException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND, request);
     }
 
     @ExceptionHandler(AccountBalanceNotZeroException.class)
-    public ResponseEntity<CustomErrorResponse> handleAccountBalanceNotZeroException(AccountBalanceNotZeroException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(400));
+    public ResponseEntity<CustomErrorResponse> handleAccountBalanceNotZeroException(AccountBalanceNotZeroException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, request);
     }
 
-
     @ExceptionHandler(SsnAlreadyExistsException.class)
-    public ResponseEntity<CustomErrorResponse> handleSsnAlreadyExistsException(SsnAlreadyExistsException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(409));
+    public ResponseEntity<CustomErrorResponse> handleSsnAlreadyExistsException(SsnAlreadyExistsException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT, request);
     }
 
     @ExceptionHandler(IllegalArgumentsException.class)
-    public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentsException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(400));
+    public ResponseEntity<CustomErrorResponse> handleIllegalArgumentException(IllegalArgumentsException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
-        return buildErrorResponse(ex.getMessage(), HttpStatusCode.valueOf(404));
+    public ResponseEntity<CustomErrorResponse> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND, request);
     }
 
-    private ResponseEntity<CustomErrorResponse> buildErrorResponse(String message, HttpStatusCode status) {
-        CustomErrorResponse errorResponse = new CustomErrorResponse(status.value(), status.toString(), message);
+    private ResponseEntity<CustomErrorResponse> buildErrorResponse(String message, HttpStatus status, WebRequest request) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                status.value(),
+                status.getReasonPhrase(),
+                message,
+                LocalDateTime.now(),
+                request.getDescription(false).replace("uri=", "")
+        );
         return new ResponseEntity<>(errorResponse, HttpHeaders.EMPTY, status);
     }
 }

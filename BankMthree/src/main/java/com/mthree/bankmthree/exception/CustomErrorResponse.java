@@ -1,25 +1,23 @@
 package com.mthree.bankmthree.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Map;
-
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class CustomErrorResponse {
-    private LocalDateTime timestamp;
     private int status;
     private String error;
     private String message;
+    private LocalDateTime timestamp;
+    private String path;
+    private Map<String, String> details;
 
-    public CustomErrorResponse(int status, String error, String message) {
-        this.timestamp = LocalDateTime.now();
+    public CustomErrorResponse(int status, String error, String message, LocalDateTime timestamp, String path) {
         this.status = status;
         this.error = error;
         this.message = message;
+        this.timestamp = timestamp;
+        this.path = path;
     }
 }

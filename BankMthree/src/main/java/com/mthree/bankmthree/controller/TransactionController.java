@@ -1,13 +1,14 @@
 package com.mthree.bankmthree.controller;
 
 import com.mthree.bankmthree.dto.TransactionResponse;
-import com.mthree.bankmthree.dto.TransferRequestByUserId;
 import com.mthree.bankmthree.dto.TransferRequest;
+import com.mthree.bankmthree.dto.TransferRequestByUserId;
 import com.mthree.bankmthree.entity.Transaction;
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.service.TransactionService;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
+@Tag(name = "Transactions Controller", description = "Endpoints for user transactions")
 public class TransactionController {
     UserService userService;
     TransactionService transactionService;
@@ -30,7 +32,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @Operation(summary = "Transfer money between users by aacount_id")
+    @Operation(summary = "Transfer money between users by account_id")
     @PostMapping("/transfer")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<TransactionResponse> transferMoney(@Valid @RequestBody TransferRequestByUserId transferRequest, @AuthenticationPrincipal UserDetails userDetails) {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @OpenAPIDefinition(
-        info = @Info(title = "Bank API", version = "1.0", description = "API for Bank Management"),
+        info = @Info(title = "BankMthree API", version = "1.0", description = "Anton Baider API for Bank Management"),
         security = @SecurityRequirement(name = "bearerAuth")
 )
 @SecurityScheme(

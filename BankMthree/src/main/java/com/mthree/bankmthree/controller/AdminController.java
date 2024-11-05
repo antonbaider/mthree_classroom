@@ -3,6 +3,7 @@ package com.mthree.bankmthree.controller;
 import com.mthree.bankmthree.dto.TransferRequestByUserId;
 import com.mthree.bankmthree.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/admin")
+@Tag(name = "Admin Controller", description = "Endpoints for administrator")
 public class AdminController {
     TransactionService transactionService;
 

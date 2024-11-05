@@ -5,6 +5,7 @@ import com.mthree.bankmthree.dto.CloseAccountRequest;
 import com.mthree.bankmthree.service.AccountService;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Account Controller", description = "Endpoints for user bank accounts")
 public class AccountController {
     private final AccountService accountService;
     UserService userService;

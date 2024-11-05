@@ -52,5 +52,6 @@ public class UserDTO {
     @Schema(description = "Social Security Number", example = "123456789", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String ssn;
 
+    @Schema(description = "Role of the user", example = "ROLE_USER")
     private String role;
 }

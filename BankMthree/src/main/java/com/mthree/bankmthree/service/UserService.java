@@ -9,8 +9,6 @@ import com.mthree.bankmthree.exception.SsnAlreadyExistsException;
 import com.mthree.bankmthree.exception.UserAlreadyExistsException;
 import com.mthree.bankmthree.exception.UserNotFoundException;
 import com.mthree.bankmthree.mapper.UserMapper;
-import com.mthree.bankmthree.repository.AccountRepository;
-import com.mthree.bankmthree.repository.TransactionRepository;
 import com.mthree.bankmthree.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +26,18 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
-    private final AccountRepository accountRepository;
-    private final TransactionRepository transactionRepository;
     private final PasswordEncoder passwordEncoder;
     private final AccountService accountService;
 
     @Autowired
-    public UserService(UserMapper userMapper, UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, PasswordEncoder passwordEncoder, AccountService accountService) {
+    public UserService(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder, AccountService accountService) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
-        this.accountRepository = accountRepository;
-        this.transactionRepository = transactionRepository;
         this.passwordEncoder = passwordEncoder;
         this.accountService = accountService;
     }
 
+    @Transactional(readOnly = true)
     public UserDTO getUserDto(User user) {
         return userMapper.toUserDTO(user);
     }
@@ -75,8 +70,7 @@ public class UserService {
 
     @Transactional
     public UserDTO updateUser(String username, UpdateUserRequest updateUserRequest) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("User not found"));
 
         validateUser(updateUserRequest, user);
 
