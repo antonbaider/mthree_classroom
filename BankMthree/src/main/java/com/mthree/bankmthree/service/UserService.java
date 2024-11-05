@@ -1,9 +1,13 @@
 package com.mthree.bankmthree.service;
 
-import com.mthree.bankmthree.dto.RegisterRequest;
-import com.mthree.bankmthree.dto.UpdateUserRequest;
-import com.mthree.bankmthree.dto.UserDTO;
+import com.mthree.bankmthree.dto.auth.RegisterRequest;
+import com.mthree.bankmthree.dto.user.UpdateUserRequest;
+import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.entity.*;
+import com.mthree.bankmthree.entity.enums.CurrencyType;
+import com.mthree.bankmthree.entity.enums.Role;
+import com.mthree.bankmthree.entity.enums.Status;
+import com.mthree.bankmthree.entity.enums.UserType;
 import com.mthree.bankmthree.exception.user.UserPhoneAlreadyExistsException;
 import com.mthree.bankmthree.exception.user.UserSsnAlreadyExistsException;
 import com.mthree.bankmthree.exception.user.UserAlreadyExistsException;

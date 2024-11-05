@@ -1,5 +1,8 @@
 package com.mthree.bankmthree.entity;
 
+import com.mthree.bankmthree.entity.enums.Role;
+import com.mthree.bankmthree.entity.enums.Status;
+import com.mthree.bankmthree.entity.enums.UserType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

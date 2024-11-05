@@ -1,6 +1,6 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.account;
 
-import com.mthree.bankmthree.entity.CurrencyType;
+import com.mthree.bankmthree.entity.enums.CurrencyType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

@@ -1,20 +1,12 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.auth;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import jakarta.validation.constraints.*;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class UserDTO {
+public class RegisterRequest {
 
     @NotBlank(message = "First name is required")
     @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
@@ -34,7 +26,7 @@ public class UserDTO {
     private String username;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 5, max = 50, message = "Password must be between 5 and 50 characters")
+    @Size(min = 5, max = 50, message = "Password must be between 8 and 50 characters")
     @Schema(description = "Password for login", example = "P@ssw0rd", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String password;
 
@@ -48,10 +40,10 @@ public class UserDTO {
     private String phone;
 
     @NotBlank(message = "SSN is required")
-    @Pattern(regexp = "^(?!000|666|9\\d\\d)(\\d{3})(?!00)(\\d{2})(?!0000)(\\d{4})$", message = "Invalid SSN format")
+    @Pattern(
+            regexp = "^(?!000|666|9\\d\\d)(\\d{3})(?!00)(\\d{2})(?!0000)(\\d{4})$",
+            message = "Invalid SSN format"
+    )
     @Schema(description = "Social Security Number", example = "123456789", accessMode = Schema.AccessMode.WRITE_ONLY)
     private String ssn;
-
-    @Schema(description = "Role of the user", example = "ROLE_USER")
-    private String role;
 }

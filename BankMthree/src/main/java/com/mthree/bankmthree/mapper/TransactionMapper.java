@@ -1,6 +1,6 @@
 package com.mthree.bankmthree.mapper;
 
-import com.mthree.bankmthree.dto.TransactionResponse;
+import com.mthree.bankmthree.dto.transaction.TransactionResponse;
 import com.mthree.bankmthree.entity.Transaction;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,8 +1,8 @@
 package com.mthree.bankmthree.service;
 
-import com.mthree.bankmthree.dto.AccountDTO;
+import com.mthree.bankmthree.dto.account.AccountDTO;
 import com.mthree.bankmthree.entity.Account;
-import com.mthree.bankmthree.entity.CurrencyType;
+import com.mthree.bankmthree.entity.enums.CurrencyType;
 import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.exception.account.AccountBalanceNotZeroException;
 import com.mthree.bankmthree.exception.account.AccountsNotFoundException;
@@ -79,7 +79,6 @@ public class AccountService {
     }
 
     @Transactional(readOnly = true)
-    @CacheEvict(value = "userAccounts", key = "#user.username")
     public Set<AccountDTO> getUserAccounts(User user) {
         return user.getAccounts().stream().map(userMapper::toAccountDTO).collect(Collectors.toSet());
     }

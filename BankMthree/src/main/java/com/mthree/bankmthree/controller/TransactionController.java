@@ -1,8 +1,8 @@
 package com.mthree.bankmthree.controller;
 
-import com.mthree.bankmthree.dto.TransactionResponse;
-import com.mthree.bankmthree.dto.TransferRequest;
-import com.mthree.bankmthree.dto.TransferRequestByUserId;
+import com.mthree.bankmthree.dto.transaction.TransactionResponse;
+import com.mthree.bankmthree.dto.transaction.TransferRequest;
+import com.mthree.bankmthree.dto.transaction.TransferRequestByUserId;
 import com.mthree.bankmthree.entity.Transaction;
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.service.TransactionService;

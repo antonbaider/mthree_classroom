@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;

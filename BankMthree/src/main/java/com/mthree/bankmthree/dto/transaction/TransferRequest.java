@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.transaction;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.entity;
+package com.mthree.bankmthree.entity.enums;
 
 public enum Role {
     ROLE_ADMIN,

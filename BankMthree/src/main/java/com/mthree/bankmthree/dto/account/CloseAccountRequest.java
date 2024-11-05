@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.account;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.mthree.bankmthree.controller;
 
-import com.mthree.bankmthree.dto.UpdateUserRequest;
-import com.mthree.bankmthree.dto.UserDTO;
+import com.mthree.bankmthree.dto.user.UpdateUserRequest;
+import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

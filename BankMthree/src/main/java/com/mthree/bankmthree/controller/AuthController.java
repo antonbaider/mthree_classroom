@@ -1,9 +1,9 @@
 package com.mthree.bankmthree.controller;
 
-import com.mthree.bankmthree.dto.LoginRequest;
-import com.mthree.bankmthree.dto.LoginResponse;
-import com.mthree.bankmthree.dto.RegisterRequest;
-import com.mthree.bankmthree.dto.UserDTO;
+import com.mthree.bankmthree.dto.auth.LoginRequest;
+import com.mthree.bankmthree.dto.auth.LoginResponse;
+import com.mthree.bankmthree.dto.auth.RegisterRequest;
+import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.security.JwtUtils;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

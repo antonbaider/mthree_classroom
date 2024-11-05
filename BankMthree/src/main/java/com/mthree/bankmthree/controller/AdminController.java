@@ -1,6 +1,6 @@
 package com.mthree.bankmthree.controller;
 
-import com.mthree.bankmthree.dto.TransferRequestByUserId;
+import com.mthree.bankmthree.dto.transaction.TransferRequestByUserId;
 import com.mthree.bankmthree.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

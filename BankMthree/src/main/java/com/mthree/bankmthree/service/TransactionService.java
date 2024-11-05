@@ -1,9 +1,9 @@
 package com.mthree.bankmthree.service;
 
-import com.mthree.bankmthree.dto.TransactionResponse;
-import com.mthree.bankmthree.dto.TransferRequest;
+import com.mthree.bankmthree.dto.transaction.TransactionResponse;
+import com.mthree.bankmthree.dto.transaction.TransferRequest;
 import com.mthree.bankmthree.entity.Account;
-import com.mthree.bankmthree.entity.Role;
+import com.mthree.bankmthree.entity.enums.Role;
 import com.mthree.bankmthree.entity.Transaction;
 import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.exception.account.AccountsNotFoundException;

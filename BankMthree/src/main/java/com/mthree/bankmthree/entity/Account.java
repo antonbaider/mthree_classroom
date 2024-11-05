@@ -1,5 +1,6 @@
 package com.mthree.bankmthree.entity;
 
+import com.mthree.bankmthree.entity.enums.CurrencyType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

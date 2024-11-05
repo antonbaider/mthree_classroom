@@ -1,7 +1,7 @@
 package com.mthree.bankmthree.controller;
 
-import com.mthree.bankmthree.dto.AccountDTO;
-import com.mthree.bankmthree.dto.CloseAccountRequest;
+import com.mthree.bankmthree.dto.account.AccountDTO;
+import com.mthree.bankmthree.dto.account.CloseAccountRequest;
 import com.mthree.bankmthree.service.AccountService;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,11 +1,11 @@
 package com.mthree.bankmthree.mapper;
 
 
-import com.mthree.bankmthree.dto.AccountDTO;
-import com.mthree.bankmthree.dto.RegisterRequest;
-import com.mthree.bankmthree.dto.UserDTO;
+import com.mthree.bankmthree.dto.account.AccountDTO;
+import com.mthree.bankmthree.dto.auth.RegisterRequest;
+import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.entity.Account;
-import com.mthree.bankmthree.entity.Role;
+import com.mthree.bankmthree.entity.enums.Role;
 import com.mthree.bankmthree.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

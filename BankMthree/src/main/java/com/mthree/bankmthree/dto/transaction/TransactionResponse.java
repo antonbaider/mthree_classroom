@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.dto;
+package com.mthree.bankmthree.dto.transaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
