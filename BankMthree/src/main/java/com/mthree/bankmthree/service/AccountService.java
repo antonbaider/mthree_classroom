@@ -12,6 +12,7 @@ import com.mthree.bankmthree.exception.account.UniqueCardNumberGenerationExcepti
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.util.CardNumberGenerator;
+import jakarta.validation.constraints.NotBlank;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
@@ -111,9 +112,9 @@ public class AccountService {
      */
     @Transactional
     @CachePut(value = "accounts", key = "#user.username + '-' + #currency")
-    public void createAccount(User user, CurrencyType currency) {
+    public Account createAccount(User user, CurrencyType currency) {
         checkForExistingAccount(user, currency); // Check for an existing account
-        createAndInitializeAccount(currency, user);
+        return createAndInitializeAccount(currency, user);
     }
 
     /**
@@ -163,5 +164,19 @@ public class AccountService {
 
         accountRepository.delete(account);
         log.info(MessageConstants.Logs.ACCOUNT_CLOSED_SUCCESSFULLY, cardNumber);
+    }
+
+    /**
+     * Retrieves an account by its card number and the username of the associated user.
+     *
+     * @param cardNumber The card number of the account.
+     * @param username   The username of the user associated with the account.
+     * @return The Account entity associated with the provided card number and username.
+     * @throws AccountsNotFoundException if no account is found with the given card number and username.
+     */
+    @Transactional(readOnly = true)
+    public Account findAccountByCardNumber(@NotBlank(message = "Card number is required") String cardNumber, String username) {
+        return accountRepository.findByCardNumberAndUserUsername(cardNumber, username)
+                .orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.ACCOUNT_NOT_FOUND));
     }
 }

@@ -94,7 +94,9 @@ public class TransactionController {
     public ResponseEntity<ApiResponse> getTransactionHistory(@AuthenticationPrincipal UserDetails userDetails) {
         Long userId = userService.findByUsername(userDetails.getUsername()).getId();
         List<TransactionResponse> history = transactionService.getTransactionHistory(userId);
-
+        if (history.isEmpty()) {
+            return ResponseEntity.ok(new ApiResponse("Transaction history retrieved successfully", "No transactions found"));
+        }
         // Return the transaction history in a success response encapsulated in ApiResponse
         return ResponseEntity.ok(new ApiResponse("Transaction history retrieved successfully", history));
     }

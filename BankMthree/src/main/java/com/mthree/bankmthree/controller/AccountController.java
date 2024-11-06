@@ -2,6 +2,8 @@ package com.mthree.bankmthree.controller;
 
 import com.mthree.bankmthree.dto.account.AccountDTO;
 import com.mthree.bankmthree.dto.account.CloseAccountRequest;
+import com.mthree.bankmthree.entity.Account;
+import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.service.AccountService;
 import com.mthree.bankmthree.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,11 +29,13 @@ public class AccountController {
 
     private final AccountService accountService;
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @Autowired
-    public AccountController(UserService userService, AccountService accountService) {
+    public AccountController(UserService userService, AccountService accountService, UserMapper userMapper) {
         this.userService = userService;
         this.accountService = accountService;
+        this.userMapper = userMapper;
     }
 
     /**
@@ -47,8 +51,10 @@ public class AccountController {
     public ResponseEntity<ApiResponse> createAccount(@Valid @RequestBody AccountDTO accountDTO, @AuthenticationPrincipal UserDetails userDetails) {
         String username = userDetails.getUsername();
         var user = userService.findByUsername(username);
-        accountService.createAccount(user, accountDTO.getCurrency());
-        return ResponseEntity.ok(new ApiResponse("Account created successfully!", accountDTO));
+        Account account = accountService.createAccount(user, accountDTO.getCurrency());
+        AccountDTO createdAccountDTO = userMapper.toAccountDTO(account);
+
+        return ResponseEntity.ok(new ApiResponse("Account created successfully!", createdAccountDTO));
     }
 
     /**
@@ -79,7 +85,16 @@ public class AccountController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<ApiResponse> closeAccount(@RequestBody CloseAccountRequest request, @AuthenticationPrincipal UserDetails userDetails) {
         String username = userDetails.getUsername();
+
+        // Fetch the account before closing it
+        Account accountToClose = accountService.findAccountByCardNumber(request.getCardNumber(), username);
+
+        // Map the account to DTO for response
+        AccountDTO closedAccountDTO = userMapper.toAccountDTO(accountToClose);
+
+        // Close the account
         accountService.closeAccount(request.getCardNumber(), username);
-        return ResponseEntity.ok(new ApiResponse("Account closed successfully!", null));
+
+        return ResponseEntity.ok(new ApiResponse("Account closed successfully!", closedAccountDTO));
     }
 }
