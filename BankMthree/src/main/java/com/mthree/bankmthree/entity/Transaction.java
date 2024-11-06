@@ -1,5 +1,6 @@
 package com.mthree.bankmthree.entity;
 
+import com.mthree.bankmthree.listener.TransactionListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transactions")
+@EntityListeners(TransactionListener.class)
 @Data
 public class Transaction {
     @Id

@@ -4,12 +4,15 @@ import com.mthree.bankmthree.entity.Account;
 import lombok.extern.slf4j.Slf4j;
 
 import jakarta.persistence.PrePersist;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 
 /**
  * Entity listener for the Account entity.
  * Responsible for setting audit fields such as creationDate and expirationDate.
  */
+@Component
 @Slf4j
 public class AccountEntityListener {
 

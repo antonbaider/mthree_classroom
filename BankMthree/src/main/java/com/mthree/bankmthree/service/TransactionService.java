@@ -13,7 +13,6 @@ import com.mthree.bankmthree.exception.transaction.UnauthorizedTransferException
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
-import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -25,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,41 +57,61 @@ public class TransactionService {
      */
     @Transactional
     public Transaction transferMoneyUsingCardNumbers(@Valid TransferRequest transferRequest, String username) {
-        // Logging the start of the transfer
-        log.info(MessageConstants.Logs.TRANSFER_STARTED, maskCardNumber(transferRequest.getSenderCardNumber()), maskCardNumber(transferRequest.getReceiverCardNumber()));
+        try {
+            // Logging the start of the transfer
+            log.info(MessageConstants.Logs.TRANSFER_STARTED,
+                    maskCardNumber(transferRequest.getSenderCardNumber()),
+                    maskCardNumber(transferRequest.getReceiverCardNumber()));
 
-        // Validating card number formats
-        validateCardNumberFormat(transferRequest.getSenderCardNumber());
-        validateCardNumberFormat(transferRequest.getReceiverCardNumber());
+            // Validating card number formats
+            validateCardNumberFormat(transferRequest.getSenderCardNumber());
+            validateCardNumberFormat(transferRequest.getReceiverCardNumber());
 
-        // Validating same-account transfer
-        validateTransferRequest(transferRequest);
+            // Validating same-account transfer
+            validateTransferRequest(transferRequest);
 
-        // Fetching sender and receiver accounts
-        Account sender = accountRepository.findByCardNumber(transferRequest.getSenderCardNumber()).orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.SENDER_ACCOUNT_NOT_FOUND));
-        Account receiver = accountRepository.findByCardNumber(transferRequest.getReceiverCardNumber()).orElseThrow(() -> new ReceiverAccountNotFoundException(MessageConstants.Exceptions.RECEIVER_ACCOUNT_NOT_FOUND));
+            // Fetching sender and receiver accounts
+            Account sender = accountRepository.findByCardNumber(transferRequest.getSenderCardNumber())
+                    .orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.SENDER_ACCOUNT_NOT_FOUND));
+            Account receiver = accountRepository.findByCardNumber(transferRequest.getReceiverCardNumber())
+                    .orElseThrow(() -> new ReceiverAccountNotFoundException(MessageConstants.Exceptions.RECEIVER_ACCOUNT_NOT_FOUND));
 
-        // Validating the transfer details
-        validateTransfer(sender, receiver, transferRequest.getAmount(), username);
+            // Validating the transfer details
+            validateTransfer(sender, receiver, transferRequest.getAmount(), username);
 
-        // Performing the transfer
-        sender.setBalance(sender.getBalance().subtract(transferRequest.getAmount()));
-        receiver.setBalance(receiver.getBalance().add(transferRequest.getAmount()));
+            // Performing the transfer
+            sender.setBalance(sender.getBalance().subtract(transferRequest.getAmount()));
+            receiver.setBalance(receiver.getBalance().add(transferRequest.getAmount()));
 
-        accountRepository.save(sender);
-        accountRepository.save(receiver);
+            accountRepository.save(sender);
+            accountRepository.save(receiver);
 
-        // Creating the transaction record
-        Transaction transaction = new Transaction();
-        transaction.setAmount(transferRequest.getAmount());
-        transaction.setSenderAccount(sender);
-        transaction.setReceiverAccount(receiver);
-        transaction.setTimestamp(LocalDateTime.now());
+            // Creating the transaction record
+            Transaction transaction = new Transaction();
+            transaction.setAmount(transferRequest.getAmount());
+            transaction.setSenderAccount(sender);
+            transaction.setReceiverAccount(receiver);
+            transaction.setSender(sender.getUser());
+            transaction.setReceiver(receiver.getUser());
 
-        // Logging the successful transfer
+            Transaction completedTransaction = transactionRepository.save(transaction);
 
-//        log.info(MessageConstants.Logs.TRANSFER_COMPLETED, maskCardNumber(transferRequest.getSenderCardNumber()), maskCardNumber(transferRequest.getReceiverCardNumber()));
-        return transactionRepository.save(transaction);
+            // Logging the successful transfer
+            log.info(MessageConstants.Logs.TRANSFER_COMPLETED,
+                    maskCardNumber(transferRequest.getSenderCardNumber()),
+                    maskCardNumber(transferRequest.getReceiverCardNumber()));
+
+            // Sending transaction email notification
+            emailService.sendTransactionEmail(completedTransaction);
+
+            return completedTransaction; // Return the completed transaction
+
+        } catch (Exception e) {
+            // Log the error for debugging purposes
+            log.error(MessageConstants.Logs.GENERAL_OPERATION_FAILED, e.getMessage(), e);
+            // Handle specific exceptions as needed or rethrow to trigger transaction rollback
+            throw new RuntimeException(MessageConstants.Logs.GENERAL_OPERATION_FAILED + e.getMessage(), e);
+        }
     }
 
     /**
@@ -107,38 +125,51 @@ public class TransactionService {
      */
     @Transactional
     public Transaction transferMoneyBetweenUsers(@Valid Long senderUserId, @Valid Long receiverUserId, @Valid @Positive BigDecimal amount, @NotBlank String username) {
-        // Fetching sender and receiver accounts by user IDs
-        Account sender = accountRepository.findById(senderUserId).orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.SENDER_ACCOUNT_NOT_FOUND));
+        try {
+            // Fetching sender and receiver accounts by user IDs
+            Account sender = accountRepository.findById(senderUserId)
+                    .orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.SENDER_ACCOUNT_NOT_FOUND));
 
-        Account receiver = accountRepository.findById(receiverUserId).orElseThrow(() -> new ReceiverAccountNotFoundException(MessageConstants.Exceptions.RECEIVER_ACCOUNT_NOT_FOUND));
+            Account receiver = accountRepository.findById(receiverUserId)
+                    .orElseThrow(() -> new ReceiverAccountNotFoundException(MessageConstants.Exceptions.RECEIVER_ACCOUNT_NOT_FOUND));
 
-        // **New Validation: Prevent transferring to the same account**
-        UserTransferRequestValidation(sender, receiver);
+            // Validation: Prevent transferring to the same account
+            UserTransferRequestValidation(sender, receiver);
 
-        // Validating the transfer details
-        validateTransfer(sender, receiver, amount, username);
+            // Validating the transfer details
+            validateTransfer(sender, receiver, amount, username);
 
-        // Performing the transfer
-        sender.setBalance(sender.getBalance().subtract(amount));
-        receiver.setBalance(receiver.getBalance().add(amount));
+            // Performing the transfer
+            sender.setBalance(sender.getBalance().subtract(amount));
+            receiver.setBalance(receiver.getBalance().add(amount));
 
-        accountRepository.save(sender);
-        accountRepository.save(receiver);
+            // Saving updated accounts
+            accountRepository.save(sender);
+            accountRepository.save(receiver);
 
-        // Creating the transaction record
-        Transaction transaction = new Transaction();
-        transaction.setAmount(amount);
-        transaction.setSenderAccount(sender);
-        transaction.setReceiverAccount(receiver);
-        transaction.setSender(sender.getUser());
-        transaction.setReceiver(receiver.getUser());
-        transaction.setTimestamp(LocalDateTime.now());
+            // Creating the transaction record
+            Transaction transaction = new Transaction();
+            transaction.setAmount(amount);
+            transaction.setSenderAccount(sender);
+            transaction.setReceiverAccount(receiver);
+            transaction.setSender(sender.getUser());
+            transaction.setReceiver(receiver.getUser());
 
-        // Logging the successful transfer between users
-        log.info(MessageConstants.Logs.TRANSFER_BETWEEN_USERS_COMPLETED, amount, sender.getUser().getUsername(), receiver.getUser().getUsername());
-        Transaction completedTransaction = transactionRepository.save(transaction);
-        emailService.sendTransactionEmail(completedTransaction);
-        return completedTransaction;
+            // Logging the successful transfer between users
+            log.info(MessageConstants.Logs.TRANSFER_BETWEEN_USERS_COMPLETED, amount, sender.getUser().getUsername(), receiver.getUser().getUsername());
+
+            // Saving the transaction and sending email notification
+            Transaction completedTransaction = transactionRepository.save(transaction);
+            emailService.sendTransactionEmail(completedTransaction);
+
+            return completedTransaction; // Return the completed transaction
+
+        } catch (Exception e) {
+            // Log the error for debugging purposes
+            log.error(MessageConstants.Logs.GENERAL_OPERATION_FAILED, e.getMessage(), e);
+            // Handle specific exceptions as needed or rethrow to trigger transaction rollback
+            throw new RuntimeException(MessageConstants.Logs.GENERAL_OPERATION_FAILED + e.getMessage(), e);
+        }
     }
 
     // Validation of transfer request
