@@ -88,6 +88,10 @@ public final class MessageConstants {
         public static final String GENERAL_OPERATION_FAILED = "Operation {} failed: {}.";
     }
 
+    public static final class Email {
+        public static final String TRANSFER_SUCCESS = "Transfer of %s %s from %s to %s successfully completed";
+    }
+
     /**
      * Contains all error codes used in the application.
      */

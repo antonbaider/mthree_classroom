@@ -13,18 +13,19 @@ import com.mthree.bankmthree.exception.transaction.UnauthorizedTransferException
 import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.repository.AccountRepository;
 import com.mthree.bankmthree.repository.TransactionRepository;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,13 +39,15 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final UserService userService;
     private final TransactionMapper transactionMapper;
+    private final EmailService emailService;
 
     @Autowired
-    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository, UserService userService, TransactionMapper transactionMapper) {
+    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository, UserService userService, TransactionMapper transactionMapper, EmailService emailService) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
         this.userService = userService;
         this.transactionMapper = transactionMapper;
+        this.emailService = emailService;
     }
 
     /**
@@ -88,8 +91,8 @@ public class TransactionService {
         transaction.setTimestamp(LocalDateTime.now());
 
         // Logging the successful transfer
-        log.info(MessageConstants.Logs.TRANSFER_COMPLETED, maskCardNumber(transferRequest.getSenderCardNumber()), maskCardNumber(transferRequest.getReceiverCardNumber()));
 
+//        log.info(MessageConstants.Logs.TRANSFER_COMPLETED, maskCardNumber(transferRequest.getSenderCardNumber()), maskCardNumber(transferRequest.getReceiverCardNumber()));
         return transactionRepository.save(transaction);
     }
 
@@ -133,8 +136,9 @@ public class TransactionService {
 
         // Logging the successful transfer between users
         log.info(MessageConstants.Logs.TRANSFER_BETWEEN_USERS_COMPLETED, amount, sender.getUser().getUsername(), receiver.getUser().getUsername());
-
-        return transactionRepository.save(transaction);
+        Transaction completedTransaction = transactionRepository.save(transaction);
+        emailService.sendTransactionNotification(String.format(MessageConstants.Email.TRANSFER_SUCCESS, amount, sender.getCurrency(), sender.getUser().getFirstName(), receiver.getUser().getFirstName()), completedTransaction);
+        return completedTransaction;
     }
 
     // Validation of transfer request
