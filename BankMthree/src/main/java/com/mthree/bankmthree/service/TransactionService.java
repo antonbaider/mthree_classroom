@@ -137,7 +137,7 @@ public class TransactionService {
         // Logging the successful transfer between users
         log.info(MessageConstants.Logs.TRANSFER_BETWEEN_USERS_COMPLETED, amount, sender.getUser().getUsername(), receiver.getUser().getUsername());
         Transaction completedTransaction = transactionRepository.save(transaction);
-        emailService.sendTransactionNotification(String.format(MessageConstants.Email.TRANSFER_SUCCESS, amount, sender.getCurrency(), sender.getUser().getFirstName(), receiver.getUser().getFirstName()), completedTransaction);
+        emailService.sendTransactionEmail(completedTransaction);
         return completedTransaction;
     }
 
