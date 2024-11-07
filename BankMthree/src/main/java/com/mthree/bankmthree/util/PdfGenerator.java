@@ -96,7 +96,7 @@ public class PdfGenerator {
         document.add(new Paragraph("Sender Information:").setBold().setMarginTop(20f));
         Table senderTable = new Table(UnitValue.createPercentArray(new float[]{2, 3})).useAllAvailableWidth();
         senderTable.addCell("Name:");
-        senderTable.addCell(transaction.getSender().getFirstName() + " " + transaction.getSender().getLastName());
+        senderTable.addCell(transaction.getSender().getProfile().getFirstName() + " " + transaction.getSender().getProfile().getLastName());
         senderTable.addCell("Card Number:");
         senderTable.addCell(transaction.getSenderAccount().getCardNumber());
         document.add(senderTable);
@@ -105,7 +105,7 @@ public class PdfGenerator {
         document.add(new Paragraph("Receiver Information:").setBold().setMarginTop(20f));
         Table receiverTable = new Table(UnitValue.createPercentArray(new float[]{2, 3})).useAllAvailableWidth();
         receiverTable.addCell("Name:");
-        receiverTable.addCell(transaction.getReceiver().getFirstName() + " " + transaction.getReceiver().getLastName());
+        receiverTable.addCell(transaction.getReceiver().getProfile().getFirstName() + " " + transaction.getReceiver().getProfile().getLastName());
         receiverTable.addCell("Card Number:");
         receiverTable.addCell(transaction.getReceiverAccount().getCardNumber());
         document.add(receiverTable);

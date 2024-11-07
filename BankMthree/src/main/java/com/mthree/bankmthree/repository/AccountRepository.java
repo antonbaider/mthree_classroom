@@ -13,7 +13,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findByCardNumber(String cardNumber);
 
-    Optional<Account> findByCardNumberAndUserUsername(String cardNumber, String username);
+    Optional<Account> findByCardNumberAndUser_Profile_Username(String cardNumber, String username);
 
     boolean existsByUserAndCurrency(User user, CurrencyType currency);
 

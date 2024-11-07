@@ -65,12 +65,12 @@ public class EmailServiceImpl implements EmailService {
                 transaction.getAmount(),
                 transaction.getSenderAccount().getCurrency(),
                 transaction.getTimestamp().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
-                transaction.getSender().getFirstName(),
-                transaction.getSender().getLastName(),
+                transaction.getSender().getProfile().getFirstName(),
+                transaction.getSender().getProfile().getLastName(),
                 transaction.getSenderAccount().getBalance(),
                 transaction.getSenderAccount().getCurrency(),
-                transaction.getReceiver().getFirstName(),
-                transaction.getReceiver().getLastName());
+                transaction.getReceiver().getProfile().getFirstName(),
+                transaction.getReceiver().getProfile().getLastName());
 
         // Send the formatted email
         sendTransactionNotification(formattedMessage);

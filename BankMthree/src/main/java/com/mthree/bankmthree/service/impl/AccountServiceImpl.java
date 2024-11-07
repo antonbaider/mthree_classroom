@@ -127,7 +127,7 @@ public class AccountServiceImpl implements AccountService {
     public void closeAccount(String cardNumber, String username) {
         log.info(MessageConstants.Logs.CLOSING_ACCOUNT, cardNumber, username);
 
-        Account account = accountRepository.findByCardNumberAndUserUsername(cardNumber, username)
+        Account account = accountRepository.findByCardNumberAndUser_Profile_Username(cardNumber, username)
                 .orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.ACCOUNT_NOT_FOUND));
 
         if (account.getBalance().compareTo(BigDecimal.ZERO) != 0) {
@@ -149,7 +149,7 @@ public class AccountServiceImpl implements AccountService {
      */
     @Transactional(readOnly = true)
     public Account findAccountByCardNumber(@NotBlank(message = "MessageConstants.Card number is required") String cardNumber, String username) {
-        return accountRepository.findByCardNumberAndUserUsername(cardNumber, username)
+        return accountRepository.findByCardNumberAndUser_Profile_Username(cardNumber, username)
                 .orElseThrow(() -> new AccountsNotFoundException(MessageConstants.Exceptions.ACCOUNT_NOT_FOUND));
     }
 

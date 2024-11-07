@@ -85,13 +85,37 @@
         }
 
         .bottom-banner {
+            position: relative;
             width: 100%;
             height: 150px;
-            background-image: url('https://example.com/path/to/your-image.jpg'); /* replace with your actual image link */
+            background-image: url('https://mthree.com/site/assets/files/1365/placeholder.507x507.png');
             background-size: cover;
             background-position: center;
             margin-top: 20px;
             border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .bottom-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 150, 0.5), rgba(0, 204, 255, 0.5));
+            opacity: 0.4;
+            animation: pulse 5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 0.6;
+            }
         }
     </style>
     <title>Transaction Receipt</title>
@@ -126,7 +150,7 @@
         <table class="details-table">
             <tr>
                 <th>Name</th>
-                <td th:text="${transaction.sender.firstName} + ' ' + ${transaction.sender.lastName}"></td>
+                <td th:text="${transaction.sender.profile.firstName} + ' ' + ${transaction.sender.profile.lastName}"></td>
             </tr>
             <tr>
                 <th>Card Number</th>
@@ -139,7 +163,7 @@
         <table class="details-table">
             <tr>
                 <th>Name</th>
-                <td th:text="${transaction.receiver.firstName} + ' ' + ${transaction.receiver.lastName}"></td>
+                <td th:text="${transaction.receiver.profile.firstName} + ' ' + ${transaction.receiver.profile.lastName}"></td>
             </tr>
             <tr>
                 <th>Card Number</th>

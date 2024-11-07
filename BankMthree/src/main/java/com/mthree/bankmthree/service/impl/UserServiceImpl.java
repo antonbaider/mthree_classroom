@@ -6,6 +6,7 @@ import com.mthree.bankmthree.dto.user.UpdateUserRequest;
 import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.entity.Account;
 import com.mthree.bankmthree.entity.User;
+import com.mthree.bankmthree.entity.UserProfile;
 import com.mthree.bankmthree.entity.enums.CurrencyType;
 import com.mthree.bankmthree.entity.enums.Role;
 import com.mthree.bankmthree.entity.enums.Status;
@@ -14,6 +15,7 @@ import com.mthree.bankmthree.exception.user.*;
 import com.mthree.bankmthree.mapper.UserMapper;
 import com.mthree.bankmthree.repository.UserRepository;
 import com.mthree.bankmthree.service.AccountService;
+import com.mthree.bankmthree.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.exception.ConstraintViolationException;
@@ -36,7 +38,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class UserServiceImpl implements com.mthree.bankmthree.service.UserService {
+public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -72,7 +74,7 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
      */
     @Override
     public User getUser(RegisterRequest registerRequest) {
-        return userMapper.toUser(registerRequest);
+        return userMapper.toUser(registerRequest, passwordEncoder);
     }
 
     /**
@@ -91,12 +93,11 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
         validateUserFields(registerRequest);
         validatePassword(registerRequest.getPassword());
 
-        // Map the RegisterRequest to User entity
-        User user = userMapper.toUser(registerRequest);
-        user.setRole(Role.ROLE_USER);
-        user.setStatus(Status.ACTIVE);
-        user.setType(UserType.STANDARD);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Map RegisterRequest to UserProfile using the mapper
+        UserProfile profile = userMapper.toUserProfile(registerRequest, passwordEncoder);
+
+        // Map the RegisterRequest to User entity using UserMapper
+        User user = userMapper.toUser(registerRequest, passwordEncoder);
 
         // Use a try-catch block to manage potential exceptions during account creation
         try {
@@ -160,7 +161,7 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
     @PreAuthorize("hasRole('ADMIN') or #username == authentication.name")
     @Override
     public UserDTO updateUser(String username, UpdateUserRequest updateUserRequest) {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        User user = userRepository.findByProfile_Username(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
 
         validateAndUpdateUserFields(updateUserRequest, user);
 
@@ -197,29 +198,29 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
      */
     private void validateAndUpdateUserFields(UpdateUserRequest updateUserRequest, User user) {
         if (updateUserRequest.getFirstName() != null) {
-            user.setFirstName(updateUserRequest.getFirstName());
+            user.getProfile().setFirstName(updateUserRequest.getFirstName());
         }
         if (updateUserRequest.getLastName() != null) {
-            user.setLastName(updateUserRequest.getLastName());
+            user.getProfile().setLastName(updateUserRequest.getLastName());
         }
 
-        if (updateUserRequest.getEmail() != null && !user.getEmail().equals(updateUserRequest.getEmail())) {
-            if (userRepository.existsByEmail(updateUserRequest.getEmail())) {
+        if (updateUserRequest.getEmail() != null && !user.getProfile().getEmail().equals(updateUserRequest.getEmail())) {
+            if (userRepository.existsByProfile_Email(updateUserRequest.getEmail())) {
                 throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
             }
-            user.setEmail(updateUserRequest.getEmail());
+            user.getProfile().setEmail(updateUserRequest.getEmail());
         }
 
-        if (updateUserRequest.getPhone() != null && !user.getPhone().equals(updateUserRequest.getPhone())) {
-            if (userRepository.existsByPhone(updateUserRequest.getPhone())) {
+        if (updateUserRequest.getPhone() != null && !user.getProfile().getPhone().equals(updateUserRequest.getPhone())) {
+            if (userRepository.existsByProfile_Phone(updateUserRequest.getPhone())) {
                 throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
             }
-            user.setPhone(updateUserRequest.getPhone());
+            user.getProfile().setPhone(updateUserRequest.getPhone());
         }
 
         if (updateUserRequest.getPassword() != null) {
             validatePassword(updateUserRequest.getPassword());
-            user.setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
+            user.getProfile().setPassword(passwordEncoder.encode(updateUserRequest.getPassword()));
         }
     }
 
@@ -229,16 +230,16 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
      * @param registerRequest the registration request containing user details
      */
     private void validateUserFields(@Valid RegisterRequest registerRequest) {
-        if (userRepository.existsByUsername(registerRequest.getUsername())) {
+        if (userRepository.existsByProfile_Username(registerRequest.getUsername())) {
             throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_ALREADY_EXISTS);
         }
-        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+        if (userRepository.existsByProfile_Email(registerRequest.getEmail())) {
             throw new UserAlreadyExistsException(MessageConstants.Exceptions.USER_EMAIL_EXISTS);
         }
-        if (userRepository.existsBySsn(registerRequest.getSsn())) {
+        if (userRepository.existsByProfile_Ssn(registerRequest.getSsn())) {
             throw new UserSsnAlreadyExistsException(MessageConstants.Exceptions.USER_SSN_EXISTS);
         }
-        if (userRepository.existsByPhone(registerRequest.getPhone())) {
+        if (userRepository.existsByProfile_Phone(registerRequest.getPhone())) {
             throw new UserPhoneAlreadyExistsException(MessageConstants.Exceptions.USER_PHONE_EXISTS);
         }
     }
@@ -298,7 +299,7 @@ public class UserServiceImpl implements com.mthree.bankmthree.service.UserServic
     @Override
     public User findByUsername(String username) {
         log.info(MessageConstants.Logs.FINDING_USER_BY_USERNAME, username);
-        return userRepository.findByUsername(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
+        return userRepository.findByProfile_Username(username).orElseThrow(() -> new UserNotFoundException(MessageConstants.Exceptions.USER_NOT_FOUND));
     }
 
     /**
