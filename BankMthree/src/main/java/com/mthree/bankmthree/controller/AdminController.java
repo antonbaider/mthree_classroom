@@ -1,6 +1,9 @@
 package com.mthree.bankmthree.controller;
 
+import com.mthree.bankmthree.dto.transaction.TransactionResponse;
 import com.mthree.bankmthree.dto.transaction.TransferRequestByUserId;
+import com.mthree.bankmthree.entity.Transaction;
+import com.mthree.bankmthree.mapper.TransactionMapper;
 import com.mthree.bankmthree.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,10 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     private final TransactionService transactionService;
+    private final TransactionMapper transactionMapper;
 
     @Autowired
-    public AdminController(TransactionService transactionService) {
+    public AdminController(TransactionService transactionService, TransactionMapper transactionMapper) {
         this.transactionService = transactionService;
+        this.transactionMapper = transactionMapper;
     }
 
     /**
@@ -52,8 +57,19 @@ public class AdminController {
                 transferRequest.getReceiverAccountId(),
                 transferRequest.getAmount(),
                 userDetails.getUsername());
+        TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
 
         // Return a successful response
-        return ResponseEntity.ok(new ApiResponse("Successfully sent", null));
+        return ResponseEntity.ok(new ApiResponse("Successfully sent", response));
+    }
+
+    private TransactionResponse getTransactionResponse(TransferRequestByUserId transferRequest, UserDetails userDetails) {
+        Transaction transaction = transactionService.transferMoneyBetweenUsers(
+                transferRequest.getSenderAccountId(),
+                transferRequest.getReceiverAccountId(),
+                transferRequest.getAmount(),
+                userDetails.getUsername());
+
+        return transactionMapper.toResponse(transaction);
     }
 }

@@ -1,23 +1,33 @@
 package com.mthree.bankmthree.mapper;
 
 import com.mthree.bankmthree.dto.transaction.TransactionResponse;
+import com.mthree.bankmthree.entity.Account;
 import com.mthree.bankmthree.entity.Transaction;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+
+import java.math.BigDecimal;
 
 @Mapper(componentModel = "spring")
 public interface TransactionMapper {
-    TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
 
-    @Mapping(source = "id", target = "transactionId")
-    @Mapping(source = "senderAccount.id", target = "senderAccountId")
-    @Mapping(source = "receiverAccount.id", target = "receiverAccountId")
+    // Mapping properties with explicit source paths for 'id' properties
+    @Mapping(source = "transaction.id", target = "transactionId") // Mapping from Transaction entity
+    @Mapping(source = "transaction.senderAccount.id", target = "senderAccountId") // Mapping senderAccount's id
+    @Mapping(source = "transaction.receiverAccount.id", target = "receiverAccountId") // Mapping receiverAccount's id
     @Mapping(expression = "java(transaction.getSenderAccount() != null ? transaction.getSenderAccount().getCardNumber() : null)", target = "senderCardNumber")
     @Mapping(expression = "java(transaction.getReceiverAccount() != null ? transaction.getReceiverAccount().getCardNumber() : null)", target = "receiverCardNumber")
-    @Mapping(source = "amount", target = "amount")
-    @Mapping(expression = "java(transaction.getSenderAccount().getCurrency().toString())", target = "currency")
-    @Mapping(expression = "java(transaction.getSenderAccount().getBalance())", target = "balanceAfter")
-    @Mapping(source = "timestamp", target = "timestamp")
+    @Mapping(source = "transaction.amount", target = "amount")
+    @Mapping(expression = "java(transaction.getSenderAccount() != null ? transaction.getSenderAccount().getCurrency().toString() : null)", target = "currency")
+    @Mapping(expression = "java(transaction.getSenderAccount() != null ? transaction.getSenderAccount().getBalance() : null)", target = "balanceAfter")
+    @Mapping(source = "transaction.timestamp", target = "timestamp")
     TransactionResponse toResponse(Transaction transaction);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(source = "amount", target = "amount")
+    @Mapping(source = "sender", target = "senderAccount")
+    @Mapping(source = "receiver", target = "receiverAccount")
+    @Mapping(source = "sender.user", target = "sender") // Nested User in sender Account
+    @Mapping(source = "receiver.user", target = "receiver") // Nested User in receiver Account
+    Transaction toTransactionById(Account sender, Account receiver, BigDecimal amount);
 }

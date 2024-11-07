@@ -1,5 +1,6 @@
 package com.mthree.bankmthree.dto.transaction;
 
+import com.mthree.bankmthree.entity.User;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,4 +18,8 @@ public class TransferRequestByUserId {
 
     @NotNull(message = "Amount is required")
     private BigDecimal amount;
+
+    private User sender;
+
+    private User receiver;
 }

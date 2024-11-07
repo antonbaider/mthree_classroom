@@ -4,7 +4,6 @@ import com.mthree.bankmthree.entity.enums.Role;
 import com.mthree.bankmthree.entity.enums.Status;
 import com.mthree.bankmthree.entity.enums.UserType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

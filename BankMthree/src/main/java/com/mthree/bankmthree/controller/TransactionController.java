@@ -30,11 +30,13 @@ public class TransactionController {
 
     private final UserService userService;
     private final TransactionService transactionService;
+    private final TransactionMapper transactionMapper;
 
     @Autowired
-    public TransactionController(UserService userService, TransactionService transactionService) {
+    public TransactionController(UserService userService, TransactionService transactionService, TransactionMapper transactionMapper) {
         this.userService = userService;
         this.transactionService = transactionService;
+        this.transactionMapper = transactionMapper;
     }
 
     /**
@@ -109,12 +111,12 @@ public class TransactionController {
                 transferRequest.getAmount(),
                 userDetails.getUsername());
 
-        return TransactionMapper.INSTANCE.toResponse(transaction);
+        return transactionMapper.toResponse(transaction);
     }
 
     private TransactionResponse getTransactionResponse(TransferRequest transferRequest, UserDetails userDetails) {
         Transaction transaction = transactionService.transferMoneyUsingCardNumbers(transferRequest, userDetails.getUsername());
 
-        return TransactionMapper.INSTANCE.toResponse(transaction);
+        return transactionMapper.toResponse(transaction);
     }
 }

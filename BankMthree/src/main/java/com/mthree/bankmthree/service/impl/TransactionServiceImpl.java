@@ -153,19 +153,14 @@ public class TransactionServiceImpl implements com.mthree.bankmthree.service.Tra
             accountRepository.save(sender);
             accountRepository.save(receiver);
 
-            // Creating the transaction record
-            Transaction transaction = new Transaction();
-            transaction.setAmount(amount);
-            transaction.setSenderAccount(sender);
-            transaction.setReceiverAccount(receiver);
-            transaction.setSender(sender.getUser());
-            transaction.setReceiver(receiver.getUser());
+            // Map to Transaction using the mapper
+            Transaction mapperTransactionById = transactionMapper.toTransactionById(sender, receiver, amount);
 
             // Logging the successful transfer between users
             log.info(MessageConstants.Logs.TRANSFER_BETWEEN_USERS_COMPLETED, amount, sender.getUser().getUsername(), receiver.getUser().getUsername());
 
             // Saving the transaction and sending email notification
-            Transaction completedTransaction = transactionRepository.save(transaction);
+            Transaction completedTransaction = transactionRepository.save(mapperTransactionById);
             emailService.sendTransactionEmail(completedTransaction);
 
             return completedTransaction; // Return the completed transaction
