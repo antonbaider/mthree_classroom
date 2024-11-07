@@ -1,30 +1,36 @@
 <!-- src/views/Login.vue -->
 <template>
-  <div class="login">
-    <h1>Login</h1>
-    <form @submit.prevent="handleLogin">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input
-            type="text"
-            id="username"
-            v-model="username"
-            required
-            placeholder="Enter your username"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input
-            type="password"
-            id="password"
-            v-model="password"
-            required
-            placeholder="Enter your password"
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+  <div class="login-page">
+    <div class="login-container">
+      <img src="@/assets/logo.svg" alt="BankApp Logo" class="login-logo" />
+      <h2>Login to Your Account</h2>
+      <form @submit.prevent="handleLogin">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+              type="text"
+              id="username"
+              v-model="username"
+              placeholder="Enter your username"
+              required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+              type="password"
+              id="password"
+              v-model="password"
+              placeholder="Enter your password"
+              required
+          />
+        </div>
+        <button type="submit" class="login-button">
+          <span v-if="loading">Logging in...</span>
+          <span v-else>Login</span>
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -36,63 +42,108 @@ export default {
   name: 'Login',
   setup() {
     const auth = useAuthStore();
-
     const username = ref('');
     const password = ref('');
+    const loading = ref(false);
 
     const handleLogin = async () => {
-      await auth.login(username.value, password.value);
+      loading.value = true;
+      try {
+        await auth.login(username.value, password.value);
+        // Redirect handled in the store
+      } catch (error) {
+        // Error handling already done in the store
+      } finally {
+        loading.value = false;
+      }
     };
 
     return {
       username,
       password,
       handleLogin,
+      loading,
     };
   },
 };
 </script>
 
 <style scoped>
-.login {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--navbar-height) - var(--footer-height));
+
 }
 
-h1 {
+.login-container {
+  background-color: var(--secondary-color);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-width: 90%;
   text-align: center;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.login-logo {
+  height: 50px;
   margin-bottom: 20px;
 }
 
+.login-container h2 {
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
 .form-group {
-  margin-bottom: 15px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
-label {
+.form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
-input {
+.form-group input {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed) ease;
 }
 
-button {
+.form-group input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.login-button {
   width: 100%;
-  padding: 10px;
-  background-color: #333;
-  color: #fff;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   border: none;
-  border-radius: 3px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
 }
 
-button:hover {
-  background-color: #555;
+.login-button:hover {
+  background-color: #38c6a1; /* Slightly darker primary color */
+  transform: translateY(-2px);
+}
+
+.login-button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
 }
 </style>

@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Login from '@/views/Login.vue';
 import Dashboard from '@/views/Dashboard.vue';
+import Accounts from '@/views/Accounts.vue';
 import { useAuthStore } from '@/stores/auth.js';
 
 const routes = [
@@ -10,13 +11,12 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        meta: { requiresAuth: false },
     },
     {
         path: '/login',
         name: 'Login',
         component: Login,
-        meta: { requiresAuth: false },
+        meta: { guest: true },
     },
     {
         path: '/dashboard',
@@ -24,7 +24,13 @@ const routes = [
         component: Dashboard,
         meta: { requiresAuth: true },
     },
-    // Add more routes as needed
+    {
+        path: '/accounts',
+        name: 'Accounts',
+        component: Accounts,
+        meta: { requiresAuth: true },
+    },
+    // Add other routes here
 ];
 
 const router = createRouter({
@@ -32,12 +38,12 @@ const router = createRouter({
     routes,
 });
 
-// Global navigation guard
+// Navigation Guards
 router.beforeEach((to, from, next) => {
-    const authStore = useAuthStore();
-    if (to.meta.requiresAuth && !authStore.isLoggedIn) {
+    const auth = useAuthStore();
+    if (to.meta.requiresAuth && !auth.isLoggedIn) {
         next({ name: 'Login' });
-    } else if (to.name === 'Login' && authStore.isLoggedIn) {
+    } else if (to.meta.guest && auth.isLoggedIn) {
         next({ name: 'Dashboard' });
     } else {
         next();
