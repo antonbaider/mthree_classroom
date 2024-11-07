@@ -4,8 +4,8 @@ import com.mthree.bankmthree.dto.account.AccountDTO;
 import com.mthree.bankmthree.dto.account.CloseAccountRequest;
 import com.mthree.bankmthree.entity.Account;
 import com.mthree.bankmthree.mapper.UserMapper;
-import com.mthree.bankmthree.service.AccountService;
 import com.mthree.bankmthree.service.UserService;
+import com.mthree.bankmthree.service.impl.AccountServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -27,12 +27,12 @@ import java.util.Set;
 @Tag(name = "Account Controller", description = "Endpoints for user bank accounts")
 public class AccountController {
 
-    private final AccountService accountService;
+    private final AccountServiceImpl accountService;
     private final UserService userService;
     private final UserMapper userMapper;
 
     @Autowired
-    public AccountController(UserService userService, AccountService accountService, UserMapper userMapper) {
+    public AccountController(UserService userService, AccountServiceImpl accountService, UserMapper userMapper) {
         this.userService = userService;
         this.accountService = accountService;
         this.userMapper = userMapper;

@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.service;
+package com.mthree.bankmthree.util;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
 @Service
-public class PdfGeneratorService {
+public class PdfGenerator {
 
     @Value("${pdf.logo.path}")
     private String logoPath;

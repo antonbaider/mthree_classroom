@@ -1,4 +1,4 @@
-package com.mthree.bankmthree.service;
+package com.mthree.bankmthree.service.impl;
 
 import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.repository.UserRepository;
