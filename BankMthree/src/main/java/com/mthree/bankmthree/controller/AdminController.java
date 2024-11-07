@@ -52,24 +52,18 @@ public class AdminController {
             @AuthenticationPrincipal UserDetails userDetails) {
 
         // Perform the money transfer
-        transactionService.transferMoneyBetweenUsers(
-                transferRequest.getSenderAccountId(),
-                transferRequest.getReceiverAccountId(),
-                transferRequest.getAmount(),
-                userDetails.getUsername());
-        TransactionResponse response = getTransactionResponse(transferRequest, userDetails);
+        Transaction transaction = getTransaction(transferRequest, userDetails);
 
+        TransactionResponse response = transactionMapper.toResponse(transaction);
         // Return a successful response
-        return ResponseEntity.ok(new ApiResponse("Successfully sent", response));
+        return ResponseEntity.ok(new ApiResponse("Administrator Transaction Successfully Completed", response));
     }
 
-    private TransactionResponse getTransactionResponse(TransferRequestByUserId transferRequest, UserDetails userDetails) {
-        Transaction transaction = transactionService.transferMoneyBetweenUsers(
+    private Transaction getTransaction(TransferRequestByUserId transferRequest, UserDetails userDetails) {
+        return transactionService.transferMoneyBetweenUsers(
                 transferRequest.getSenderAccountId(),
                 transferRequest.getReceiverAccountId(),
                 transferRequest.getAmount(),
                 userDetails.getUsername());
-
-        return transactionMapper.toResponse(transaction);
     }
 }
