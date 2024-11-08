@@ -29,7 +29,7 @@
         </div>
       </div>
     </section>
-
+    <div class="transactions"><table>
     <section
         class="chart-section"
         :style="{
@@ -39,11 +39,13 @@
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    color: 'white',
     textAlign: 'center'
   }"
     >
       <LineChart :expenses="monthlyExpensesByCurrency" :deposits="recentDepositsByCurrency" />
-    </section>
+
+    </section></table> <br> <br><br> </div>
 
     <section class="transactions">
       <table>

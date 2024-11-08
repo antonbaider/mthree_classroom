@@ -22,6 +22,7 @@ public class RegisterRequest {
 
     @NotBlank(message = "Username is required")
     @Size(min = 5, max = 50, message = "Username must be between 5 and 50 characters")
+    @Pattern(regexp = "^[a-zA-Z0-9._-]{3,20}$", message = "Username must be 3-20 characters long and can only contain letters, digits, dots, underscores, and hyphens")
     @Schema(description = "Username for login", example = "johndoe")
     private String username;
 
@@ -36,6 +37,7 @@ public class RegisterRequest {
     private String email;
 
     @Pattern(regexp = "^[0-9]{10,15}$", message = "Phone number must be between 10 and 15 digits")
+    @NotBlank(message = "Phone number is required")
     @Schema(description = "Phone number of the user", example = "1234567890")
     private String phone;
 

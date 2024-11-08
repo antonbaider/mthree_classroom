@@ -68,8 +68,8 @@ public class UserProfile implements Serializable {
      * Must consist of 10 to 15 digits.
      * Must be unique if provided.
      */
-    @Pattern(regexp = "^[0-9]{10,15}$", message = "Phone number must be between 10 and 15 digits")
     @Column(unique = true)
+    @NotBlank(message = "Phone number is required")
     private String phone;
 
     /**

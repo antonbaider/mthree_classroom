@@ -83,31 +83,31 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return profile != null ? profile.getPassword() : null; // Return password from UserProfile
+        return profile != null ? profile.getPassword() : null;
     }
 
     @Override
     public String getUsername() {
-        return profile != null ? profile.getUsername() : null; // Return username from UserProfile
+        return profile != null ? profile.getUsername() : null;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true; // Implement actual logic if needed
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true; // Implement actual logic if needed
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true; // Implement actual logic if needed
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true; // Implement actual logic if needed
+        return true;
     }
 }
