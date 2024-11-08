@@ -1,45 +1,68 @@
-<!-- src/views/Dashboard.vue -->
 <template>
   <div class="dashboard">
-<!--    <h1>Your Dashboard</h1>-->
-
     <section class="overview">
       <div class="overview-card">
         <i class="fas fa-wallet fa-2x"></i>
         <h3>Total Balance</h3>
-        <p>{{ formatCurrency(totalBalance, latestTransactionCurrency) }}</p>
+        <div class="balance-list">
+          <div v-for="(amount, currency) in totalBalanceByCurrency" :key="currency">
+            <p>{{ currency }}: {{ formatCurrency(amount, currency) }}</p>
+          </div>
+        </div>
       </div>
       <div class="overview-card">
         <i class="fas fa-chart-line fa-2x"></i>
         <h3>Monthly Expenses</h3>
-        <p>{{ formatCurrency(Math.abs(monthlyExpenses), getDefaultCurrency) }}</p>
+        <div class="balance-list">
+          <div v-for="(amount, currency) in monthlyExpensesByCurrency" :key="currency">
+            <p>{{ currency }}: {{ formatCurrency(Math.abs(amount), currency) }}</p>
+          </div>
+        </div>
       </div>
       <div class="overview-card">
         <i class="fas fa-arrow-up fa-2x"></i>
         <h3>Recent Deposits</h3>
-        <p>{{ formatCurrency(recentDeposits, getDefaultCurrency) }}</p>
+        <div class="balance-list">
+          <div v-for="(amount, currency) in recentDepositsByCurrency" :key="currency">
+            <p>{{ currency }}: {{ formatCurrency(amount, currency) }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <section
+        class="chart-section"
+        :style="{
+    padding: '20px',
+    maxWidth: '600px',
+    margin: '40px auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center'
+  }"
+    >
+      <LineChart :expenses="monthlyExpensesByCurrency" :deposits="recentDepositsByCurrency" />
+    </section>
+
     <section class="transactions">
-<!--      <h2>Recent Transactions</h2>-->
       <table>
         <thead>
         <tr>
           <th>Date</th>
           <th>Description</th>
           <th>Amount</th>
-          <th>Balance After</th>
+          <th>Transaction ID</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="transaction in transactions" :key="transaction.transactionId">
           <td data-label="Date">{{ formatDate(transaction.timestamp) }}</td>
           <td data-label="Description">{{ formatDescription(transaction) }}</td>
-          <td :class="{ 'negative': transaction.amount < 0 }" data-label="Amount">
-            {{ formatCurrency(transaction.amount, transaction.currency) }}
+          <td :class="{ 'negative': isOutgoingTransaction(transaction) }" data-label="Amount">
+            {{ formatCurrency(displayAmount(transaction), transaction.currency) }}
           </td>
-          <td data-label="Balance After">{{ formatCurrency(transaction.balanceAfter, transaction.currency) }}</td>
+          <td data-label="Transaction ID">{{ transaction.transactionId }}</td>
         </tr>
         </tbody>
       </table>
@@ -47,117 +70,120 @@
         No recent transactions found.
       </div>
     </section>
+
+
+
   </div>
 </template>
 
 <script>
 import { ref, onMounted, computed } from 'vue';
 import api from '@/services/api.js';
+import Chart from 'chart.js/auto';
+import LineChart from "@/components/LineChart.vue";
 
 export default {
   name: 'Dashboard',
+  components: {LineChart},
   setup() {
     const transactions = ref([]);
+    const accounts = ref([]);
     const loading = ref(true);
 
     const fetchTransactions = async () => {
       try {
         const response = await api.get('/api/transactions/history');
-        if (response.data && response.data.data) {
-          // Sort transactions by timestamp descendingly to have the latest first
-          transactions.value = response.data.data.sort(
-              (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-          );
-        } else {
-          console.error('No transaction data found.');
-        }
+        transactions.value = response.data.data.sort(
+            (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        );
       } catch (error) {
         console.error('Error fetching transactions:', error);
-      } finally {
-        loading.value = false;
       }
     };
 
-    /**
-     * Retrieves the latest transaction's balanceAfter as the total balance.
-     */
-    const totalBalance = computed(() => {
-      if (transactions.value.length > 0) {
-        return transactions.value[0].balanceAfter;
+    const fetchAccounts = async () => {
+      try {
+        const response = await api.get('/api/accounts');
+        accounts.value = response.data.data;
+      } catch (error) {
+        console.error('Error fetching accounts:', error);
       }
-      return 0;
+    };
+
+    const totalBalanceByCurrency = computed(() => {
+      return accounts.value.reduce((acc, account) => {
+        acc[account.currency] = (acc[account.currency] || 0) + account.balance;
+        return acc;
+      }, {});
     });
 
-    /**
-     * Retrieves the currency of the latest transaction.
-     */
-    const latestTransactionCurrency = computed(() => {
-      if (transactions.value.length > 0) {
-        return transactions.value[0].currency;
-      }
-      return 'USD';
-    });
+    const isOutgoingTransaction = (transaction) => {
+      return accounts.value.some(account => account.cardNumber === transaction.senderCardNumber);
+    };
 
-    /**
-     * Sums all negative transaction amounts for the current month.
-     */
-    const monthlyExpenses = computed(() => {
-      const currentMonth = new Date().getMonth();
-      return transactions.value
-          .filter(
-              (tx) =>
-                  new Date(tx.timestamp).getMonth() === currentMonth && tx.amount < 0
-          )
-          .reduce((acc, tx) => acc + tx.amount, 0);
-    });
+    const isIncomingTransaction = (transaction) => {
+      return accounts.value.some(account => account.cardNumber === transaction.receiverCardNumber);
+    };
 
-    /**
-     * Sums all positive transaction amounts for the current month.
-     */
-    const recentDeposits = computed(() => {
-      const currentMonth = new Date().getMonth();
-      return transactions.value
-          .filter(
-              (tx) =>
-                  new Date(tx.timestamp).getMonth() === currentMonth && tx.amount > 0
-          )
-          .reduce((acc, tx) => acc + tx.amount, 0);
-    });
+    const displayAmount = (transaction) => {
+      return isOutgoingTransaction(transaction) ? -Math.abs(transaction.amount) : transaction.amount;
+    };
 
-    /**
-     * Formats the transaction description to include "From" and "To" card numbers.
-     * @param {Object} transaction
-     * @returns {string}
-     */
+    // Update description to display "Me" for own card numbers, otherwise show the card number
     const formatDescription = (transaction) => {
-      const from = transaction.senderCardNumber
-          ? `From ${transaction.senderCardNumber}`
-          : 'From N/A';
-      const to = transaction.receiverCardNumber
-          ? `to ${transaction.receiverCardNumber}`
-          : 'to N/A';
-      return `${from} ${to}`;
+      const sender = isOutgoingTransaction(transaction) ? 'Me' : transaction.senderCardNumber || 'N/A';
+      const receiver = isIncomingTransaction(transaction) ? 'Me' : transaction.receiverCardNumber || 'N/A';
+      return `From ${sender} to ${receiver}`;
     };
 
-    /**
-     * Formats the timestamp to a readable date string.
-     * @param {string} timestamp
-     * @returns {string}
-     */
+    // Format the timestamp to include date and time (hours, minutes, seconds)
     const formatDate = (timestamp) => {
-      return new Date(timestamp).toLocaleDateString(undefined, {
+      return new Date(timestamp).toLocaleString(undefined, {
         year: 'numeric',
-        month: 'long',
+        month: '2-digit',
         day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
       });
     };
 
-    /**
-     * Formats the amount to a currency string.
-     * @param {number} amount
-     * @param {string} currency
-     * @returns {string}
-     */
+    const monthlyExpensesByCurrency = computed(() => {
+      const currentMonth = new Date().getMonth();
+      const expenses = {};
+
+      accounts.value.forEach(account => {
+        expenses[account.currency] = 0;
+      });
+
+      transactions.value.forEach((tx) => {
+        if (isOutgoingTransaction(tx) && new Date(tx.timestamp).getMonth() === currentMonth) {
+          const currency = tx.currency;
+          expenses[currency] = (expenses[currency] || 0) + tx.amount;
+        }
+      });
+
+      return expenses;
+    });
+
+    const recentDepositsByCurrency = computed(() => {
+      const currentMonth = new Date().getMonth();
+      const deposits = {};
+
+      accounts.value.forEach(account => {
+        deposits[account.currency] = 0;
+      });
+
+      transactions.value.forEach((tx) => {
+        if (isIncomingTransaction(tx) && new Date(tx.timestamp).getMonth() === currentMonth) {
+          const currency = tx.currency;
+          deposits[currency] = (deposits[currency] || 0) + tx.amount;
+        }
+      });
+
+      return deposits;
+    });
+
     const formatCurrency = (amount, currency) => {
       return new Intl.NumberFormat(undefined, {
         style: 'currency',
@@ -165,31 +191,53 @@ export default {
       }).format(amount);
     };
 
-    /**
-     * Retrieves the default currency from the latest transaction or defaults to 'USD'.
-     */
-    const getDefaultCurrency = computed(() => {
-      if (transactions.value.length > 0) {
-        return transactions.value[0].currency;
-      }
-      return 'USD';
-    });
+    const renderCharts = () => {
+          const expensesChart = new Chart(document.getElementById('expensesChart'), {
+            type: 'bar',
+            data: {
+              labels: Object.keys(monthlyExpensesByCurrency.value),
+              datasets: [{
+                label: 'Monthly Expenses',
+                data: Object.values(monthlyExpensesByCurrency.value),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+              }]
+            },
+          });
+      const depositsChart = new Chart(document.getElementById('depositsChart'), {
+        type: 'bar',
+        data: {
+          labels: Object.keys(recentDepositsByCurrency.value),
+          datasets: [{
+            label: 'Recent Deposits',
+            data: Object.values(recentDepositsByCurrency.value),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+      });
+    };
 
-    onMounted(() => {
-      fetchTransactions();
+          onMounted(async () => {
+      await fetchAccounts();
+      await fetchTransactions();
+      loading.value = false;
+            renderCharts();
     });
 
     return {
       transactions,
       loading,
-      totalBalance,
-      monthlyExpenses,
-      recentDeposits,
+      totalBalanceByCurrency,
+      monthlyExpensesByCurrency,
+      recentDepositsByCurrency,
       formatDate,
       formatDescription,
       formatCurrency,
-      getDefaultCurrency,
-      latestTransactionCurrency,
+      isOutgoingTransaction,
+      displayAmount,
     };
   },
 };
@@ -200,12 +248,6 @@ export default {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.dashboard h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--text-color-primary);
 }
 
 .overview {
@@ -227,34 +269,9 @@ export default {
   margin-bottom: 20px;
 }
 
-.overview-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.overview-card i {
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-
-.overview-card h3 {
-  font-size: var(--font-size-lg);
-  margin-bottom: 10px;
-  color: var(--text-color-primary);
-}
-
-.overview-card p {
+.balance-list p {
   font-size: 1rem;
   font-weight: var(--font-weight-bold);
-  color: var(--text-color-primary);
-}
-
-.transactions {
-  width: 100%;
-}
-
-.transactions h2 {
-  margin: 20px;
   color: var(--text-color-primary);
 }
 
@@ -265,26 +282,17 @@ table {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color var(--transition-speed) ease;
 }
+
 
 thead {
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
-th,
-td {
+th, td {
   padding: 15px;
   text-align: left;
-}
-
-th {
-  font-weight: var(--font-weight-bold);
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9;
 }
 
 .negative {
@@ -295,43 +303,5 @@ tr:nth-child(even) {
   text-align: center;
   padding: 20px;
   color: var(--text-color-primary);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .overview {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-
-  thead tr {
-    display: none;
-  }
-
-  tr {
-    margin-bottom: 15px;
-  }
-
-  td {
-    position: relative;
-    padding-left: 50%;
-  }
-
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    font-weight: var(--font-weight-bold);
-    color: var(--primary-color);
-  }
 }
 </style>

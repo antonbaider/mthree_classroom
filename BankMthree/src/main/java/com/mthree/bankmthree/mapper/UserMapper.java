@@ -2,14 +2,15 @@ package com.mthree.bankmthree.mapper;
 
 import com.mthree.bankmthree.dto.account.AccountDTO;
 import com.mthree.bankmthree.dto.auth.RegisterRequest;
-import com.mthree.bankmthree.dto.transaction.TransferRequestByUserId;
 import com.mthree.bankmthree.dto.user.UserDTO;
 import com.mthree.bankmthree.entity.Account;
-import com.mthree.bankmthree.entity.Transaction;
+import com.mthree.bankmthree.entity.User;
 import com.mthree.bankmthree.entity.UserProfile;
 import com.mthree.bankmthree.entity.enums.Role;
-import com.mthree.bankmthree.entity.User;
-import org.mapstruct.*;
+import org.mapstruct.Context;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Mapper(componentModel = "spring")
@@ -48,7 +49,8 @@ public interface UserMapper {
                 .build();
     }
 
-    @Mapping(target = "cardNumber", source = "cardNumber", qualifiedByName = "maskCardNumber")
+    //    @Mapping(target = "cardNumber", source = "cardNumber", qualifiedByName = "maskCardNumber")
+    @Mapping(target = "cardNumber", source = "cardNumber")
     @Mapping(target = "expirationDate", source = "expirationDate")
     AccountDTO toAccountDTO(Account account);
 
